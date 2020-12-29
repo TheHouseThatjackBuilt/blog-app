@@ -1,0 +1,41 @@
+.header {
+  display: grid;
+  grid-template: 51px / 147px 250px;
+  justify-content: space-between;
+  align-content: center;
+  padding: 22px 0 22px 0;
+
+  &__title {
+    justify-self: center;
+    align-self: center;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  &__btn-container {
+    display: grid;
+    grid-template: 51px / repeat(2, 1fr);
+    justify-content: space-between;
+    align-content: center;
+  }
+}
+
+.button {
+  background-color: inherit;
+  font-size: 18px;
+  font-weight: 400;
+
+  &__sign-in {
+  }
+
+  &__sign-up {
+    display: block;
+    width: 109px;
+    height: 51px;
+    border: 1px solid $successColor;
+    border-radius: 5px;
+
+    & > a {
+      color: $successColor;
+    }
+  }
+}
