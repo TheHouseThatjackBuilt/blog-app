@@ -1,5 +1,5 @@
-import { REQUEST_ARTICLE_LIST, REQUEST_ARTICLE } from '../redux/constants';
-import { IArticleState, ArticleActionsForReduce } from '../redux/types';
+import { REQUEST_ARTICLE_LIST, REQUEST_ARTICLE } from '../constants';
+import { IArticleState, ArticleActionsForReduce } from '../../types/types';
 
 const initial: IArticleState = {
   articles: [],

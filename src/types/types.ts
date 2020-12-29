@@ -2,7 +2,7 @@ import {
   REQUEST_ARTICLE_LIST,
   REQUEST_ARTICLE,
   ERROR_HANDLER,
-} from './constants';
+} from '../redux/constants';
 
 // interface for typing a response from the server
 export interface IAutorArticle {
@@ -57,4 +57,8 @@ export type RequestActions =
 
 export interface IArticleState extends IArticleList {
   currentArticle: null | IArticle;
+}
+
+export interface IState {
+  articleState: IArticleState;
 }

@@ -1,12 +1,12 @@
 import React from 'react';
 
 import Header from '../Header/Header';
-import List from '../List/List';
+import ListContainer from '../../containers/ListContainer/ListContainer';
 
 const App: React.FC = () => (
   <div className="main">
     <Header />
-    <List />
+    <ListContainer />
   </div>
 );
 export default App;

@@ -1,5 +1,5 @@
 // URL constants
-import { IArticleList, IArticle } from '../redux/types';
+import { IArticleList, IArticle } from '../types/types';
 
 export const BASE_URL = 'https://conduit.productionready.io/api/';
 export const ARTICLES = 'articles';

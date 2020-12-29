@@ -1,7 +1,7 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 
-import rootReducer from '../../reducers/index';
+import rootReducer from '../reducers/rootReducer';
 
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers = typeof window === 'object'

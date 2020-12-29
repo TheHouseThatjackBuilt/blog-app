@@ -7,7 +7,7 @@ import {
   ERROR_HANDLER,
 } from '../constants';
 
-import { ArticleActions, IArticleList } from '../types';
+import { ArticleActions, IArticleList } from '../../types/types';
 import { requestArticleList, requestArticle } from '../../service/RealWorldAPI';
 
 const getArticleList: ActionCreator<
