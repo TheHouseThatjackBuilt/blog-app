@@ -1,5 +1,5 @@
 import { REQUEST_ARTICLE_LIST, REQUEST_ARTICLE } from '../constants';
-import { IArticleState, ArticleActionsForReduce } from '../../types/types';
+import { IArticleState, ArticleActionsForReduce } from '../../types/index.d';
 
 const initial: IArticleState = {
   articles: [],

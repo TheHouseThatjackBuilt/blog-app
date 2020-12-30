@@ -22,3 +22,7 @@ export interface IArticleList {
   articles: IArticle[];
   articlesCount: number;
 }
+
+export interface IError {
+  response: any;
+}

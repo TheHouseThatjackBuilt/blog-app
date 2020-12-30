@@ -1,10 +1,10 @@
 import {
   REQUEST_ARTICLE_LIST,
   REQUEST_ARTICLE,
-  ERROR_HANDLER,
+  REQUEST_ERROR_HANDLER,
 } from '../../redux/constants';
 
-import { IArticle, IArticleList } from './response.d';
+import { IArticle, IArticleList } from '../index.d';
 
 interface IGetArticleList {
   type: typeof REQUEST_ARTICLE_LIST;
@@ -17,15 +17,10 @@ interface IGetArticle {
 }
 
 export interface IError {
-  type: typeof ERROR_HANDLER;
+  type: typeof REQUEST_ERROR_HANDLER;
   payload: any;
 }
 
-export type PromiseType = string | number;
+// export type PromiseType = string | number;
 export type ArticleActionsForReduce = IGetArticleList | IGetArticle;
 export type ArticleActions = IGetArticleList | IGetArticle | IError;
-
-export type RequestActions =
-  | typeof REQUEST_ARTICLE_LIST
-  | typeof REQUEST_ARTICLE
-  | typeof ERROR_HANDLER;
