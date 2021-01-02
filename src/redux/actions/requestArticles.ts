@@ -1,28 +1,23 @@
 import {
-  REQUEST_ARTICLE_LIST,
-  REQUEST_ARTICLE,
-  REQUEST_ERROR_HANDLER,
-} from '../constants';
-
-import {
   IArticleList,
   IArticle,
   IError,
+  EActions,
   ArticleActions,
 } from '../../types/index.d';
 
 const requestListAction = (payload: IArticleList): ArticleActions => ({
-  type: REQUEST_ARTICLE_LIST,
+  type: EActions.getArticlesList,
   payload,
 });
 
 const requestArticleAction = (payload: IArticle): ArticleActions => ({
-  type: REQUEST_ARTICLE,
+  type: EActions.getArticle,
   payload,
 });
 
 const requestErrorHandler = (payload: IError): ArticleActions => ({
-  type: REQUEST_ERROR_HANDLER,
+  type: EActions.hasError,
   payload,
 });
 

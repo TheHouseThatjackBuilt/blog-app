@@ -1,32 +1,51 @@
 /* eslint-disable*/
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 
-import { IState, ListTypes } from '../../types/index';
+import { IState } from '../../types/index.d';
 import { getArticleList, getArticle } from '../../redux/middleware/reduxThunk';
+import {
+  articlesSelector,
+  articlesCountSelector,
+} from '../../redux/selectors/index';
+
+import Spinner from '../../components/Spinner/Spinner';
 import ArticlesList from '../../components/ArticlesList/ArticlesList';
 
-const ArticlesListContainer: React.FC = ({
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+const ArticlesListContainer = ({
   articles,
   articlesCount,
   getArticleList,
   getArticle,
-}: any) => {
-  useEffect(() => {
-    getArticleList(10);
-    console.log(articles);
-  }, []);
+}: PropsFromRedux) => {
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
 
-  return <ArticlesList />;
+  useEffect(() => {
+    setLoading(true);
+
+    (async () => {
+      await getArticleList(page);
+      setLoading(false);
+    })();
+  }, [page]);
+
+  const handlePagesSwitch = (page: number) => setPage(page);
+  return (
+    <main className="main__content">
+      {loading ? <Spinner /> : <ArticlesList articles={articles} />}
+    </main>
+  );
 };
 
-export default connect(
-  (state: IState) => ({
-    articles: state.articleState.articles,
-    articlesCount: state.articleState.articlesCount,
-  }),
-  {
-    getArticleList,
-    getArticle,
-  },
-)(ArticlesListContainer);
+const mapStateToProps = (state: IState) => ({
+  articles: articlesSelector(state),
+  articlesCount: articlesCountSelector(state),
+});
+
+const mapDispatch = { getArticleList, getArticle };
+const connector = connect(mapStateToProps, mapDispatch);
+
+export default connector(ArticlesListContainer);

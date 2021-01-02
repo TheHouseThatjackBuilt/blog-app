@@ -1,5 +1,4 @@
-import { IErrorState, IError } from '../../types/index.d';
-import { REQUEST_ERROR_HANDLER } from '../constants';
+import { IErrorState, IError, EActions } from '../../types/index.d';
 
 const initial: IErrorState = {
   error: null,
@@ -7,7 +6,7 @@ const initial: IErrorState = {
 
 export default (state = initial, action: IError): IErrorState => {
   switch (action.type) {
-    case REQUEST_ERROR_HANDLER:
+    case EActions.hasError:
       return { ...state, error: action.payload };
     default:
       return state;

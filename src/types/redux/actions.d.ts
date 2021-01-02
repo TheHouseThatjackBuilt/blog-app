@@ -1,26 +1,20 @@
-import {
-  REQUEST_ARTICLE_LIST,
-  REQUEST_ARTICLE,
-  REQUEST_ERROR_HANDLER,
-} from '../../redux/constants';
-
 import { IArticle, IArticleList } from '../index.d';
+import EActions from '../../redux/constants';
 
 interface IGetArticleList {
-  type: typeof REQUEST_ARTICLE_LIST;
+  type: typeof EActions.getArticlesList;
   payload: IArticleList;
 }
 
 interface IGetArticle {
-  type: typeof REQUEST_ARTICLE;
+  type: typeof EActions.getArticle;
   payload: IArticle;
 }
 
-export interface IError {
-  type: typeof REQUEST_ERROR_HANDLER;
+interface IError {
+  type: typeof EActions.hasError;
   payload: any;
 }
 
-// export type PromiseType = string | number;
-export type ArticleActionsForReduce = IGetArticleList | IGetArticle;
 export type ArticleActions = IGetArticleList | IGetArticle | IError;
+export type ArticleActionsForReduce = IGetArticleList | IGetArticle;

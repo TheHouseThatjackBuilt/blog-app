@@ -15,7 +15,7 @@ const http = async <T>(params: string): Promise<T> => {
 const requestArticleList = async (
   offsetPage: number,
 ): Promise<IArticleList> => {
-  const link = `${ARTICLES}?${LIMIT}=10&${OFFSET}=${offsetPage}`;
+  const link = `${ARTICLES}?${LIMIT}=5&${OFFSET}=${offsetPage}`;
   return http<IArticleList>(link);
 };
 

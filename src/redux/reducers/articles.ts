@@ -1,5 +1,8 @@
-import { REQUEST_ARTICLE_LIST, REQUEST_ARTICLE } from '../constants';
-import { IArticleState, ArticleActionsForReduce } from '../../types/index.d';
+import {
+  IArticleState,
+  ArticleActionsForReduce,
+  EActions,
+} from '../../types/index.d';
 
 const initial: IArticleState = {
   articles: [],
@@ -12,13 +15,13 @@ export default (
   action: ArticleActionsForReduce,
 ): IArticleState => {
   switch (action.type) {
-    case REQUEST_ARTICLE_LIST:
+    case EActions.getArticlesList:
       return {
         ...state,
         articles: action.payload.articles,
         articlesCount: action.payload.articlesCount,
       };
-    case REQUEST_ARTICLE:
+    case EActions.getArticle:
       return { ...state, currentArticle: action.payload };
     default:
       return state;
