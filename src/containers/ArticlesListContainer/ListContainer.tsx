@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 
-import { IState } from '../../types/index.d';
+import { IState } from '../../types/redux/index';
 import { getArticleList, getArticle } from '../../redux/middleware/reduxThunk';
 import {
   articlesSelector,

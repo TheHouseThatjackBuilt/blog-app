@@ -1,4 +1,4 @@
-import { IArticle, IArticleList } from '../index.d';
+import { IArticle, IArticleList } from './index.d';
 
 export interface IArticleState extends IArticleList {
   currentArticle: null | IArticle;

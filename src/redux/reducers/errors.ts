@@ -1,4 +1,4 @@
-import { IErrorState, IError, EActions } from '../../types/index.d';
+import { IErrorState, IError, EActions } from '../../types/redux/index.d';
 
 const initial: IErrorState = {
   error: null,

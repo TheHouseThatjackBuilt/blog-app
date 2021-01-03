@@ -1,4 +1,4 @@
-import { ThunkActionType, DispatchType } from '../../types/index.d';
+import { ThunkActionType, DispatchType } from '../../types/redux/index.d';
 import { requestArticleList, requestArticle } from '../../service/RealWorldAPI';
 import {
   requestListAction,

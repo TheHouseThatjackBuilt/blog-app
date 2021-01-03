@@ -2,7 +2,7 @@ import {
   IArticleState,
   ArticleActionsForReduce,
   EActions,
-} from '../../types/index.d';
+} from '../../types/redux/index.d';
 
 const initial: IArticleState = {
   articles: [],

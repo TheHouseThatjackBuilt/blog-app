@@ -1,4 +1,4 @@
-import { IArticle, IArticleList } from '../index.d';
+import { IArticle, IArticleList } from './index.d';
 import EActions from '../../redux/constants';
 
 interface IGetArticleList {

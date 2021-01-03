@@ -4,7 +4,7 @@ import {
   IError,
   EActions,
   ArticleActions,
-} from '../../types/index.d';
+} from '../../types/redux/index.d';
 
 const requestListAction = (payload: IArticleList): ArticleActions => ({
   type: EActions.getArticlesList,

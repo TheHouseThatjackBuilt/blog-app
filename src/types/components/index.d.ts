@@ -1,4 +1,4 @@
-import { IArticle } from '../index.d';
+import { IArticle } from '../redux/index.d';
 
 export interface IArticleList {
   articles: IArticle[];
