@@ -108,5 +108,7 @@ strong {
     background-color: $backgroundColorHeader;
   }
   &__content {
+    display: grid;
+    grid-template: 1fr / 1fr;
   }
 }
