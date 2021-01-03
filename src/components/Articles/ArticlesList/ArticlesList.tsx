@@ -7,7 +7,7 @@ const ArticleList: React.FC<IArticleList> = ({ articles }) => {
   const content = articles.map((article) => (
     <ArticlePreview key={article.slug} {...article} />
   ));
-  return <div className="content content__container">{content}</div>;
+  return <div className="content__container">{content}</div>;
 };
 
 export default ArticleList;

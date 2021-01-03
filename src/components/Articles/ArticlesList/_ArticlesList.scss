@@ -1,4 +1,12 @@
 .content {
   display: grid;
-  grid-template: minmax(500px, 941px) / 1fr;
+  grid-template: 1fr 25px / 1fr;
+  justify-items: center;
+
+  &__container {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    grid-template: 140px / minmax(500px, 940px);
+    gap: 25px;
+  }
 }

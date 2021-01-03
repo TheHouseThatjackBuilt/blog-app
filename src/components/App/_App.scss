@@ -100,6 +100,11 @@ strong {
 
 /* reset-style block end ---------- */
 
+#wrapper {
+  display: grid;
+  min-height: 100%;
+}
+
 .main {
   display: grid;
   grid-template: 80px 1fr / 1fr;
