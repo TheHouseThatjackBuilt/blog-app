@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IArticleList } from '../../types/components/index.d';
+import { IArticleList } from '../../../types/components/index.d';
 import ArticlePreview from '../ArticlePreview/ArticlePreview';
 
 const ArticleList: React.FC<IArticleList> = ({ articles }) => {

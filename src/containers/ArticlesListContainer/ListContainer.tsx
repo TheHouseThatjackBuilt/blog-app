@@ -10,7 +10,7 @@ import {
 } from '../../redux/selectors/index';
 
 import Spinner from '../../components/Spinner/Spinner';
-import ArticlesList from '../../components/ArticlesList/ArticlesList';
+import ArticlesList from '../../components/Articles/ArticlesList/ArticlesList';
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 

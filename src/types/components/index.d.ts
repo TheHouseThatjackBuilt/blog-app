@@ -1,7 +1,16 @@
-import { IArticle } from '../redux/index.d';
+import { IArticleList, IArticlePreview } from './components.d';
+import {
+  IUser,
+  IArticleHeader,
+  IArticleBody,
+  IHandleArticleData,
+} from './fabricData.d';
 
-export interface IArticleList {
-  articles: IArticle[];
-}
-
-export type IArticlePreview = IArticle;
+export {
+  IArticleList,
+  IArticlePreview,
+  IUser,
+  IArticleHeader,
+  IArticleBody,
+  IHandleArticleData,
+};

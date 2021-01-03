@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
 
-const formatedDate = (date: string) => format(new Date(date), 'MMMMd,y');
+const formatedDate = (date: Date, formatDate: string) => format(date, formatDate);
 
 export default formatedDate;
