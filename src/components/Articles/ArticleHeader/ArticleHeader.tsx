@@ -24,10 +24,10 @@ const ArticleHeader: React.FC<IArticleHeader> = ({
         <div className="article__like-counter">{favoritesCount}</div>
         <div className="article__tag-list">{tags}</div>
       </div>
-      <div className="user article__author-container">
+      <div className="user article__user-container">
         <h3 className="user__info article__username">{username}</h3>
         <div className="user__pic">
-          <img src={image} alt="" className="src" />
+          <img src={image} alt="userpic" />
         </div>
         <time className="article__date-create">{date}</time>
       </div>

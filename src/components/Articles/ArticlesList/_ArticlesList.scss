@@ -26,6 +26,10 @@
 
 .article {
   display: grid;
+  // grid-template:
+  //   [start] 'header' 1fr [row2]
+  //   [row2] 'body' 1fr [row-end] / 1fr;
+  grid-template: 1fr 1fr / 1fr;
   background-color: $backgroundColorContent;
   border-radius: 5px;
   box-shadow: $shadow;
@@ -33,6 +37,7 @@
 
   &__header {
     display: grid;
+    grid-template: 1fr / 1fr 1fr;
   }
 
   &__header-container {
@@ -44,12 +49,25 @@
   &__like-counter {
   }
 
-  &__author-container {
+  &__user-container {
   }
 
-  &__author-name {
+  &__username {
   }
 
   &__date-create {
+  }
+
+  &__body {
+  }
+}
+
+.user {
+  &__pic {
+    width: 46px;
+
+    & > img {
+      border-radius: 50%;
+    }
   }
 }
