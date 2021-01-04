@@ -1,12 +1,55 @@
 .content {
   display: grid;
-  grid-template: 1fr 25px / 1fr;
+  grid-template: 1fr 40px / 1fr;
   justify-items: center;
 
   &__container {
-    margin-top: 25px;
-    margin-bottom: 25px;
-    grid-template: 140px / minmax(500px, 940px);
+    display: grid;
+    grid-template: repeat(5, 140px) / minmax(500px, 940px);
     gap: 25px;
+    margin: 25px;
+  }
+
+  &__pagination {
+    display: grid;
+    grid-template: 1fr / repeat(11, 1fr);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  &__itemContainer {
+    display: block;
+  }
+}
+
+.article {
+  display: grid;
+  background-color: $backgroundColorContent;
+  border-radius: 5px;
+  box-shadow: $shadow;
+  height: 100%;
+
+  &__header {
+    display: grid;
+  }
+
+  &__header-container {
+  }
+
+  &__title {
+  }
+
+  &__like-counter {
+  }
+
+  &__author-container {
+  }
+
+  &__author-name {
+  }
+
+  &__date-create {
   }
 }

@@ -1,4 +1,9 @@
-import { IArticleList, IArticlePreview, IPaginator } from './components.d';
+import {
+  IArticleList,
+  IArticlePreview,
+  IArticleTags,
+  IPaginator,
+} from './components.d';
 import {
   IUser,
   IArticleHeader,
@@ -9,6 +14,7 @@ import {
 export {
   IArticleList,
   IArticlePreview,
+  IArticleTags,
   IPaginator,
   IUser,
   IArticleHeader,

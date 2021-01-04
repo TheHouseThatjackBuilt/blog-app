@@ -9,4 +9,8 @@ export interface IPaginator {
   handler: Function;
 }
 
+export interface IArticleTags {
+  tag: string;
+}
+
 export type IArticlePreview = IArticle;

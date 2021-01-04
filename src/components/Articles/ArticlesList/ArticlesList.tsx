@@ -5,9 +5,11 @@ import ArticlePreview from '../ArticlePreview/ArticlePreview';
 
 const ArticleList: React.FC<IArticleList> = ({ articles }) => {
   const content = articles.map((article) => (
-    <ArticlePreview key={article.slug} {...article} />
+    <li key={article.slug} className="content__itemContainer">
+      <ArticlePreview {...article} />
+    </li>
   ));
-  return <div className="content__container">{content}</div>;
+  return <ul className="content__container">{content}</ul>;
 };
 
 export default ArticleList;
