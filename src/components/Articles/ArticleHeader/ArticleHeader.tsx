@@ -16,7 +16,7 @@ const ArticleHeader: FC<IArticleHeader> = ({
   const [like, setLike] = useState(false);
   const tags =
     tagList.length > 0
-      ? tagList.map((el) => <ArticleTags key={el} tag={el} />)
+      ? tagList.map((el: string) => <ArticleTags key={el} tag={el} />)
       : null;
 
   const setLikesHandler = () => setLike(!like);

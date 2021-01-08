@@ -9,7 +9,7 @@ const ArticleList: React.FC<IArticleList> = ({ articles }) => {
       <ArticlePreview {...article} />
     </li>
   ));
-  return <ul className="content__container">{content}</ul>;
+  return <ul className="content__container-preview">{content}</ul>;
 };
 
 export default ArticleList;

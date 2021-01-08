@@ -3,7 +3,7 @@
   grid-template: 1fr 40px / 1fr;
   justify-items: center;
 
-  &__container {
+  &__container-preview {
     display: grid;
     grid-template: repeat(5, 140px) / minmax(500px, 940px);
     gap: 25px;
