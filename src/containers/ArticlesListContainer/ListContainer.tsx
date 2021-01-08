@@ -36,7 +36,7 @@ const ArticlesListContainer = ({
   return (
     <main className="content main__content">
       {loading ? <Spinner /> : <ArticlesList articles={articles} />}
-      <Parination totalPages={articlesCount / 5} handler={handlePagesSwitch} />
+      <Parination totalPages={articlesCount} handler={handlePagesSwitch} />
     </main>
   );
 };

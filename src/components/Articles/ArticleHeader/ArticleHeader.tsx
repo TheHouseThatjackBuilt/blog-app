@@ -20,7 +20,7 @@ const ArticleHeader: FC<IArticleHeader> = ({
       : null;
 
   const setLikesHandler = () => setLike(!like);
-
+  console.log(username, image);
   return (
     <header className="article__header">
       <div className="article__title-container">

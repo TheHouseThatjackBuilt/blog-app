@@ -11,6 +11,8 @@ const Parginator: React.FC<IPaginator> = ({ totalPages, handler }) => (
     onChange={(page: number) => handler(page)}
     pageSize={5}
     total={totalPages}
+    defaultCurrent={1}
+    defaultPageSize={5}
   />
 );
 
