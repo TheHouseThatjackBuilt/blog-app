@@ -1,5 +1,6 @@
 /*eslint-disable*/
 import React, { FC, useState } from 'react';
+import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
 import { IArticleHeader } from '../../../types/components/index.d';
@@ -25,7 +26,9 @@ const ArticleHeader: FC<IArticleHeader> = ({
     <header className="article__header">
       <div className="article__title-container">
         <div className="article__title-wrapper">
-          <h2 className="article__title">{title}</h2>
+          <Link to={`/articles/${slug}`}>
+            <h2 className="article__title">{title}</h2>
+          </Link>
           <div className="article__like-container">
             <button
               onClick={setLikesHandler}

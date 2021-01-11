@@ -10,9 +10,14 @@
     margin: 25px;
   }
 
+  &__full {
+    display: grid;
+    grid-template: minmax(100px, 1fr) / minmax(500px, 940px);
+  }
+
   &__pagination {
     display: grid;
-    grid-template: 1fr / repeat(11, 1fr);
+    grid-auto-flow: column;
     font-weight: 400;
     font-size: 15px;
     line-height: 22px;

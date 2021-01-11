@@ -1,5 +1,5 @@
 /* eslint-disable*/
-import formatedDate from './utils';
+import { formatedDate } from './utils';
 
 import { IArticle } from '../types/redux/index.d';
 import { IHandleArticleData } from '../types/components/index.d';

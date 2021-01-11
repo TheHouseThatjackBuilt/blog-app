@@ -7,10 +7,23 @@ export interface IArticleList {
 export interface IPaginator {
   totalPages: number;
   handler: Function;
+  currentPage: number;
 }
 
 export interface IArticleTags {
   tag: string;
 }
 
-export type IArticlePreview = IArticle;
+export interface ISingleArticle {
+  article: IArticle | null;
+  load: boolean;
+}
+
+export interface IParams {
+  slug: string;
+}
+
+// export type IArticleConstructor = IArticle;
+export interface IArticleConstructor {
+  article: IArticle;
+}

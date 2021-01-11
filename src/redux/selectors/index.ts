@@ -1,3 +1,7 @@
-import { articlesSelector, articlesCountSelector } from './simpleSelectors';
+import {
+  articlesSelector,
+  articlesCountSelector,
+  articleSelector,
+} from './simpleSelectors';
 
-export { articlesSelector, articlesCountSelector };
+export { articlesSelector, articlesCountSelector, articleSelector };

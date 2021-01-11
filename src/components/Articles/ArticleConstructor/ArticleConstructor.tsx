@@ -1,13 +1,13 @@
 import React from 'react';
 
 import articlePreviewDataFabric from '../../../tools/dataFabric';
-import { IArticlePreview } from '../../../types/components/index.d';
+import { IArticleConstructor } from '../../../types/components/index.d';
 
 import ArticleHeader from '../ArticleHeader/ArticleHeader';
 import ArticleBody from '../ArticleBody/ArticleBody';
 
-const ArticlePreview: React.FC<IArticlePreview> = (props) => {
-  const { header, body } = articlePreviewDataFabric(props);
+const ArticleConstructor: React.FC<IArticleConstructor> = ({ article }) => {
+  const { header, body } = articlePreviewDataFabric(article);
   return (
     <article className="article article__preview">
       <ArticleHeader {...header} />
@@ -16,4 +16,4 @@ const ArticlePreview: React.FC<IArticlePreview> = (props) => {
   );
 };
 
-export default ArticlePreview;
+export default ArticleConstructor;

@@ -1,9 +1,12 @@
 import {
   IArticleList,
-  IArticlePreview,
+  IArticleConstructor,
   IArticleTags,
   IPaginator,
+  ISingleArticle,
+  IParams,
 } from './components.d';
+
 import {
   IUser,
   IArticleHeader,
@@ -11,13 +14,18 @@ import {
   IHandleArticleData,
 } from './fabricData.d';
 
+import { ValueOrEmpty } from './utils.d';
+
 export {
   IArticleList,
-  IArticlePreview,
+  ISingleArticle,
+  IArticleConstructor,
   IArticleTags,
   IPaginator,
   IUser,
   IArticleHeader,
   IArticleBody,
   IHandleArticleData,
+  IParams,
+  ValueOrEmpty,
 };
