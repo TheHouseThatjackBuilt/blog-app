@@ -5,7 +5,7 @@ import {
 } from '../../types/redux/index.d';
 
 const initial: IArticleState = {
-  articles: [],
+  articles: null,
   articlesCount: 0,
   currentArticle: null,
 };

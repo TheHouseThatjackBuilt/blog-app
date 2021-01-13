@@ -19,7 +19,7 @@ export interface IArticle {
 }
 
 export interface IArticleList {
-  articles: IArticle[];
+  articles: IArticle[] | null;
   articlesCount: number;
 }
 

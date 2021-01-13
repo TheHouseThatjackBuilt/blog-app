@@ -12,6 +12,7 @@
 
   &__full {
     display: grid;
+    margin-top: 25px;
     grid-template: minmax(100px, 1fr) / minmax(500px, 940px);
   }
 
@@ -31,7 +32,7 @@
 
 .article {
   display: grid;
-  grid-template: 1fr 1fr / 1fr;
+  grid-template: 71px 1fr / 1fr;
   gap: 5px;
   background-color: $backgroundColorContent;
   border-radius: 5px;

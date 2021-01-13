@@ -8,10 +8,7 @@ import {
   articlesCountSelector,
 } from '../../redux/selectors/index';
 
-import { Spinner, Parination } from '../../components/decoreElements/index';
 import ArticlesList from '../../components/Articles/ArticleList/ArticlesList';
-
-type PropsFromRedux = ConnectedProps<typeof connector>;
 
 const ArticlesListContainer = ({
   articles,
@@ -32,14 +29,13 @@ const ArticlesListContainer = ({
 
   const handlePagesSwitch = (evt: number) => setPage(evt);
   return (
-    <main className="content main__content">
-      {loading ? <Spinner /> : <ArticlesList articles={articles} />}
-      <Parination
-        totalPages={articlesCount}
-        handler={handlePagesSwitch}
-        currentPage={page}
-      />
-    </main>
+    <ArticlesList
+      articles={articles}
+      pageHandler={handlePagesSwitch}
+      totalPages={articlesCount}
+      load={loading}
+      page={page}
+    />
   );
 };
 
@@ -50,5 +46,7 @@ const mapStateToProps = (state: IState) => ({
 
 const mapDispatch = { getArticleList };
 const connector = connect(mapStateToProps, mapDispatch);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
 
 export default connector(ArticlesListContainer);
