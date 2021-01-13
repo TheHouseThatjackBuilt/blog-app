@@ -15,7 +15,7 @@ const ArticleList: React.FC<IArticleList> = ({
   const content = articles
     ? articles?.map((article) => (
       <li key={article.slug} className="content__itemContainer">
-        <ArticleConstructor article={article} />
+        <ArticleConstructor article={article} flag={false} />
       </li>
     ))
     : null;

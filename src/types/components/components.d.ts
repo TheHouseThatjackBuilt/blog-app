@@ -1,4 +1,5 @@
 import { IArticle } from '../redux/index.d';
+import { IArticleBody } from './index.d';
 
 export interface IArticleList {
   articles: IArticle[] | null;
@@ -29,4 +30,10 @@ export interface IParams {
 
 export interface IArticleConstructor {
   article: IArticle;
+  flag: boolean;
+}
+
+export interface IArticleBodyContainer {
+  article: IArticleBody;
+  flag: boolean;
 }

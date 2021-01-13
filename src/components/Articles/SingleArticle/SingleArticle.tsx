@@ -9,7 +9,7 @@ const SingleArticle: React.FC<ISingleArticle> = ({ data, load }) => (
     {(load || !data) && <Spinner />}
     {data && (
       <div className="content__full">
-        <ArticleConstructor article={data.article} />
+        <ArticleConstructor article={data.article} flag />
       </div>
     )}
   </main>

@@ -5,6 +5,7 @@ import {
   IPaginator,
   ISingleArticle,
   IParams,
+  IArticleBodyContainer,
 } from './components.d';
 
 import {
@@ -28,4 +29,5 @@ export {
   IHandleArticleData,
   IParams,
   ValueOrEmpty,
+  IArticleBodyContainer,
 };
