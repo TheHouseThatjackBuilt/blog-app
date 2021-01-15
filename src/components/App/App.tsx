@@ -7,8 +7,8 @@ import {
   ArticleListPage,
   SignUpPage,
   SignInPage,
+  EditProfilePage,
 } from '../../pages/index';
-import { EditProfile } from '../AuthForms/index';
 
 const App: React.FC = () => (
   <div className="main">
@@ -19,7 +19,7 @@ const App: React.FC = () => (
       <Route path="/articles/:slug" component={SingleArticlePage} />
       <Route path="/sign-up" component={SignUpPage} />
       <Route path="/sign-in" component={SignInPage} />
-      <Route path="/profile" component={EditProfile} />
+      <Route path="/profile" component={EditProfilePage} />
     </Switch>
   </div>
 );
