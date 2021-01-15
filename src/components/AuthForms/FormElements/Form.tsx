@@ -1,12 +1,14 @@
 import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
     width: '100%',
-    marginTop: theme.spacing(1),
   },
-}));
+});
 
 export const Form: FC = ({ children, ...props }) => {
   const styles = useStyles();

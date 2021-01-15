@@ -8,6 +8,7 @@ import {
   IArticleBodyContainer,
   IFormInput,
   ISignUpProfile,
+  IFormCheckbox,
 } from './components.d';
 
 import {
@@ -34,4 +35,5 @@ export {
   IArticleBodyContainer,
   IFormInput,
   ISignUpProfile,
+  IFormCheckbox,
 };

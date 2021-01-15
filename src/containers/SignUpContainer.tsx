@@ -7,5 +7,5 @@ import { SignUpProfile } from '../components/AuthForms/SignUpProfile';
 export const SignUpContainer = () => {
   const { register, handleSubmit, errors } = useForm();
 
-  return <SignUpProfile ref={register} />;
+  return <SignUpProfile inputRef={register} />;
 };
