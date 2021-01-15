@@ -1,34 +1,35 @@
+/* eslint-disable*/
 import React, { FC } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import { ISignUpProfile } from '../../types/components/index.d';
+import {
+  FormContainer,
+  Form,
+  Input,
+  SubmitButton,
+  FormHeader,
+} from './FormElements/index';
 
-const SignUpProfile: FC = () => {
-  const { register, handleSubmit, errors } = useForm();
-  const history = useHistory();
-
-  const onSubmit = (data) => {
-    history.push('/');
-  };
+export const SignUpProfile: FC<ISignUpProfile> = ({ ref }) => {
   return (
-    <div>
-      <h2>Create new account</h2>
-      <form>
-        <input
-          ref={register}
-          type="text"
-          name="username"
-          placeholder="Username"
+    <FormContainer>
+      <FormHeader>Create new account</FormHeader>
+      <Form>
+        <Input ref={ref} type="text" name="username" label="Username" />
+        <Input
+          ref={ref}
+          type="email"
+          name="Email adress"
+          label="Email adress"
         />
-        <input ref={register} type="email" name="email" placeholder="email" />
-        <input
-          ref={register}
+        <Input ref={ref} type="password" name="Password" label="password" />
+        <Input
+          ref={ref}
           type="password"
-          name="password"
-          placeholder="password"
+          name="Repeat Password"
+          label="Repeat Password"
         />
-      </form>
-    </div>
+        <SubmitButton>Create</SubmitButton>
+      </Form>
+    </FormContainer>
   );
 };
-
-export default SignUpProfile;

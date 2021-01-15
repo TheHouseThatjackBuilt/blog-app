@@ -3,6 +3,13 @@
   src: local('Intel'),
     url(../../style/fonts/Inter-Regular.ttf) format('truetype');
 }
+
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto'),
+    url(../../style/fonts/Roboto-Regular.ttf) format('truetype');
+}
+
 nav,
 footer,
 header,

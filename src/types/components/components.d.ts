@@ -1,3 +1,4 @@
+import { Ref } from 'react-hook-form';
 import { IArticle } from '../redux/index.d';
 import { IArticleBody } from './index.d';
 
@@ -36,4 +37,14 @@ export interface IArticleConstructor {
 export interface IArticleBodyContainer {
   article: IArticleBody;
   flag: boolean;
+}
+
+export interface IFormInput {
+  label: string;
+  name: string;
+  type: string;
+}
+
+export interface ISignUpProfile {
+  ref: typeof Ref;
 }

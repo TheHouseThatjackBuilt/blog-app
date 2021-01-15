@@ -6,6 +6,8 @@ import {
   ISingleArticle,
   IParams,
   IArticleBodyContainer,
+  IFormInput,
+  ISignUpProfile,
 } from './components.d';
 
 import {
@@ -30,4 +32,6 @@ export {
   IParams,
   ValueOrEmpty,
   IArticleBodyContainer,
+  IFormInput,
+  ISignUpProfile,
 };
