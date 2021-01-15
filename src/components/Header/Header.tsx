@@ -8,7 +8,7 @@ const Header: React.FC = () => (
     </Link>
     <div className="header__btn-container">
       <button type="button" className="button button__sign-in">
-        <a href="#">Sign In</a>
+        <Link to="/sign-in">Sign In</Link>
       </button>
       <button type="button" className="button button__sign-up">
         <Link to="/sign-up">Sign In</Link>

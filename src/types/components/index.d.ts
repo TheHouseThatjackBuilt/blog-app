@@ -7,7 +7,7 @@ import {
   IParams,
   IArticleBodyContainer,
   IFormInput,
-  ISignUpProfile,
+  IForm,
   IFormCheckbox,
 } from './components.d';
 
@@ -34,6 +34,6 @@ export {
   ValueOrEmpty,
   IArticleBodyContainer,
   IFormInput,
-  ISignUpProfile,
+  IForm,
   IFormCheckbox,
 };

@@ -1,10 +1,7 @@
 /* eslint-disable*/
 import React, { FC } from 'react';
-import { FormControlLabel, Checkbox } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 
-import { ISignUpProfile } from '../../types/components/index.d';
-
+import { IForm } from '../../types/components/index.d';
 import {
   FormContainer,
   Form,
@@ -14,7 +11,7 @@ import {
   FormCheckbox,
 } from './FormElements/index';
 
-export const SignUpProfile: FC<ISignUpProfile> = ({ inputRef }) => {
+export const SignUpProfile: FC<IForm> = ({ inputRef }) => {
   return (
     <FormContainer>
       <FormHeader>Create new account</FormHeader>

@@ -1,4 +1,4 @@
-import { Input } from './Input';
+import { Input } from './FormInput';
 import { Form } from './Form';
 import { SubmitButton } from './SubmitButton';
 import { FormContainer } from './FormContainer';

@@ -1,5 +1,8 @@
-import Article from './ArticlePage';
+import { SingleArticlePage } from './SingleArticlePage';
 import ArticleListPage from './ArticleListPage';
 import { SignUpPage } from './SignUpPage';
+import { SignInPage } from './SignInPage';
 
-export { Article, ArticleListPage, SignUpPage };
+export {
+  SingleArticlePage, ArticleListPage, SignUpPage, SignInPage,
+};

@@ -49,6 +49,6 @@ export interface IFormCheckbox {
   label: string;
 }
 
-export interface ISignUpProfile {
+export interface IForm {
   inputRef: typeof Ref;
 }

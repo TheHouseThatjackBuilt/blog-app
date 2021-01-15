@@ -11,13 +11,6 @@ const useStyle = makeStyles({
     fontWeight: 'normal',
     fontSize: 14,
     lineHeight: 22,
-    '&.MuiFormLabel-root': {
-      fontFamily: 'Roboto',
-      fontStyle: 'normal',
-      fontWeight: 'normal',
-      fontSize: 14,
-      lineHeight: 22,
-    },
   },
 });
 
