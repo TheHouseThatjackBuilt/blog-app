@@ -4,7 +4,7 @@ import { IAutorArticle, IArticle, IArticleList } from './response.d';
 import { IArticleState, IErrorState, IState } from './store.d';
 import { ThunkActionType, DispatchType } from './thunk.d';
 
-import EActions from '../../redux/constants';
+import { EActions } from '../../redux/constants';
 
 export {
   ArticleActionsForReduce,

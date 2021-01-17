@@ -26,3 +26,11 @@ export interface IArticleList {
 export interface IError {
   response: any;
 }
+
+export interface IUserReg {
+  user: {
+    username: string;
+    email: string;
+    password: String;
+  };
+}

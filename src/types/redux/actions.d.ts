@@ -1,5 +1,5 @@
 import { IArticle, IArticleList } from './index.d';
-import EActions from '../../redux/constants';
+import { EActions } from '../../redux/constants';
 
 interface IGetArticleList {
   type: typeof EActions.getArticlesList;
