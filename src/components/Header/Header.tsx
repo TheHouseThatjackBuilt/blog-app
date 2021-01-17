@@ -11,7 +11,7 @@ const Header: React.FC = () => (
         <Link to="/sign-in">Sign In</Link>
       </button>
       <button type="button" className="button button__sign-up">
-        <Link to="/sign-up">Sign In</Link>
+        <Link to="/sign-up">Sign Up</Link>
       </button>
     </div>
   </header>

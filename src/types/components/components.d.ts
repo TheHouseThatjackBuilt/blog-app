@@ -1,4 +1,4 @@
-import { Ref } from 'react-hook-form';
+import { Ref, DeepMap, FieldError } from 'react-hook-form';
 import { IArticle } from '../redux/index.d';
 import { IArticleBody } from './index.d';
 
@@ -43,6 +43,8 @@ export interface IFormInput {
   label: string;
   name: string;
   type: string;
+  error: boolean;
+  helperText: string | undefined;
 }
 
 export interface IFormCheckbox {
@@ -51,4 +53,5 @@ export interface IFormCheckbox {
 
 export interface IForm {
   inputRef: typeof Ref;
+  errors: DeepMap<Record<string, any>, FieldError>;
 }

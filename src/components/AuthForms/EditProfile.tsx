@@ -9,28 +9,41 @@ import {
   FormHeader,
 } from './FormElements/index';
 
-export const EditProfile: FC<IForm> = ({ inputRef }) => (
+export const EditProfile: FC<IForm> = ({ inputRef, errors }) => (
   <FormContainer>
     <FormHeader>Edit Profile</FormHeader>
     <Form>
-      <Input ref={inputRef} type="text" name="username" label="Username" />
+      <Input
+        ref={inputRef}
+        type="text"
+        name="username"
+        label="Username"
+        error={!!errors?.username}
+        helperText={errors?.username?.message}
+      />
       <Input
         ref={inputRef}
         type="email"
-        name="Email adress"
+        name="email"
         label="Email adress"
+        error={!!errors?.email}
+        helperText={errors?.email?.message}
       />
       <Input
         ref={inputRef}
         type="password"
-        name="New password"
+        name="password"
         label="New password"
+        error={!!errors?.password}
+        helperText={errors?.password?.message}
       />
       <Input
         ref={inputRef}
         type="text"
-        name="Avatar image"
+        name="avatar"
         label="Avatar image (url)"
+        error={!!errors?.avatar}
+        helperText={errors?.avatar?.message}
       />
       <SubmitButton>Save</SubmitButton>
     </Form>

@@ -7,5 +7,5 @@ import { EditProfile } from '../components/AuthForms/EditProfile';
 export const EditProfileContainer = () => {
   const { register, handleSubmit, errors } = useForm();
 
-  return <EditProfile inputRef={register} />;
+  return <EditProfile inputRef={register} errors={errors} />;
 };

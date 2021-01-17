@@ -23,7 +23,7 @@ const useStyle = makeStyles({
   },
 });
 
-export const SignInProfile: FC<IForm> = ({ inputRef }) => {
+export const SignInProfile: FC<IForm> = ({ inputRef, errors }) => {
   const styles = useStyle();
 
   return (
@@ -33,14 +33,18 @@ export const SignInProfile: FC<IForm> = ({ inputRef }) => {
         <Input
           ref={inputRef}
           type="email"
-          name="Email adress"
+          name="email"
           label="Email adress"
+          error={!!errors?.email}
+          helperText={errors?.email?.message}
         />
         <Input
           ref={inputRef}
           type="password"
-          name="Password"
+          name="password"
           label="password"
+          error={!!errors?.password}
+          helperText={errors?.password?.message}
         />
         <SubmitButton>Login</SubmitButton>
         <div className={styles.signUp}>
