@@ -4,12 +4,12 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { SignUpProfile } from '../components/AuthForms/SignUpProfile';
-import { schemaSignUp } from '../tools/validationSchema';
+import { schema } from '../tools/utils';
 
 export const SignUpContainer = () => {
   const { register, handleSubmit, errors } = useForm({
     mode: 'onBlur',
-    resolver: yupResolver(schemaSignUp),
+    resolver: yupResolver(schema),
   });
 
   return <SignUpProfile inputRef={register} errors={errors} />;
