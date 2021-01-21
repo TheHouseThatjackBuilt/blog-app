@@ -1,6 +1,6 @@
 import React from 'react';
 
-import articlePreviewDataFabric from '../../../tools/dataFabric';
+import { articlePreviewDataFabric } from '../../../tools/dataFabric';
 import { IArticleConstructor } from '../../../types/components/index.d';
 
 import ArticleHeader from '../ArticleHeader/ArticleHeader';

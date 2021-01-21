@@ -4,11 +4,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxHeight: 560,
+    maxHeight: 588,
     width: 384,
     marginTop: theme.spacing(4),
     display: 'grid',
-    gridTemplate: '100px 1fr / 1fr',
+    gridTemplate: '80px 1fr 68px / 1fr',
     alignItems: 'start',
     justifyItems: 'center',
     background: theme.palette.background.paper,

@@ -11,6 +11,6 @@ export const EditProfileContainer = () => {
     mode: 'onBlur',
     resolver: yupResolver(schema),
   });
-
-  return <EditProfile inputRef={register} errors={errors} />;
+  return <EditProfile />;
+  // return <EditProfile inputRef={register} errors={errors} />;
 };

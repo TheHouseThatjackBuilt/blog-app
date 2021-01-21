@@ -9,6 +9,7 @@ import {
   IFormInput,
   IForm,
   IFormCheckbox,
+  IForm2,
 } from './components.d';
 
 import {
@@ -36,4 +37,5 @@ export {
   IFormInput,
   IForm,
   IFormCheckbox,
+  IForm2,
 };

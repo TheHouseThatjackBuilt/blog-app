@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
   root: {
-    marginTop: 48,
+    marginTop: 30,
     fontFamily: 'Roboto',
     fontStyle: 'normal',
     fontWeight: 500,

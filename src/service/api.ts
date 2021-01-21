@@ -1,46 +1,53 @@
-/* eslint-disable*/
-import { IArticleList, IArticle } from '../types/redux/index.d';
+import {
+  IArticleList,
+  IArticle,
+  IUser,
+  INewUser,
+} from '../types/redux/index.d';
+
+import { serviceHttpFabric, serviceUserFabric } from '../tools/dataFabric';
+
 import { Methods } from '../redux/constants';
 import { Imethod } from '../types/service/index.d';
 
-export const BASE_URL = 'https://conduit.productionready.io/api/';
-export const ARTICLES = 'articles';
-export const LIMIT = 'limit';
-export const OFFSET = 'offset';
+const BASE_URL = 'https://conduit.productionready.io/api/';
+const ARTICLES = 'articles';
+const LIMIT = 'limit';
+const OFFSET = 'offset';
+const USERS = 'users';
 
-const http = async <T, Imethod extends string, R>(
+const setCookie = (token: string) => {
+  document.cookie = `token=${token}`;
+};
+
+const http = async <T, M extends string, R>(
   url: string,
-  method: Imethod,
+  method: M,
   body?: R,
 ): Promise<T> => {
-  const link = `${BASE_URL}${url}`;
-  const requestHeaders = { 'Content-Type': 'application/json' };
-  const requestMethod = method;
-  const requestBody = JSON.stringify(body);
-
-  const requestOption = {
-    method: requestMethod,
-    headers: requestHeaders,
-    body: requestBody,
-  };
-
-  const response = await fetch(link, requestOption);
-  if (!response.ok) throw new Error('something going wrong');
+  const link = new URL(url, BASE_URL);
+  const requestOption = serviceHttpFabric<M, R>(method, body);
+  const response = await fetch(link.toString(), requestOption);
+  if (!response.ok) throw new Error('god damn guys, god damn.') && (await response.json()); // O_o
   return response.json();
 };
 
-const requestArticleList = async (
-  offsetPage: number,
-): Promise<IArticleList> => {
+const requestArticleList = (offsetPage: number): Promise<IArticleList> => {
   const link = `${ARTICLES}?${LIMIT}=5&${OFFSET}=${offsetPage}`;
   return http<IArticleList, Imethod, null>(link, Methods.get);
 };
 
-const requestArticle = async (id: string): Promise<IArticle> => {
+const requestArticle = (id: string): Promise<IArticle> => {
   const link = `${ARTICLES}/${id}`;
   return http<IArticle, Imethod, null>(link, Methods.get);
 };
 
-// const requestUser = async()
+const requestNewUser = async (newUser: IUser): Promise<any> => {
+  const link = USERS;
+  const user = serviceUserFabric(newUser);
+  const response = await http<any, Imethod, INewUser>(link, Methods.post, user);
+  setCookie(response.token);
+  return response;
+};
 
-export { requestArticleList, requestArticle };
+export { requestArticleList, requestArticle, requestNewUser };

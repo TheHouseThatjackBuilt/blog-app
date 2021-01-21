@@ -55,3 +55,10 @@ export interface IForm {
   inputRef: typeof Ref;
   errors: DeepMap<Record<string, any>, FieldError>;
 }
+
+export interface IForm2 {
+  inputRef: typeof Ref;
+  errors: DeepMap<Record<string, any>, FieldError>;
+  onSubmit: any;
+  load: boolean;
+}

@@ -1,10 +1,9 @@
-/* eslint-disable*/
 import { formatedDate } from './utils';
 
 import { IArticle } from '../types/redux/index.d';
 import { IHandleArticleData } from '../types/components/index.d';
 
-const articlePreviewDataFabric = (data: IArticle): IHandleArticleData => {
+export const articlePreviewDataFabric = (data: IArticle): IHandleArticleData => {
   const {
     author: { image, username },
     body,
@@ -26,11 +25,18 @@ const articlePreviewDataFabric = (data: IArticle): IHandleArticleData => {
       favoritesCount,
       title,
     },
-    body: {
-      body,
-      description,
-    },
+    body: { body, description },
   };
 };
 
-export default articlePreviewDataFabric;
+export const serviceHttpFabric = <M extends string, T>(method: M, body?: T) => ({
+  method,
+  headers: { 'content-type': 'application/json; charset=utf-8' },
+  body: JSON.stringify(body),
+});
+
+export const serviceUserFabric = <T>(newUser: T) => ({ user: { ...newUser } });
+
+export const errorDataFabric = <T>(data: T): Map<keyof T, string> => Object
+  .entries(data)
+  .reduce((acc, [name, value]) => acc.set(name, value.join()), new Map());

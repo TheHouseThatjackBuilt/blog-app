@@ -21,7 +21,6 @@ export const FormCheckbox = forwardRef<
   const styles = useStyles();
   return (
     <FormControlLabel
-      name="checkbox"
       className={styles.label}
       control={<Checkbox color="primary" inputRef={ref} required />}
       inputRef={ref}

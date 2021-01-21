@@ -6,9 +6,3 @@ export type ThunkActionType<T, S> = ActionCreator<
 >;
 
 export type DispatchType<T> = Dispatch<T>;
-
-// export type ThunkActionType = ActionCreator<
-//   ThunkAction<Promise<Action>, IArticleState, null, ArticleActions>
-// >;
-
-// export type DispatchType = Dispatch<ArticleActions>;

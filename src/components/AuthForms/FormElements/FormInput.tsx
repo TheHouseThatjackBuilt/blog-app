@@ -11,6 +11,7 @@ const useStyle = makeStyles({
     fontWeight: 'normal',
     fontSize: 14,
     lineHeight: 22,
+    marginTop: 10,
   },
 });
 

@@ -27,10 +27,18 @@ export interface IError {
   response: any;
 }
 
-export interface IUserReg {
-  user: {
-    username: string;
-    email: string;
-    password: String;
-  };
+export interface IUser {
+  username: string;
+  email: string;
+  password: string;
+}
+
+export interface INewUser {
+  user: IUser;
+}
+
+export interface IUserError {
+  username?: string[];
+  email?: string[];
+  password?: string[];
 }
