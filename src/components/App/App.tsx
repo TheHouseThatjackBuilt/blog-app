@@ -1,18 +1,12 @@
 import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 
-import Header from '../Header/Header';
-import {
-  SingleArticlePage,
-  ArticleListPage,
-  SignUpPage,
-  SignInPage,
-  EditProfilePage,
-} from '../../pages/index';
+import HeaderContainer from '../../containers/HeaderContainer';
+import { SingleArticlePage, ArticleListPage, SignUpPage, SignInPage, EditProfilePage } from '../../pages/index';
 
 const App: React.FC = () => (
   <div className="main">
-    <Header />
+    <HeaderContainer />
     <Switch>
       <Redirect exact from="/" to="/articles?page=1" />
       <Route exact path="/articles" component={ArticleListPage} />

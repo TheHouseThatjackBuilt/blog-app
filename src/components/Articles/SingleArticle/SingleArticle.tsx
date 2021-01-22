@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import { Spinner } from '../../decoreElements/index';
 import ArticleConstructor from '../ArticleConstructor/ArticleConstructor';
 import { ISingleArticle } from '../../../types/components/index.d';
 
-const SingleArticle: React.FC<ISingleArticle> = ({ data, load }) => (
+const SingleArticle: FC<ISingleArticle> = ({ data, load }) => (
   <main className="content main__content">
     {(load || !data) && <Spinner />}
     {data && (

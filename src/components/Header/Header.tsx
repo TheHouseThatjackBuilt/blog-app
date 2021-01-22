@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-const Header: React.FC = () => (
+import { DefaultHeader } from './DefaultHeader';
+import { UserHeader } from './UserHeader';
+import { IUserState } from '../../types/redux/index.d';
+
+type IHeader = IUserState | null;
+
+const Header: FC<IHeader> = ({ user }) => (
   <header className="header main__header">
     <Link className="header__title" to="/">
       <h1 className="header__title">Realworld Blog</h1>
     </Link>
-    <div className="header__btn-container">
-      <button type="button" className="button button__sign-in">
-        <Link to="/sign-in">Sign In</Link>
-      </button>
-      <button type="button" className="button button__sign-up">
-        <Link to="/sign-up">Sign Up</Link>
-      </button>
-    </div>
+    {!user && <DefaultHeader />}
+    {user && <UserHeader user={user} />}
   </header>
 );
 

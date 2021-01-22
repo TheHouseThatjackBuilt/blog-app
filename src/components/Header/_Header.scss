@@ -24,15 +24,14 @@
   font-size: 18px;
   font-weight: 400;
 
-  &__sign-in {
-  }
-
-  &__sign-up {
+  &__main {
     display: block;
     width: 109px;
     height: 51px;
-    border: 1px solid $successColor;
     border-radius: 5px;
+  }
+  &_sign-up {
+    border: 1px solid $successColor;
 
     & > a {
       color: $successColor;

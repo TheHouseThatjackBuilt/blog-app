@@ -3,10 +3,7 @@ import { connect, ConnectedProps } from 'react-redux';
 
 import { IState } from '../../types/redux/index.d';
 import { getArticleList } from '../../redux/middleware/reduxThunk';
-import {
-  articlesSelector,
-  articlesCountSelector,
-} from '../../redux/selectors/index';
+import { articlesSelector, articlesCountSelector } from '../../redux/selectors/index';
 
 import ArticlesList from '../../components/Articles/ArticleList/ArticlesList';
 
@@ -24,15 +21,7 @@ const ArticlesListContainer = ({ articles, articlesCount, getArticleList }: Prop
   }, [page]);
 
   const handlePagesSwitch = (evt: number) => setPage(evt);
-  return (
-    <ArticlesList
-      articles={articles}
-      pageHandler={handlePagesSwitch}
-      totalPages={articlesCount}
-      load={loading}
-      page={page}
-    />
-  );
+  return <ArticlesList articles={articles} pageHandler={handlePagesSwitch} totalPages={articlesCount} load={loading} page={page} />;
 };
 
 const mapStateToProps = (state: IState) => ({

@@ -1,8 +1,6 @@
-import { EActions, IUserState, ISetUser } from '../../types/redux/index.d';
+import { EActions, ISetUser, IUserState } from '../../types/redux/index.d';
 
-const initial: IUserState = {
-  user: null,
-};
+const initial: IUserState = { user: null };
 
 export default (state = initial, action: ISetUser): IUserState => {
   switch (action.type) {

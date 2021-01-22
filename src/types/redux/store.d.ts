@@ -8,11 +8,12 @@ export interface IErrorState {
   error: any;
 }
 
-export interface IState {
-  articleState: IArticleState;
-  error: IErrorState;
+export interface IUserState {
+  user: Pick<IResponseUser, 'username' | 'image'> | null;
 }
 
-export interface IUserState {
-  user: null | Pick<IResponseUser, 'username', 'image'>;
+export interface IState {
+  articleState: IArticleState;
+  errorState: IErrorState;
+  userState: IUserState;
 }
