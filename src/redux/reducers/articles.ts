@@ -1,8 +1,4 @@
-import {
-  IArticleState,
-  ArticleActionsForReduce,
-  EActions,
-} from '../../types/redux/index.d';
+import { IArticleState, ArticleActionsForReduce, EActions } from '../../types/redux/index.d';
 
 const initial: IArticleState = {
   articles: null,
@@ -10,10 +6,7 @@ const initial: IArticleState = {
   currentArticle: null,
 };
 
-export default (
-  state = initial,
-  action: ArticleActionsForReduce,
-): IArticleState => {
+export default (state = initial, action: ArticleActionsForReduce): IArticleState => {
   switch (action.type) {
     case EActions.getArticlesList:
       return {

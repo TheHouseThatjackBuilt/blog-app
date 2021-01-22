@@ -33,12 +33,19 @@ export interface IUser {
   password: string;
 }
 
-export interface INewUser {
-  user: IUser;
-}
-
 export interface IUserError {
   username?: string[];
   email?: string[];
   password?: string[];
+}
+
+export interface IResponseUser {
+  bio: null;
+  createdAt: string;
+  email: string;
+  id: number;
+  image: string | null;
+  token: string;
+  updatedAt: string;
+  username: string;
 }

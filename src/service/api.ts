@@ -2,7 +2,6 @@ import {
   IArticleList,
   IArticle,
   IUser,
-  INewUser,
 } from '../types/redux/index.d';
 
 import { serviceHttpFabric, serviceUserFabric } from '../tools/dataFabric';
@@ -45,7 +44,7 @@ const requestArticle = (id: string): Promise<IArticle> => {
 const requestNewUser = async (newUser: IUser): Promise<any> => {
   const link = USERS;
   const user = serviceUserFabric(newUser);
-  const response = await http<any, Imethod, INewUser>(link, Methods.post, user);
+  const response = await http<any, Imethod, { user: IUser }>(link, Methods.post, user);
   setCookie(response.token);
   return response;
 };

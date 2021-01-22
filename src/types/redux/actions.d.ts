@@ -1,4 +1,4 @@
-import { IArticle, IArticleList } from './index.d';
+import { IArticle, IArticleList, IResponseUser } from './index.d';
 import { EActions } from '../../redux/constants';
 
 interface IGetArticleList {
@@ -14,6 +14,11 @@ interface IGetArticle {
 interface IError {
   type: typeof EActions.hasError;
   payload: any;
+}
+
+export interface ISetUser {
+  type: typeof EActions.newUser;
+  payload: Pick<IResponseUser, 'username' | 'image'>;
 }
 
 export type ArticleActions = IGetArticleList | IGetArticle | IError;

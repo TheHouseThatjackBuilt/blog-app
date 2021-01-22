@@ -10,11 +10,7 @@ import {
 
 import ArticlesList from '../../components/Articles/ArticleList/ArticlesList';
 
-const ArticlesListContainer = ({
-  articles,
-  articlesCount,
-  getArticleList,
-}: PropsFromRedux) => {
+const ArticlesListContainer = ({ articles, articlesCount, getArticleList }: PropsFromRedux) => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
 

@@ -21,16 +21,15 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
+    "arrow-parens": "off",
+    "object-curly-newline": "off",
     "import/prefer-default-export": "off",
     "react/prop-types": "off",
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": "off",
-    "react/jsx-filename-extension": [
-      2,
-      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
-    ],
+    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "no-use-before-define": "off",
     "curly": ["error"],
     "max-len": "off",
