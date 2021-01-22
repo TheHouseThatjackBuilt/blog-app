@@ -1,8 +1,4 @@
-import {
-  IArticleList,
-  IArticle,
-  IUser,
-} from '../types/redux/index.d';
+import { IArticleList, IArticle, IUser } from '../types/redux/index.d';
 
 import { serviceHttpFabric, serviceUserFabric } from '../tools/dataFabric';
 
@@ -15,18 +11,15 @@ const LIMIT = 'limit';
 const OFFSET = 'offset';
 const USERS = 'users';
 
-const setCookie = (token: string) => {
-  document.cookie = `token=${token}`;
+const setCookie = (token: string): void => {
+  document.cookie = `token=${token}; secure; samesite=lax;`;
 };
 
-const http = async <T, M extends string, R>(
-  url: string,
-  method: M,
-  body?: R,
-): Promise<T> => {
+const http = async <T, M extends string, R>(url: string, method: M, body?: R): Promise<T> => {
   const link = new URL(url, BASE_URL);
   const requestOption = serviceHttpFabric<M, R>(method, body);
   const response = await fetch(link.toString(), requestOption);
+
   if (!response.ok) throw new Error('god damn guys, god damn.') && (await response.json()); // O_o
   return response.json();
 };
@@ -45,7 +38,7 @@ const requestNewUser = async (newUser: IUser): Promise<any> => {
   const link = USERS;
   const user = serviceUserFabric(newUser);
   const response = await http<any, Imethod, { user: IUser }>(link, Methods.post, user);
-  setCookie(response.token);
+  setCookie(response.user.token);
   return response;
 };
 
