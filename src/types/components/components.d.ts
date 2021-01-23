@@ -66,4 +66,10 @@ export interface IForm2 {
 export interface IHeader {
   user: ISetUser | null;
   load: boolean;
+  logOut: Function;
+}
+
+export interface IUserHeader {
+  user: ISetUser;
+  logOut: any;
 }

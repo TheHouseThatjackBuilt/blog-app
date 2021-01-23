@@ -29,7 +29,7 @@ const requestArticle = (id: string): Promise<IArticle> => {
 
 const requestNewUser = async (newUser: IUser): Promise<any> => {
   const user = serviceUserFabric(newUser);
-  const options = serviceHttpFabric(Methods.get, { body: user });
+  const options = serviceHttpFabric(Methods.post, { body: user });
   const response = await http<any>(USERS, options);
   return response;
 };

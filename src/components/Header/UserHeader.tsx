@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-import { ISetUser } from '../../types/components/index.d';
+import { IUserHeader } from '../../types/components/index.d';
 import defaultPic from './defaultPic.png';
 
-export const UserHeader: FC<{ user: ISetUser }> = ({ user }) => {
+export const UserHeader: FC<IUserHeader> = ({ user, logOut }) => {
   const { image, username } = user;
   return (
     <div className="header__userbar">
@@ -17,8 +17,8 @@ export const UserHeader: FC<{ user: ISetUser }> = ({ user }) => {
           <img src={image ? `${image}` : defaultPic} alt="userpic" />
         </div>
       </div>
-      <button type="button" className="button button__main button_log-out">
-        <Link to="/sign-up">Log Out</Link>
+      <button onClick={logOut} type="button" className="button button__main button_log-out">
+        <Link to="/">Log Out</Link>
       </button>
     </div>
   );

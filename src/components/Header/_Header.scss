@@ -15,15 +15,23 @@
     display: grid;
     grid-template: 51px / repeat(2, 1fr);
     justify-content: space-between;
+    justify-self: end;
     align-content: center;
+    margin-right: 30px;
   }
 
   &__userbar {
+    // display: grid;
+    // grid-template: 58px / repeat(3, 1fr);
+    // justify-content: space-between;
+    // justify-self: end;
+    // align-content: center;
     display: grid;
-    grid-template: 58px / repeat(3, 1fr);
+    grid-template: 58px/143px 1fr 125px;
     justify-content: space-between;
     justify-self: end;
     align-content: center;
+    gap: 20px;
   }
 }
 
@@ -60,7 +68,6 @@
     line-height: 22px;
     border-radius: 5px;
     justify-self: end;
-    margin-right: 12px;
 
     & > a {
       color: $successColor;

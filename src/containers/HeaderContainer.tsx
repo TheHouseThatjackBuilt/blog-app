@@ -1,5 +1,5 @@
 /* eslint-disable*/
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, MouseEvent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { useCookies } from 'react-cookie';
 import omit from 'lodash.omit';
@@ -13,6 +13,11 @@ import Header from '../components/Header/Header';
 const HeaderContainer = ({ user, getCurrentUser }: PropsFromRedux) => {
   const [userCookie, setUserCookie] = useCookies();
   const [load, setLoad] = useState(false);
+
+  const logOut = (_event: MouseEvent<HTMLButtonElement, MouseEvent>): void => {
+    setUserCookie('token', '', { maxAge: -1 });
+    getCurrentUser(null);
+  };
   useEffect(() => {
     if (userCookie.token && user === null) {
       setLoad(true);
@@ -25,7 +30,7 @@ const HeaderContainer = ({ user, getCurrentUser }: PropsFromRedux) => {
       })();
     }
   }, [userCookie.token, user]);
-  return <Header user={user} load={load} />;
+  return <Header user={user} load={load} logOut={logOut} />;
 };
 
 const mapStateToProps = (state: IState) => ({
