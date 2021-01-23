@@ -10,6 +10,7 @@ import {
   IForm,
   IFormCheckbox,
   IForm2,
+  IHeader,
 } from './components.d';
 
 import { IUser, IArticleHeader, IArticleBody, IHandleArticleData, ISetUser } from './fabricData.d';
@@ -34,4 +35,5 @@ export {
   IFormCheckbox,
   IForm2,
   ISetUser,
+  IHeader,
 };

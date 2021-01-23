@@ -1,4 +1,5 @@
-import { IArticle, IArticleList, IResponseUser } from './index.d';
+import { IArticle, IArticleList } from './index.d';
+import { ISetUser } from '../components/index.d';
 import { EActions } from '../../redux/constants';
 
 interface IGetArticleList {
@@ -16,16 +17,16 @@ interface IError {
   payload: any;
 }
 
-export interface ISetUser {
+export interface ISetUserAction {
   type: typeof EActions.newUser;
-  payload: Pick<IResponseUser, 'username' | 'image'>;
+  payload: ISetUser | null;
 }
 
-export interface ICurrentUser {
+export interface ICurrentUserAction {
   type: typeof EActions.currentUser;
-  payload: Pick<IResponseUser, 'username' | 'image'>;
+  payload: ISetUser | null;
 }
 
 export type ArticleActions = IGetArticleList | IGetArticle | IError;
 export type ArticleActionsForReduce = IGetArticleList | IGetArticle;
-export type UserActionsForReduce = ISetUser | ICurrentUser;
+export type UserActionsForReduce = ISetUserAction | ICurrentUserAction;

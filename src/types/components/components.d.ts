@@ -1,6 +1,6 @@
 import { Ref, DeepMap, FieldError } from 'react-hook-form';
 import { IArticle } from '../redux/index.d';
-import { IArticleBody } from './index.d';
+import { IArticleBody, ISetUser } from './index.d';
 
 export interface IArticleList {
   articles: IArticle[] | null;
@@ -60,5 +60,10 @@ export interface IForm2 {
   inputRef: typeof Ref;
   errors: DeepMap<Record<string, any>, FieldError>;
   onSubmit: any;
+  load: boolean;
+}
+
+export interface IHeader {
+  user: ISetUser | null;
   load: boolean;
 }

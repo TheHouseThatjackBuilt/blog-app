@@ -1,4 +1,5 @@
-import { IArticle, IArticleList, IResponseUser } from './index.d';
+import { IArticle, IArticleList } from './index.d';
+import { ISetUser } from '../components/index.d';
 
 export interface IArticleState extends IArticleList {
   currentArticle: null | IArticle;
@@ -9,7 +10,7 @@ export interface IErrorState {
 }
 
 export interface IUserState {
-  user: Pick<IResponseUser, 'username' | 'image'> | null;
+  user: null | ISetUser;
 }
 
 export interface IState {
