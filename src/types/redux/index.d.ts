@@ -1,4 +1,4 @@
-import { ArticleActionsForReduce, IError, ArticleActions, ISetUser } from './actions.d';
+import { ArticleActionsForReduce, IError, ArticleActions, ISetUser, UserActionsForReduce } from './actions.d';
 import { IAutorArticle, IArticle, IArticleList, IUser, IUserError, IResponseUser } from './response.d';
 
 import { IArticleState, IErrorState, IUserState, IState } from './store.d';
@@ -7,6 +7,7 @@ import { EActions } from '../../redux/constants';
 
 export {
   ArticleActionsForReduce,
+  UserActionsForReduce,
   ArticleActions,
   IAutorArticle,
   IArticle,

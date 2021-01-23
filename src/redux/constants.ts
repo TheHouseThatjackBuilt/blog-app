@@ -2,7 +2,8 @@ export enum EActions {
   getArticlesList = 'REQUEST_ARTICLE_LIST',
   getArticle = 'REQUEST_ARTICLE',
   hasError = 'REQUEST_ERROR_HANDLER',
-  newUser = 'USER'
+  newUser = 'USER',
+  currentUser = 'CURRENT_USER',
 }
 
 export enum Methods {

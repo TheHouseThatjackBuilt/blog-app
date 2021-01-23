@@ -21,5 +21,11 @@ export interface ISetUser {
   payload: Pick<IResponseUser, 'username' | 'image'>;
 }
 
+export interface ICurrentUser {
+  type: typeof EActions.currentUser;
+  payload: Pick<IResponseUser, 'username' | 'image'>;
+}
+
 export type ArticleActions = IGetArticleList | IGetArticle | IError;
 export type ArticleActionsForReduce = IGetArticleList | IGetArticle;
+export type UserActionsForReduce = ISetUser | ICurrentUser;

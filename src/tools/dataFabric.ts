@@ -1,3 +1,4 @@
+/* eslint-disable*/
 import { formatedDate } from './utils';
 
 import { IArticle } from '../types/redux/index.d';
@@ -30,11 +31,15 @@ export const articlePreviewDataFabric = (data: IArticle): IHandleArticleData => 
   };
 };
 
-export const serviceHttpFabric = <M extends string>(method: M, options?: IOptions) => ({
-  method,
-  headers: { 'content-type': 'application/json; charset=utf-8', ...options?.headers },
-  body: JSON.stringify(options?.body),
-});
+export const serviceHttpFabric = <M extends string>(method: M, options?: IOptions) => {
+  const defaultParams = { 'content-type': 'application/json; charset=utf-8' };
+  const comeObj = {
+    method,
+    headers: options?.headers ? { ...defaultParams, ...options.headers } : defaultParams,
+    body: options?.body && JSON.stringify(options.body),
+  };
+  return comeObj;
+};
 
 export const serviceUserFabric = <T>(newUser: T) => ({ user: { ...newUser } });
 

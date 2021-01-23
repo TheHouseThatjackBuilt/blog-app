@@ -1,3 +1,5 @@
+import { IResponseUser } from '../redux/index.d';
+
 export interface IUser {
   image: string;
   username: string;
@@ -21,3 +23,4 @@ export interface IHandleArticleData {
   header: IArticleHeader;
   body: IArticleBody;
 }
+export type ISetUser = Omit<IResponseUser, 'createdAt' | 'updatedAt' | 'id' | 'token'>;

@@ -28,8 +28,8 @@ export const SignUpContainer: FC = () => {
     requestNewUser({ username, email, password })
       .then((response: { user: IResponseUser }) => {
         const { user } = response;
-        setUserCookie('token', user.token, { sameSite: 'lax' });
-        const newUser = omit(user, 'token');
+        setUserCookie('token', user.token);
+        const newUser = omit(user, 'token', 'createdAt', 'id', 'updatedAt');
         dispatch(registerNewUser(newUser));
         history.push('/');
       })

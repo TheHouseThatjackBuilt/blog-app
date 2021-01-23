@@ -1,4 +1,4 @@
 import { requestListAction, requestArticleAction, requestErrorHandler } from './requestArticles';
-import { registerNewUser } from './userActions';
+import { registerNewUser, getCurrentUser } from './userActions';
 
-export { requestListAction, requestArticleAction, requestErrorHandler, registerNewUser };
+export { requestListAction, requestArticleAction, requestErrorHandler, registerNewUser, getCurrentUser };

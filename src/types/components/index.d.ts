@@ -12,12 +12,7 @@ import {
   IForm2,
 } from './components.d';
 
-import {
-  IUser,
-  IArticleHeader,
-  IArticleBody,
-  IHandleArticleData,
-} from './fabricData.d';
+import { IUser, IArticleHeader, IArticleBody, IHandleArticleData, ISetUser } from './fabricData.d';
 
 import { ValueOrEmpty } from './utils.d';
 
@@ -38,4 +33,5 @@ export {
   IForm,
   IFormCheckbox,
   IForm2,
+  ISetUser,
 };
