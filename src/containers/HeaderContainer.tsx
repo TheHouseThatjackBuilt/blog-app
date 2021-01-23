@@ -1,11 +1,20 @@
 /* eslint-disable*/
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import { IState } from '../types/redux/index.d';
+import { useCookies } from 'react-cookie';
 
+import { IState } from '../types/redux/index.d';
+import { requestCurrentUser } from '../service/api';
 import Header from '../components/Header/Header';
 
 const HeaderContainer = ({ user }: PropsFromRedux) => {
+  const [userCookie, setUserCookie] = useCookies();
+  // useEffect(() => {
+  //   if (userCookie.token && typeof user === null) {
+
+  //   }
+
+  // }, []);
   return <Header user={user} />;
 };
 

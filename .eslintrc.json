@@ -21,6 +21,7 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
+    "implicit-arrow-linebreak": "off",
     "arrow-parens": "off",
     "object-curly-newline": "off",
     "import/prefer-default-export": "off",

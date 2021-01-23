@@ -1,6 +1,7 @@
 import React, { useState, FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import { useCookies } from 'react-cookie';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useHistory } from 'react-router-dom';
 import omit from 'lodash.omit';
@@ -10,14 +11,15 @@ import { SignUpProfile } from '../components/AuthForms/SignUpProfile';
 import { requestNewUser } from '../service/api';
 import { errorDataFabric } from '../tools/dataFabric';
 import { schema } from '../tools/utils';
-import { setUser } from '../redux/actions/index';
+import { registerNewUser } from '../redux/actions/index';
 
 export const SignUpContainer: FC = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
+  const [, setUserCookie] = useCookies();
   const { register, handleSubmit, errors, setError } = useForm<IUser>({
-    mode: 'onBlur',
+    mode: 'onChange',
     resolver: yupResolver(schema),
   });
 
@@ -25,8 +27,10 @@ export const SignUpContainer: FC = () => {
     setLoading(true);
     requestNewUser({ username, email, password })
       .then((response: { user: IResponseUser }) => {
-        const user = omit(response.user, 'token');
-        dispatch(setUser(user));
+        const { user } = response;
+        setUserCookie('token', user.token, { sameSite: 'lax' });
+        const newUser = omit(user, 'token');
+        dispatch(registerNewUser(newUser));
         history.push('/');
       })
       .catch((data: { errors: IUserError }) => {
