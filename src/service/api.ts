@@ -9,6 +9,7 @@ const LIMIT = 'limit';
 const OFFSET = 'offset';
 const USERS = 'users';
 const USER = 'user';
+const LOGIN = 'login';
 
 const http = async <T>(url: string, options: any): Promise<T> => {
   const link = new URL(url, BASE_URL);
@@ -17,27 +18,31 @@ const http = async <T>(url: string, options: any): Promise<T> => {
   return response.json();
 };
 
-const requestArticleList = (offsetPage: number): Promise<IArticleList> => {
+export const requestArticleList = (offsetPage: number): Promise<IArticleList> => {
   const options = serviceHttpFabric(Methods.get);
   return http<IArticleList>(`${ARTICLES}?${LIMIT}=5&${OFFSET}=${offsetPage}`, options);
 };
 
-const requestArticle = (id: string): Promise<IArticle> => {
+export const requestArticle = (id: string): Promise<IArticle> => {
   const options = serviceHttpFabric(Methods.get);
   return http<IArticle>(`${ARTICLES}/${id}`, options);
 };
 
-const requestNewUser = async (newUser: IUser): Promise<any> => {
+export const requestNewUser = async (newUser: IUser): Promise<any> => {
   const user = serviceUserFabric(newUser);
   const options = serviceHttpFabric(Methods.post, { body: user });
   const response = await http<any>(USERS, options);
   return response;
 };
 
-const requestCurrentUser = async (token: string) => {
+export const requestCurrentUser = async (token: string) => {
   const options = serviceHttpFabric(Methods.get, { headers: { Authorization: `Token ${token}` } });
   const response = await http<any>(USER, options);
   return response;
 };
 
-export { requestArticleList, requestArticle, requestNewUser, requestCurrentUser };
+export const authUser = async (user: Omit<IUser, 'username'>) => {
+  const options = serviceHttpFabric(Methods.post, { body: user });
+  const response = await http<any>(`${USERS}/${LOGIN}`, options);
+  return response;
+};
