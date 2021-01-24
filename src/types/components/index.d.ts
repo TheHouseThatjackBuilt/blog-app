@@ -9,7 +9,6 @@ import {
   IFormInput,
   IForm,
   IFormCheckbox,
-  IForm2,
   IHeader,
   IUserHeader,
 } from './components.d';
@@ -34,7 +33,6 @@ export {
   IFormInput,
   IForm,
   IFormCheckbox,
-  IForm2,
   ISetUser,
   IHeader,
   IUserHeader,

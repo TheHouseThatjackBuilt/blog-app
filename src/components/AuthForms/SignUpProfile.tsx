@@ -4,14 +4,8 @@ import { Link } from 'react-router-dom';
 import { FormControlLabel, Checkbox } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { IForm2 } from '../../types/components/index.d';
-import {
-  FormContainer,
-  Form,
-  Input,
-  SubmitButton,
-  FormHeader,
-} from './FormElements/index';
+import { IForm } from '../../types/components/index.d';
+import { FormContainer, Form, Input, SubmitButton, FormHeader } from './FormElements/index';
 
 const useStyles = makeStyles({
   label: {
@@ -31,7 +25,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const SignUpProfile: FC<IForm2> = ({ inputRef, errors, onSubmit, load }) => {
+export const SignUpProfile: FC<IForm> = ({ inputRef, errors, onSubmit, load }) => {
   const styles = useStyles();
   return (
     <FormContainer>
@@ -43,33 +37,38 @@ export const SignUpProfile: FC<IForm2> = ({ inputRef, errors, onSubmit, load }) 
           name="username"
           label="Username"
           error={!!errors?.username}
-          helperText={errors?.username?.message} />
+          helperText={errors?.username?.message}
+        />
         <Input
           ref={inputRef}
           type="email"
           name="email"
-          label="Email adress"
+          label="Email address"
           error={!!errors?.email}
-          helperText={errors?.email?.message} />
+          helperText={errors?.email?.message}
+        />
         <Input
           ref={inputRef}
           type="password"
           name="password"
           label="Password"
           error={!!errors?.password}
-          helperText={errors?.password?.message} />
+          helperText={errors?.password?.message}
+        />
         <Input
           ref={inputRef}
           type="password"
           name="confirmPassword"
           label="Repeat Password"
           error={!!errors?.confirmPassword}
-          helperText={errors?.confirmPassword?.message} />
+          helperText={errors?.confirmPassword?.message}
+        />
         <FormControlLabel
           className={styles.label}
           control={<Checkbox color="primary" name="req" inputRef={inputRef} required />}
           inputRef={inputRef}
-          label="I agree to the processing of my personal information" />
+          label="I agree to the processing of my personal information"
+        />
         <SubmitButton load={load}>Create</SubmitButton>
       </Form>
       <div className={styles.signIn}>

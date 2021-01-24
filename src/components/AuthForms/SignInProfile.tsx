@@ -1,16 +1,9 @@
-/* eslint-disable*/
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { IForm } from '../../types/components/index.d';
-import {
-  FormContainer,
-  Form,
-  Input,
-  SubmitButton,
-  FormHeader,
-} from './FormElements/index';
+import { FormContainer, Form, Input, SubmitButton, FormHeader } from './FormElements/index';
 
 const useStyle = makeStyles({
   signUp: {
@@ -24,35 +17,34 @@ const useStyle = makeStyles({
   },
 });
 
-export const SignInProfile: FC<IForm> = ({ inputRef, errors }) => {
+export const SignInProfile: FC<IForm> = ({ inputRef, errors, onSubmit, load }) => {
   const styles = useStyle();
-  return null;
-  // return (
-  //   <FormContainer>
-  //     <FormHeader>Sign In</FormHeader>
-  //     <Form>
-  //       <Input
-  //         ref={inputRef}
-  //         type="email"
-  //         name="email"
-  //         label="Email adress"
-  //         error={!!errors?.email}
-  //         helperText={errors?.email?.message}
-  //       />
-  //       <Input
-  //         ref={inputRef}
-  //         type="password"
-  //         name="password"
-  //         label="password"
-  //         error={!!errors?.password}
-  //         helperText={errors?.password?.message}
-  //       />
-  //       <SubmitButton>Login</SubmitButton>
-  //       <div className={styles.signUp}>
-  //         <span>Don’t have an account?</span>
-  //         <Link to="/sign-up">Sign Up.</Link>
-  //       </div>
-  //     </Form>
-  //   </FormContainer>
-  // );
+  return (
+    <FormContainer>
+      <FormHeader>Sign In</FormHeader>
+      <Form onSubmit={onSubmit}>
+        <Input
+          ref={inputRef}
+          type="email"
+          name="email"
+          label="Email address"
+          error={!!errors?.email}
+          helperText={errors?.email?.message}
+        />
+        <Input
+          ref={inputRef}
+          type="password"
+          name="password"
+          label="password"
+          error={!!errors?.password}
+          helperText={errors?.password?.message}
+        />
+        <SubmitButton load={load}>Login</SubmitButton>
+      </Form>
+      <div className={styles.signUp}>
+        <span>Don’t have an account?</span>
+        <Link to="/sign-up"> Sign Up.</Link>
+      </div>
+    </FormContainer>
+  );
 };

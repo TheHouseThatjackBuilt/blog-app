@@ -1,5 +1,5 @@
-import { ArticleActionsForReduce, IError, ArticleActions, ISetUser, UserActionsForReduce } from './actions.d';
-import { IAutorArticle, IArticle, IArticleList, IUser, IUserError, IResponseUser } from './response.d';
+import { ArticleActionsForReduce, IError, ArticleActions, UserActionsForReduce } from './actions.d';
+import { IAutorArticle, IArticle, IArticleList, IUser, IUserError, IResponseUser, IUpdateUser } from './response.d';
 
 import { IArticleState, IErrorState, IUserState, IState } from './store.d';
 import { ThunkActionType, DispatchType } from './thunk.d';
@@ -22,6 +22,6 @@ export {
   IUser,
   IUserError,
   IResponseUser,
-  ISetUser,
   IUserState,
+  IUpdateUser,
 };

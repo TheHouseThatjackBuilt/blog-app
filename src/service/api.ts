@@ -1,4 +1,4 @@
-import { IArticleList, IArticle, IUser } from '../types/redux/index.d';
+import { IArticleList, IArticle, IUser, IUpdateUser } from '../types/redux/index.d';
 
 import { serviceHttpFabric, serviceUserFabric } from '../tools/dataFabric';
 import { Methods } from '../redux/constants';
@@ -41,8 +41,19 @@ export const requestCurrentUser = async (token: string) => {
   return response;
 };
 
-export const authUser = async (user: Omit<IUser, 'username'>) => {
+export const authUser = async (data: Omit<IUser, 'username'>) => {
+  const user = serviceUserFabric(data);
   const options = serviceHttpFabric(Methods.post, { body: user });
   const response = await http<any>(`${USERS}/${LOGIN}`, options);
   return response;
 };
+
+export const updateUser = async (data: IUpdateUser) => {
+  const user = serviceUserFabric(data);
+  const options = serviceHttpFabric(Methods.put, { body: user });
+  const response = await http<any>(USER, options);
+  return response;
+};
+// username: warflop2
+// email: warflop2@notYandex.ru
+// pass: 123456789

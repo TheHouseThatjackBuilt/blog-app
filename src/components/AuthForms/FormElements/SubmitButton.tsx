@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { IForm2 } from '../../../types/components/index.d';
+import { IForm } from '../../../types/components/index.d';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,19 +12,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const SubmitButton: FC<Pick<IForm2, 'load'>> = ({ children, ...props }) => {
+export const SubmitButton: FC<Pick<IForm, 'load'>> = ({ children, ...props }) => {
   const styles = useStyles();
   const { load } = props;
   return (
-    <Button
-      onSubmit={() => {}}
-      type="submit"
-      fullWidth
-      variant="contained"
-      color="primary"
-      className={styles.root}
-      disabled={load}
-    >
+    <Button type="submit" fullWidth variant="contained" color="primary" className={styles.root} disabled={load}>
       {children}
     </Button>
   );

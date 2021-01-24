@@ -33,6 +33,14 @@ export interface IUser {
   password: string;
 }
 
+export interface IUpdateUser {
+  email?: string;
+  bio?: string;
+  image?: string;
+  username?: string;
+  password?: string;
+}
+
 export interface IUserError {
   username?: string[];
   email?: string[];

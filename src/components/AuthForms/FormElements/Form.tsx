@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { IForm2 } from '../../../types/components/index.d';
+import { IForm } from '../../../types/components/index.d';
 
 const useStyles = makeStyles({
   root: {
@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Form: FC<Pick<IForm2, 'onSubmit'>> = ({ children, ...props }) => {
+export const Form: FC<Pick<IForm, 'onSubmit'>> = ({ children, ...props }) => {
   const styles = useStyles();
 
   return (

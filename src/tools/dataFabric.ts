@@ -41,7 +41,7 @@ export const serviceHttpFabric = <M extends string>(method: M, options?: IOption
   return comeObj;
 };
 
-export const serviceUserFabric = <T>(newUser: T) => ({ user: { ...newUser } });
+export const serviceUserFabric = <T>(handleUser: T) => ({ user: { ...handleUser } });
 
 export const errorDataFabric = <T>(data: T): Map<keyof T, string> =>
   Object.entries(data).reduce((acc, [name, value]) => acc.set(name, value.join()), new Map());

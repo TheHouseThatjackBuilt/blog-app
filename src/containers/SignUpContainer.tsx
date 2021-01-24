@@ -10,7 +10,7 @@ import { IUser, IUserError, IResponseUser } from '../types/redux/index.d';
 import { SignUpProfile } from '../components/AuthForms/SignUpProfile';
 import { requestNewUser } from '../service/api';
 import { errorDataFabric } from '../tools/dataFabric';
-import { schema } from '../tools/utils';
+import { registerSchema } from '../tools/utils';
 import { registerNewUser } from '../redux/actions/index';
 
 export const SignUpContainer: FC = () => {
@@ -20,7 +20,7 @@ export const SignUpContainer: FC = () => {
   const [, setUserCookie] = useCookies();
   const { register, handleSubmit, errors, setError } = useForm<IUser>({
     mode: 'onChange',
-    resolver: yupResolver(schema),
+    resolver: yupResolver(registerSchema),
   });
 
   const onSubmit = handleSubmit(({ username, email, password }) => {
