@@ -48,9 +48,9 @@ export const authUser = async (data: Omit<IUser, 'username'>) => {
   return response;
 };
 
-export const updateUser = async (data: IUpdateUser) => {
+export const updateUser = async (data: IUpdateUser, token: string) => {
   const user = serviceUserFabric(data);
-  const options = serviceHttpFabric(Methods.put, { body: user });
+  const options = serviceHttpFabric(Methods.put, { headers: { Authorization: `Token ${token}` }, body: user });
   const response = await http<any>(USER, options);
   return response;
 };

@@ -28,12 +28,8 @@ export const authSchema = yup.object().shape({
 });
 
 export const updateProfileSchema = yup.object().shape({
-  username: yup
-    .string()
-    .required('Username field is required.')
-    .min(3, 'Your username must be at least 3 charecters.')
-    .max(30, 'Must be shorter than 20 charecters.'),
-  email: yup.string().email('Invalid email adress.').required('Email field is required.'),
-  password: yup.string().required('Password field is required.').min(6, 'Your password needs to be at least 6 characters.'),
-  avatar: yup.string().url('enter correct url'),
+  username: yup.string().max(30, 'Must be shorter than 20 charecters.'),
+  email: yup.string().email('Invalid email adress.'),
+  password: yup.string(),
+  image: yup.string().url('enter correct url'),
 });

@@ -76,6 +76,15 @@
   justify-items: center;
   align-items: center;
 
+  &__pic {
+    width: 46px;
+    height: 46px;
+
+    & > img {
+      border-radius: 50%;
+    }
+  }
+
   &__name {
     font-family: Inter;
     font-style: normal;

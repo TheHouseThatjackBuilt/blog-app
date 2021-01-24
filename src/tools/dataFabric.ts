@@ -1,7 +1,7 @@
-/* eslint-disable*/
-import { formatedDate } from './utils';
+import omit from 'lodash.omit';
 
-import { IArticle } from '../types/redux/index.d';
+import { formatedDate } from './utils';
+import { IArticle, IResponseUser } from '../types/redux/index.d';
 import { IHandleArticleData } from '../types/components/index.d';
 import { IOptions } from '../types/service/index.d';
 
@@ -33,15 +33,18 @@ export const articlePreviewDataFabric = (data: IArticle): IHandleArticleData => 
 
 export const serviceHttpFabric = <M extends string>(method: M, options?: IOptions) => {
   const defaultParams = { 'content-type': 'application/json; charset=utf-8' };
-  const comeObj = {
+  return {
     method,
     headers: options?.headers ? { ...defaultParams, ...options.headers } : defaultParams,
     body: options?.body && JSON.stringify(options.body),
   };
-  return comeObj;
 };
 
 export const serviceUserFabric = <T>(handleUser: T) => ({ user: { ...handleUser } });
 
 export const errorDataFabric = <T>(data: T): Map<keyof T, string> =>
   Object.entries(data).reduce((acc, [name, value]) => acc.set(name, value.join()), new Map());
+
+export const handlerEmptyData = <T>(data: T) => Object.fromEntries(Object.entries(data).filter(([, value]) => value !== ''));
+
+export const handlerUserData = (user: IResponseUser) => omit(user, 'token', 'createdAt', 'id', 'updatedAt');

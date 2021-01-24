@@ -11,12 +11,12 @@ export const UserHeader: FC<IUserHeader> = ({ user, logOut }) => {
       <button type="button" className="button button__create-article">
         <Link to="/sign-in">Create article</Link>
       </button>
-      <div className="userbar">
+      <Link className="userbar" to="/profile">
         <h2 className="userbar__name">{username}</h2>
         <div className="userbar__pic">
           <img src={image ? `${image}` : defaultPic} alt="userpic" />
         </div>
-      </div>
+      </Link>
       <button onClick={logOut} type="button" className="button button__main button_log-out">
         <Link to="/">Log Out</Link>
       </button>

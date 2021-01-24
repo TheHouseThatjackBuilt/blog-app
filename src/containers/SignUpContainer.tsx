@@ -4,12 +4,11 @@ import { useForm } from 'react-hook-form';
 import { useCookies } from 'react-cookie';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useHistory } from 'react-router-dom';
-import omit from 'lodash.omit';
 
 import { IUser, IUserError, IResponseUser } from '../types/redux/index.d';
+import { errorDataFabric, handlerUserData } from '../tools/dataFabric';
 import { SignUpProfile } from '../components/AuthForms/SignUpProfile';
 import { requestNewUser } from '../service/api';
-import { errorDataFabric } from '../tools/dataFabric';
 import { registerSchema } from '../tools/utils';
 import { registerNewUser } from '../redux/actions/index';
 
@@ -29,7 +28,7 @@ export const SignUpContainer: FC = () => {
       .then((response: { user: IResponseUser }) => {
         const { user } = response;
         setUserCookie('token', user.token);
-        const newUser = omit(user, 'token', 'createdAt', 'id', 'updatedAt');
+        const newUser = handlerUserData(user);
         dispatch(registerNewUser(newUser));
         history.push('/');
       })
