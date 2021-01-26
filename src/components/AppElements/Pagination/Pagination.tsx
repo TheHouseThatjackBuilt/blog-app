@@ -1,14 +1,10 @@
 import React from 'react';
-import { Pagination } from 'antd';
+import { Pagination as Paginator } from 'antd';
 
 import { IPaginator } from '../../../types/components/index.d';
 
-const Parginator: React.FC<IPaginator> = ({
-  totalPages,
-  handler,
-  currentPage,
-}) => (
-  <Pagination
+export const Pagination: React.FC<IPaginator> = ({ totalPages, handler, currentPage }) => (
+  <Paginator
     className="content__pagination"
     size="small"
     showSizeChanger={false}
@@ -19,5 +15,3 @@ const Parginator: React.FC<IPaginator> = ({
     defaultCurrent={currentPage}
   />
 );
-
-export default Parginator;

@@ -1,18 +1,16 @@
 import React, { FC } from 'react';
 
-import { Spinner } from '../../decoreElements/index';
+import { MainContainer, Spinner } from '../../AppElements/index';
 import ArticleConstructor from '../ArticleConstructor/ArticleConstructor';
 import { ISingleArticle } from '../../../types/components/index.d';
 
-const SingleArticle: FC<ISingleArticle> = ({ data, load }) => (
-  <main className="content main__content">
+export const SingleArticle: FC<ISingleArticle> = ({ data, load }) => (
+  <MainContainer>
     {(load || !data) && <Spinner />}
     {data && (
       <div className="content__full">
         <ArticleConstructor article={data.article} flag />
       </div>
     )}
-  </main>
+  </MainContainer>
 );
-
-export default SingleArticle;

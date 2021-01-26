@@ -19,7 +19,7 @@ const HeaderContainer = ({ user, getCurrentUser }: PropsFromRedux) => {
     getCurrentUser(null);
   };
   useEffect(() => {
-    if (userCookie.token && user === null) {
+    if (userCookie.token && !user) {
       setLoad(true);
       (async () => {
         const response: { user: ISetUser } = await requestCurrentUser(userCookie.token);

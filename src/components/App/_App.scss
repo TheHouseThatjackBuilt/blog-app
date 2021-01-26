@@ -1,13 +1,11 @@
 @font-face {
   font-family: 'Intel';
-  src: local('Intel'),
-    url(../../style/fonts/Inter-Regular.ttf) format('truetype');
+  src: local('Intel'), url(../../style/fonts/Inter-Regular.ttf) format('truetype');
 }
 
 @font-face {
   font-family: 'Roboto';
-  src: local('Roboto'),
-    url(../../style/fonts/Roboto-Regular.ttf) format('truetype');
+  src: local('Roboto'), url(../../style/fonts/Roboto-Regular.ttf) format('truetype');
 }
 
 nav,
@@ -125,6 +123,7 @@ strong {
   }
   &__content {
     display: grid;
-    grid-template: 1fr / 1fr;
+    grid-template: 1fr / minmax(500px, 940px);
+    justify-self: center;
   }
 }

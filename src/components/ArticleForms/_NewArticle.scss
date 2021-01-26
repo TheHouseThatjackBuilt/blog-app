@@ -1,0 +1,76 @@
+.newArticle {
+  display: grid;
+  grid-template: 96px 1fr / 1fr;
+  justify-items: center;
+  align-items: center;
+  padding: 0 20px;
+  background-color: white;
+  max-height: 700px;
+  border: 1px solid #d9d9d9;
+  box-shadow: $shadow;
+  border-radius: 10px;
+
+  &_position {
+    margin: 34px 20px 20px 20px;
+  }
+
+  &__header {
+    font-size: 20px;
+  }
+}
+
+.form {
+  display: grid;
+  grid-template: 60px 60px 60px / minmax(500px, 860px);
+  justify-self: start;
+  align-self: start;
+  gap: 22px;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  // &__title {}
+
+  // &__description {}
+
+  // &__text {}
+
+  // &__submit {}
+}
+
+.input {
+  display: grid;
+  gap: 5px;
+
+  &__text {
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    height: 40px;
+    padding-left: 10px;
+    transition: opacity 0.3s ease;
+
+    &:focus {
+      border: 2px solid #7da6ec;
+    }
+
+    &::placeholder {
+      text-indent: 0;
+      transition: text-indent 0.5s ease;
+    }
+
+    &:focus::placeholder {
+      text-indent: 1000px;
+      transition: text-indent 0.5s ease;
+    }
+  }
+
+  &_textArea {
+    height: 168px;
+    padding: 10px 0 0 10px;
+
+    &:focus::placeholder {
+      text-indent: -500px;
+      transition: text-indent 0.5s ease;
+    }
+  }
+}

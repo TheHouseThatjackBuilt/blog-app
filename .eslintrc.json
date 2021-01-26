@@ -21,6 +21,7 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
+    "jsx-indent": "off",
     "no-debugger": "warn",
     "implicit-arrow-linebreak": "off",
     "arrow-parens": "off",
