@@ -1,5 +1,5 @@
-import { IArticleList, IArticle, IUser, IUpdateUser } from '../types/redux/index.d';
-
+import { IArticleList, IArticle, IUser, IUpdateUser, IUserError } from '../types/redux/index.d';
+import { ResponseApiError } from './ResponseApiError';
 import { serviceHttpFabric, serviceUserFabric } from '../tools/dataFabric';
 import { Methods } from '../redux/constants';
 
@@ -14,7 +14,9 @@ const LOGIN = 'login';
 const http = async <T>(url: string, options: any): Promise<T> => {
   const link = new URL(url, BASE_URL);
   const response = await fetch(link.toString(), options);
-  if (!response.ok) throw new Error('YOU SHALL NOT PASS') && (await response.json()); // O_o
+
+  if (response.status === 422) throw new ResponseApiError<IUserError>(await response.json());
+  if (!response.ok) throw new Error('some unexpected error');
   return response.json();
 };
 

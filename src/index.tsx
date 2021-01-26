@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Alert } from 'antd';
 
-import store from './redux/store/store';
+import { store } from './redux/store/store';
 import App from './components/App/App';
 import './style/index.scss';
 
@@ -20,7 +20,7 @@ render(
       </ErrorBoundary>
     </Provider>
   </React.StrictMode>,
-  document.getElementById('wrapper'),
+  document.getElementById('wrapper')
 );
 
 // render(

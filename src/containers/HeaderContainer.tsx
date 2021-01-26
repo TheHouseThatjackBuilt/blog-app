@@ -7,16 +7,16 @@ import omit from 'lodash.omit';
 import { IState } from '../types/redux/index.d';
 import { ISetUser } from '../types/components/index.d';
 import { requestCurrentUser } from '../service/api';
-import { getCurrentUser } from '../redux/actions/index';
+import { getCurrentUserAction } from '../redux/actions/index';
 import Header from '../components/Header/Header';
 
-const HeaderContainer = ({ user, getCurrentUser }: PropsFromRedux) => {
+const HeaderContainer = ({ user, getCurrentUserAction }: PropsFromRedux) => {
   const [userCookie, setUserCookie] = useCookies();
   const [load, setLoad] = useState(false);
 
   const logOut = (_event: MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     setUserCookie('token', '', { maxAge: -1 });
-    getCurrentUser(null);
+    getCurrentUserAction(null);
   };
   useEffect(() => {
     if (userCookie.token && !user) {
@@ -25,7 +25,7 @@ const HeaderContainer = ({ user, getCurrentUser }: PropsFromRedux) => {
         const response: { user: ISetUser } = await requestCurrentUser(userCookie.token);
         const { user } = response;
         const currentUser = omit(user, 'token');
-        getCurrentUser(currentUser);
+        getCurrentUserAction(currentUser);
         setLoad(false);
       })();
     }
@@ -37,7 +37,7 @@ const mapStateToProps = (state: IState) => ({
   user: state.userState.user,
 });
 
-const mapDispatch = { getCurrentUser };
+const mapDispatch = { getCurrentUserAction };
 const connector = connect(mapStateToProps, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 

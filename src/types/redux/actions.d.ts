@@ -1,32 +1,59 @@
-import { IArticle, IArticleList } from './index.d';
-import { ISetUser } from '../components/index.d';
-import { EActions } from '../../redux/constants';
+import { IArticle, IArticleList, IResponseUser } from './index.d';
+import { EArticleActions, EUserActions, ESingleArticle } from '../../redux/constants';
 
-interface IGetArticleList {
-  type: typeof EActions.getArticlesList;
+// articles list actions:
+export interface IGetArticlesAction {
+  type: typeof EArticleActions.getArticlesList;
   payload: IArticleList;
 }
 
-interface IGetArticle {
-  type: typeof EActions.getArticle;
-  payload: IArticle;
+export interface IArticlesLoadAction {
+  type: typeof EArticleActions.articleLoad;
+  payload: boolean;
 }
 
-interface IError {
-  type: typeof EActions.hasError;
+export interface IArticlesErrorAction {
+  type: typeof EArticleActions.dataError;
   payload: any;
 }
 
-export interface ISetUserAction {
-  type: typeof EActions.newUser;
-  payload: ISetUser | null;
+// single article actions:
+export interface IGetSingleArticleAction {
+  type: typeof ESingleArticle.getArticle;
+  payload: IArticle;
+}
+
+export interface ISingleArticleLoadAction {
+  type: typeof ESingleArticle.articleLoad;
+  payload: boolean;
+}
+
+export interface ISingleArticleErrorAction {
+  type: typeof ESingleArticle.dataError;
+  payload: any;
+}
+
+// user actions:
+export interface ISetNewUserAction {
+  type: typeof EUserActions.newUser | EUserActions.currentUser;
+  payload: IResponseUser | null;
 }
 
 export interface ICurrentUserAction {
-  type: typeof EActions.currentUser;
-  payload: ISetUser | null;
+  type: typeof EUserActions.currentUser;
+  payload: IResponseUser | null;
 }
 
-export type ArticleActions = IGetArticleList | IGetArticle | IError;
-export type ArticleActionsForReduce = IGetArticleList | IGetArticle;
-export type UserActionsForReduce = ISetUserAction | ICurrentUserAction;
+export interface INewUserLoadAction {
+  type: typeof EUserActions.userLoad;
+  payload: boolean;
+}
+
+export interface INewUserErrorAction {
+  type: typeof EUserActions.userError;
+  payload: any;
+}
+
+export type INewUserActionsTypes = ISetNewUserAction | ICurrentUserAction | INewUserLoadAction | INewUserErrorAction;
+export type ISingleArticleActionsTypes = IGetSingleArticleAction | ISingleArticleLoadAction | ISingleArticleErrorAction;
+export type IArticleListActionsTypes = IGetArticlesAction | IArticlesErrorAction | IArticlesLoadAction;

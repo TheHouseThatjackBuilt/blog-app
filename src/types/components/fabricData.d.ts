@@ -23,4 +23,4 @@ export interface IHandleArticleData {
   header: IArticleHeader;
   body: IArticleBody;
 }
-export type ISetUser = Omit<IResponseUser, 'createdAt' | 'updatedAt' | 'id' | 'token'>;
+export type ISetUser = Omit<IResponseUser, 'createdAt' | 'updatedAt' | 'id' | 'bio'>; // под вопросом

@@ -1,12 +1,20 @@
-import { EActions, IUserState, UserActionsForReduce } from '../../types/redux/index.d';
+import { IUserState, INewUserActionsTypes } from '../../types/redux/index.d';
+import { EUserActions } from '../constants';
 
-const initial: IUserState = { user: null };
+const initial: IUserState = {
+  user: null,
+  errors: null,
+  load: false,
+};
 
-export default (state = initial, action: UserActionsForReduce): IUserState => {
+export const userReducer = (state = initial, action: INewUserActionsTypes): IUserState => {
   switch (action.type) {
-    case EActions.newUser:
-    case EActions.currentUser:
-      return { ...state, user: action.payload };
+    case EUserActions.newUser:
+      return { ...state, load: false, user: action.payload };
+    case EUserActions.userError:
+      return { ...state, load: false, errors: action.payload };
+    case EUserActions.userLoad:
+      return { ...state, load: action.payload };
     default:
       return state;
   }

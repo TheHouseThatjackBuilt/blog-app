@@ -10,7 +10,7 @@ import { SignInProfile } from '../components/AuthForms/SignInProfile';
 import { handlerUserData } from '../tools/dataFabric';
 import { authUser } from '../service/api';
 import { authSchema } from '../tools/utils';
-import { registerNewUser } from '../redux/actions/index';
+import { registerNewUserAction } from '../redux/actions/index';
 
 export const SignInContainer: FC = () => {
   const [loading, setLoading] = useState(false);
@@ -29,7 +29,7 @@ export const SignInContainer: FC = () => {
         const { user } = response;
         setUserCookie('token', user.token);
         const newUser = handlerUserData(user);
-        dispatch(registerNewUser(newUser));
+        dispatch(registerNewUserAction(newUser));
         history.push('/');
       })
       .catch(() => {

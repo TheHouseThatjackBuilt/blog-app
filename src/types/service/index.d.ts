@@ -4,3 +4,7 @@ export interface IOptions {
   headers?: object;
   body?: object;
 }
+
+export interface IApiError<T> {
+  item: { errors: T };
+}

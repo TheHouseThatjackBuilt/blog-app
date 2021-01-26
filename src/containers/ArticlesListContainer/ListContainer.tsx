@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 
-import { IState } from '../../types/redux/index.d';
-import { getArticleList } from '../../redux/middleware/reduxThunk';
 import { articlesSelector, articlesCountSelector } from '../../redux/selectors/index';
+import { IState } from '../../types/redux/index.d';
+import { getArticleListThunk } from '../../redux/middlewareThunk/reduxThunk';
+import { ArticlesList } from '../../components/Articles/ArticleList/ArticlesList';
 
-import ArticlesList from '../../components/Articles/ArticleList/ArticlesList';
+type PropsFromRedux = ConnectedProps<typeof connector>;
 
-const ArticlesListContainer = ({ articles, articlesCount, getArticleList }: PropsFromRedux) => {
+const ArticlesListContainer = ({ articles, articlesCount, getArticleListThunk }: PropsFromRedux) => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
 
@@ -15,13 +16,15 @@ const ArticlesListContainer = ({ articles, articlesCount, getArticleList }: Prop
     setLoading(true);
 
     (async () => {
-      await getArticleList(page);
+      await getArticleListThunk(page);
       setLoading(false);
     })();
   }, [page]);
 
   const handlePagesSwitch = (evt: number) => setPage(evt);
-  return <ArticlesList articles={articles} pageHandler={handlePagesSwitch} totalPages={articlesCount} load={loading} page={page} />;
+  return (
+    <ArticlesList articles={articles} pageHandler={handlePagesSwitch} totalPages={articlesCount} load={loading} page={page} />
+  );
 };
 
 const mapStateToProps = (state: IState) => ({
@@ -29,9 +32,7 @@ const mapStateToProps = (state: IState) => ({
   articlesCount: articlesCountSelector(state),
 });
 
-const mapDispatch = { getArticleList };
+const mapDispatch = { getArticleListThunk };
 const connector = connect(mapStateToProps, mapDispatch);
-
-type PropsFromRedux = ConnectedProps<typeof connector>;
 
 export default connector(ArticlesListContainer);

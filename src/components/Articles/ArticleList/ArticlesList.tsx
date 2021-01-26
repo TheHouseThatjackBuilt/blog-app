@@ -4,7 +4,7 @@ import { IArticleList } from '../../../types/components/index.d';
 import ArticleConstructor from '../ArticleConstructor/ArticleConstructor';
 import { Spinner, Pagination, MainContainer } from '../../AppElements/index';
 
-const ArticleList: React.FC<IArticleList> = ({ articles, pageHandler, totalPages, load, page }) => {
+export const ArticlesList: React.FC<IArticleList> = ({ articles, pageHandler, totalPages, load, page }) => {
   const content =
     articles &&
     articles?.map((article) => (
@@ -23,5 +23,3 @@ const ArticleList: React.FC<IArticleList> = ({ articles, pageHandler, totalPages
     </MainContainer>
   );
 };
-
-export default ArticleList;

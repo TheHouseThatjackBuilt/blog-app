@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 import { errorDataFabric, handlerEmptyData, handlerUserData } from '../tools/dataFabric';
 import { IUpdateUser, IUserError, IResponseUser } from '../types/redux/index.d';
 import { updateProfileSchema } from '../tools/utils';
-import { registerNewUser } from '../redux/actions/index';
+import { registerNewUserAction } from '../redux/actions/index';
 import { EditProfile } from '../components/AuthForms/EditProfile';
 import { updateUser } from '../service/api';
 
@@ -30,7 +30,7 @@ export const EditProfileContainer: FC = () => {
         const { user } = response;
         setUserCookie('token', user.token);
         const newUser = handlerUserData(user);
-        dispatch(registerNewUser(newUser));
+        dispatch(registerNewUserAction(newUser));
         history.push('/');
       })
       .catch((data: { errors: IUserError }) => {

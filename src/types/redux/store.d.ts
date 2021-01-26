@@ -1,20 +1,26 @@
-import { IArticle, IArticleList } from './index.d';
-import { ISetUser } from '../components/index.d';
+import { IArticle, IArticleList, IResponseUser } from './index.d';
 
-export interface IArticleState extends IArticleList {
-  currentArticle: null | IArticle;
-}
-
-export interface IErrorState {
+export interface IArticlesListState {
+  articlesList: IArticle[] | null;
+  articlesCount: number;
+  load: boolean;
   error: any;
 }
 
+export interface ISingleArticleState {
+  article: IArticle | null;
+  load: boolean;
+  errors: any;
+}
+
 export interface IUserState {
-  user: null | ISetUser;
+  user: IResponseUser | null;
+  load: boolean;
+  errors: any;
 }
 
 export interface IState {
-  articleState: IArticleState;
-  errorState: IErrorState;
+  articlesState: IArticleList;
+  singleArtileState: ISingleArticleState;
   userState: IUserState;
 }

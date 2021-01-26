@@ -1,27 +1,57 @@
-import { ArticleActionsForReduce, IError, ArticleActions, UserActionsForReduce } from './actions.d';
+import {
+  IArticlesErrorAction,
+  IArticlesLoadAction,
+  IGetArticlesAction,
+  IArticleListActionsTypes,
+  IGetSingleArticleAction,
+  ISingleArticleLoadAction,
+  ISingleArticleErrorAction,
+  ISingleArticleActionsTypes,
+  ICurrentUserAction,
+  INewUserErrorAction,
+  INewUserLoadAction,
+  ISetNewUserAction,
+  INewUserActionsTypes,
+} from './actions.d';
 import { IAutorArticle, IArticle, IArticleList, IUser, IUserError, IResponseUser, IUpdateUser } from './response.d';
 
-import { IArticleState, IErrorState, IUserState, IState } from './store.d';
-import { ThunkActionType, DispatchType } from './thunk.d';
-import { EActions } from '../../redux/constants';
+import { IArticlesListState, IUserState, ISingleArticleState, IState } from './store.d';
+import { Thunk } from './thunk.d';
 
 export {
-  ArticleActionsForReduce,
-  UserActionsForReduce,
-  ArticleActions,
+  // actions types & interfaces:
+  // article's list action interfaces:
+  IArticlesErrorAction,
+  IArticlesLoadAction,
+  IGetArticlesAction,
+  // union article's list type:
+  IArticleListActionsTypes,
+  // Single article actions interfaces:
+  IGetSingleArticleAction,
+  ISingleArticleLoadAction,
+  ISingleArticleErrorAction,
+  // union sigle article type:
+  ISingleArticleActionsTypes,
+  // New user actions interfaces:
+  ICurrentUserAction,
+  INewUserErrorAction,
+  INewUserLoadAction,
+  ISetNewUserAction,
+  // union new user type:
+  INewUserActionsTypes,
+  // response types & interfaces:
   IAutorArticle,
   IArticle,
   IArticleList,
-  IArticleState,
-  IErrorState,
-  IState,
-  IError,
-  ThunkActionType,
-  DispatchType,
-  EActions,
   IUser,
   IUserError,
   IResponseUser,
-  IUserState,
   IUpdateUser,
+  // store types & interfaces
+  IArticlesListState,
+  ISingleArticleState,
+  IUserState,
+  IState,
+  // thunk type:
+  Thunk,
 };

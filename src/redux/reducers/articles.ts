@@ -1,21 +1,26 @@
-import { IArticleState, ArticleActionsForReduce, EActions } from '../../types/redux/index.d';
+import { IArticlesListState, IArticleListActionsTypes } from '../../types/redux/index.d';
+import { EArticleActions } from '../constants';
 
-const initial: IArticleState = {
-  articles: null,
+const initial: IArticlesListState = {
+  articlesList: null,
   articlesCount: 0,
-  currentArticle: null,
+  error: null,
+  load: false,
 };
 
-export default (state = initial, action: ArticleActionsForReduce): IArticleState => {
+export const articleListReducer = (state = initial, action: IArticleListActionsTypes): IArticlesListState => {
   switch (action.type) {
-    case EActions.getArticlesList:
+    case EArticleActions.getArticlesList:
       return {
         ...state,
-        articles: action.payload.articles,
+        load: false,
+        articlesList: action.payload.articles,
         articlesCount: action.payload.articlesCount,
       };
-    case EActions.getArticle:
-      return { ...state, currentArticle: action.payload };
+    case EArticleActions.articleLoad:
+      return { ...state, load: action.payload };
+    case EArticleActions.dataError:
+      return { ...state, load: false, error: action.payload.error };
     default:
       return state;
   }
