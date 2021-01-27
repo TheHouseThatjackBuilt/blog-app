@@ -18,11 +18,6 @@ export interface IArticle {
   author: IAutorArticle;
 }
 
-export interface IArticleList {
-  articles: IArticle[] | null;
-  articlesCount: number;
-}
-
 export interface IError {
   response: any;
 }

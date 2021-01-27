@@ -1,35 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-
-import { articlesSelector, articlesCountSelector } from '../../redux/selectors/index';
+// selectors
+import {
+  articlesStateCountSelector,
+  articlesStateErrorSelector,
+  articlesStateLoadSelector,
+  articlesStateSelector,
+} from '../../redux/selectors/index';
+// types
 import { IState } from '../../types/redux/index.d';
+// thunk
 import { getArticleListThunk } from '../../redux/middlewareThunk/articleListThunk';
+// components
 import { ArticlesList } from '../../components/Articles/ArticleList/ArticlesList';
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-const ArticlesListContainer = ({ articles, articlesCount, getArticleListThunk }: PropsFromRedux) => {
+const ArticlesListContainer = ({ articles, articlesCount, load, error, getArticleListThunk }: PropsFromRedux) => {
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
-
-    (async () => {
-      await getArticleListThunk(page);
-      setLoading(false);
-    })();
+    getArticleListThunk(page);
+    if (error) throw new Error('something went wrong in Single Article');
   }, [page]);
 
   const handlePagesSwitch = (evt: number) => setPage(evt);
-  return (
-    <ArticlesList articles={articles} pageHandler={handlePagesSwitch} totalPages={articlesCount} load={loading} page={page} />
-  );
+  return <ArticlesList articles={articles} pageHandler={handlePagesSwitch} totalPages={articlesCount} load={load} page={page} />;
 };
 
 const mapStateToProps = (state: IState) => ({
-  articles: articlesSelector(state),
-  articlesCount: articlesCountSelector(state),
+  articles: articlesStateSelector(state),
+  articlesCount: articlesStateCountSelector(state),
+  load: articlesStateLoadSelector(state),
+  error: articlesStateErrorSelector(state),
 });
 
 const mapDispatch = { getArticleListThunk };

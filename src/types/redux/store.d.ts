@@ -1,10 +1,10 @@
-import { IArticle, IArticleList, IResponseUser } from './index.d';
+import { IArticle, IResponseUser } from './index.d';
 
 export interface IArticlesListState {
   articlesList: IArticle[] | null;
   articlesCount: number;
   load: boolean;
-  error: any;
+  errors: any;
 }
 
 export interface ISingleArticleState {
@@ -20,7 +20,7 @@ export interface IUserState {
 }
 
 export interface IState {
-  articlesListState: IArticleList;
+  articlesListState: IArticlesListState;
   singleArtileState: ISingleArticleState;
   userState: IUserState;
 }

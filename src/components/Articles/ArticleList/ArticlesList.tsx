@@ -5,13 +5,13 @@ import ArticleConstructor from '../ArticleConstructor/ArticleConstructor';
 import { Spinner, Pagination, MainContainer } from '../../AppElements/index';
 
 export const ArticlesList: React.FC<IArticleList> = ({ articles, pageHandler, totalPages, load, page }) => {
-  const content =
-    articles &&
-    articles?.map((article) => (
-      <li key={article.slug} className="content__itemContainer">
-        <ArticleConstructor article={article} flag={false} />
-      </li>
-    ));
+  const content = articles
+    ? articles?.map((article) => (
+        <li key={article.slug} className="content__itemContainer">
+          <ArticleConstructor article={article} flag={false} />
+        </li>
+      ))
+    : null;
 
   return (
     <MainContainer>

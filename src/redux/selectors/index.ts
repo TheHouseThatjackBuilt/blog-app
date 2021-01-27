@@ -1,6 +1,11 @@
-import { articlesSelector, articlesCountSelector } from './articlesStateSelectors';
+export {
+  articlesStateCountSelector,
+  articlesStateErrorSelector,
+  articlesStateLoadSelector,
+  articlesStateSelector,
+} from './articlesStateSelectors';
 
-import {
+export {
   userStateErrorReselector,
   userStateLoadSelector,
   userStateUserSelector,
@@ -8,12 +13,7 @@ import {
 } from './userStateSelectors';
 
 export {
-  // user selectors
-  userStateErrorReselector,
-  userStateLoadSelector,
-  userStateUserSelector,
-  userStateErrorSelector,
-  // articles selectors
-  articlesSelector,
-  articlesCountSelector,
-};
+  singleArticleStateErrorSelector,
+  singleArticleStateLoadSelector,
+  singleArticleStateSelector,
+} from './singleArticleStateSelectors';
