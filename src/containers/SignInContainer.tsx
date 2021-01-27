@@ -22,17 +22,17 @@ const SignInContainer: FC<PropsFromRedux> = ({ load, error, user, authUserThunk 
   });
 
   useEffect(() => {
-    if (user) setUserCookie('token', user.token);
-  }, [user]);
-
-  const onSubmit = handleSubmit(({ email, password }) => {
-    authUserThunk({ email, password });
-    if (user) history.push('/');
+    if (user) {
+      setUserCookie('token', user.token);
+      history.push('/');
+    }
     if (error) {
       setError('email', { type: 'server validation', message: '' });
       setError('password', { type: 'server validation', message: 'Email or password is invalid' });
     }
-  });
+  }, [user, error]);
+
+  const onSubmit = handleSubmit(({ email, password }) => authUserThunk({ email, password }));
 
   return <SignInProfile inputRef={register} errors={errors} onSubmit={onSubmit} load={load} />;
 };
