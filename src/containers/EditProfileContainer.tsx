@@ -1,44 +1,43 @@
-import React, { useState, FC } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { FC } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useCookies } from 'react-cookie';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useHistory } from 'react-router-dom';
 
-import { errorDataFabric, handlerEmptyData, handlerUserData } from '../tools/dataFabric';
-import { IUpdateUser, IUserError, IResponseUser } from '../types/redux/index.d';
+import { userStateLoadSelector, userStateErrorReselector } from '../redux/selectors';
+import { updateUserThunk } from '../redux/middlewareThunk/userDataThunk';
+import { handlerEmptyData } from '../tools/dataFabric';
+import { IState, IUpdateUser } from '../types/redux/index.d';
 import { updateProfileSchema } from '../tools/utils';
-import { registerNewUserAction } from '../redux/actions/index';
 import { EditProfile } from '../components/AuthForms/EditProfile';
-import { updateUser } from '../service/api';
 
-export const EditProfileContainer: FC = () => {
-  const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+const EditProfileContainer: FC<PropsFromRedux> = ({ load, error, updateUserThunk }) => {
   const history = useHistory();
-  const [userCookie, setUserCookie] = useCookies();
+  const [userCookie] = useCookies();
   const { register, handleSubmit, errors, setError } = useForm<IUpdateUser>({
     mode: 'onChange',
     resolver: yupResolver(updateProfileSchema),
   });
 
   const onSubmit = handleSubmit((data) => {
-    setLoading(true);
     const userData = handlerEmptyData<IUpdateUser>(data);
-    updateUser(userData, userCookie.token)
-      .then((response: { user: IResponseUser }) => {
-        const { user } = response;
-        setUserCookie('token', user.token);
-        const newUser = handlerUserData(user);
-        dispatch(registerNewUserAction(newUser));
-        history.push('/');
-      })
-      .catch((data: { errors: IUserError }) => {
-        setLoading(false);
-        const error = errorDataFabric<IUserError>(data.errors);
-        error.forEach((key, value) => setError(value, { type: 'server validation error', message: `${value} ${key}` }));
-      });
+    updateUserThunk(userData, userCookie.token);
+    if (error) error.forEach((key, value) => setError(value, { type: 'server validation error', message: `${value} ${key}` }));
+    history.push('/');
   });
 
-  return <EditProfile inputRef={register} errors={errors} onSubmit={onSubmit} load={loading} />;
+  return <EditProfile inputRef={register} errors={errors} onSubmit={onSubmit} load={load} />;
 };
+
+const mapStateToProps = (state: IState) => ({
+  load: userStateLoadSelector(state),
+  error: userStateErrorReselector(state),
+});
+
+const mapDispatch = { updateUserThunk };
+const connector = connect(mapStateToProps, mapDispatch);
+
+export default connector(EditProfileContainer);

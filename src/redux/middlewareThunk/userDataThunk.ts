@@ -1,16 +1,37 @@
 import { Dispatch } from 'redux';
 // types defs:
-import { Thunk, IResponseUser, IUser, IUserState, INewUserActionsTypes } from '../../types/redux/index.d';
+import { Thunk, IResponseUser, IUser, IUserState, INewUserActionsTypes, IUpdateUser } from '../../types/redux/index.d';
 // actions:
 import { authUserAction, userErrorAction, userLoadAction } from '../actions/userActions';
 // service:
-import { requestNewUser } from '../../service/api';
+import { requestNewUser, authUser, updateUser, requestCurrentUser } from '../../service/api';
 
-export const authUserThunk: Thunk<INewUserActionsTypes, IUserState> = (data: IUser) => (
-  dispatch: Dispatch<INewUserActionsTypes>
-) => {
+type userThunk = Thunk<INewUserActionsTypes, IUserState>;
+
+export const authNewUserThunk: userThunk = (data: IUser) => (dispatch: Dispatch<INewUserActionsTypes>) => {
   userLoadAction(true);
   return requestNewUser(data)
+    .then((response: { user: IResponseUser }) => dispatch(authUserAction(response.user)))
+    .catch((data) => dispatch(userErrorAction(data)));
+};
+
+export const authUserThunk: userThunk = (data: Omit<IUser, 'username'>) => (dispatch: Dispatch<INewUserActionsTypes>) => {
+  userLoadAction(true);
+  return authUser(data)
+    .then((response: { user: IResponseUser }) => dispatch(authUserAction(response.user)))
+    .catch((data) => dispatch(userErrorAction(data)));
+};
+
+export const updateUserThunk = (userData: IUpdateUser, token: string) => (dispatch: Dispatch<INewUserActionsTypes>) => {
+  userLoadAction(true);
+  return updateUser(userData, token)
+    .then((response: { user: IResponseUser }) => dispatch(authUserAction(response.user)))
+    .catch((data) => dispatch(userErrorAction(data)));
+};
+
+export const verificationUserThunk = (token: string) => (dispatch: Dispatch<INewUserActionsTypes>) => {
+  userLoadAction(true);
+  return requestCurrentUser(token)
     .then((response: { user: IResponseUser }) => dispatch(authUserAction(response.user)))
     .catch((data) => dispatch(userErrorAction(data)));
 };

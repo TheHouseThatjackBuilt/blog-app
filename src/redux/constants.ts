@@ -12,7 +12,6 @@ export enum ESingleArticle {
 
 export enum EUserActions {
   newUser = 'SET_NEW_USER',
-  currentUser = 'CURRENT_USER',
   userError = 'USER__ERROR',
   userLoad = 'USER_LOAD',
 }

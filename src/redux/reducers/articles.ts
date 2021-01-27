@@ -8,7 +8,7 @@ const initial: IArticlesListState = {
   load: false,
 };
 
-export const articleListReducer = (state = initial, action: IArticleListActionsTypes): IArticlesListState => {
+export const articlesListState = (state = initial, action: IArticleListActionsTypes): IArticlesListState => {
   switch (action.type) {
     case EArticleActions.getArticlesList:
       return {

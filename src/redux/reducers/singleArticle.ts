@@ -7,7 +7,7 @@ const init: ISingleArticleState = {
   load: false,
 };
 
-export const singleArticleReducer = (state = init, action: ISingleArticleActionsTypes): ISingleArticleState => {
+export const singleArtileState = (state = init, action: ISingleArticleActionsTypes): ISingleArticleState => {
   switch (action.type) {
     case ESingleArticle.getArticle:
       return { errors: null, load: false, article: action.payload };

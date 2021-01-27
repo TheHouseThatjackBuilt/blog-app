@@ -2,7 +2,7 @@ import omit from 'lodash.omit';
 
 import { formatedDate } from './utils';
 import { IArticle, IResponseUser } from '../types/redux/index.d';
-import { IHandleArticleData, ISetUser } from '../types/components/index.d';
+import { IHandleArticleData } from '../types/components/index.d';
 import { IOptions } from '../types/service/index.d';
 
 export const articlePreviewDataFabric = (data: IArticle): IHandleArticleData => {
@@ -47,4 +47,4 @@ export const errorDataFabric = <T>(data: T): Map<keyof T, string> =>
 
 export const handlerEmptyData = <T>(data: T) => Object.fromEntries(Object.entries(data).filter(([, value]) => value !== ''));
 
-export const handlerUserData = (user: IResponseUser): ISetUser => omit(user, 'createdAt', 'id', 'updatedAt', 'bio');
+export const handlerUserData = (user: IResponseUser, exclude: string[]) => omit(user, exclude);

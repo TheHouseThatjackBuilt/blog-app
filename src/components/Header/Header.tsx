@@ -5,7 +5,7 @@ import { DefaultHeader } from './DefaultHeader';
 import { UserHeader } from './UserHeader';
 import { IHeader } from '../../types/components/index.d';
 
-const Header: FC<IHeader> = ({ user, load, logOut }) => (
+export const Header: FC<IHeader> = ({ user, load, logOut }) => (
   <header className="header main__header">
     <Link className="header__title" to="/">
       <h1 className="header__title">Realworld Blog</h1>
@@ -15,5 +15,3 @@ const Header: FC<IHeader> = ({ user, load, logOut }) => (
     {user && <UserHeader user={user} logOut={logOut} />}
   </header>
 );
-
-export default Header;

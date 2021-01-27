@@ -1,43 +1,35 @@
 /* eslint-disable*/
-import React, { useEffect, useState, MouseEvent } from 'react';
+import React, { useEffect, MouseEvent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { useCookies } from 'react-cookie';
-import omit from 'lodash.omit';
 
+import { verificationUserThunk, authNewUserThunk } from '../redux/middlewareThunk/userDataThunk';
+import { userStateErrorSelector, userStateLoadSelector, userStateUserSelector } from '../redux/selectors/';
 import { IState } from '../types/redux/index.d';
-import { ISetUser } from '../types/components/index.d';
-import { requestCurrentUser } from '../service/api';
-import { getCurrentUserAction } from '../redux/actions/index';
-import Header from '../components/Header/Header';
+import { Header } from '../components/Header/Header';
 
-const HeaderContainer = ({ user, getCurrentUserAction }: PropsFromRedux) => {
+const HeaderContainer = ({ load, error, user, verificationUserThunk, authNewUserThunk }: PropsFromRedux) => {
   const [userCookie, setUserCookie] = useCookies();
-  const [load, setLoad] = useState(false);
 
   const logOut = (_event: MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     setUserCookie('token', '', { maxAge: -1 });
-    getCurrentUserAction(null);
+    authNewUserThunk(null);
+    if (error) throw new Error('something went wrong in Header-component with user data');
   };
   useEffect(() => {
-    if (userCookie.token && !user) {
-      setLoad(true);
-      (async () => {
-        const response: { user: ISetUser } = await requestCurrentUser(userCookie.token);
-        const { user } = response;
-        const currentUser = omit(user, 'token');
-        getCurrentUserAction(currentUser);
-        setLoad(false);
-      })();
-    }
+    if (userCookie.token && !user) verificationUserThunk(userCookie.token);
   }, [userCookie.token, user]);
+
   return <Header user={user} load={load} logOut={logOut} />;
 };
 
 const mapStateToProps = (state: IState) => ({
-  user: state.userState.user,
+  user: userStateUserSelector(state),
+  error: userStateErrorSelector(state),
+  load: userStateLoadSelector(state),
 });
 
-const mapDispatch = { getCurrentUserAction };
+const mapDispatch = { verificationUserThunk, authNewUserThunk };
 const connector = connect(mapStateToProps, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 

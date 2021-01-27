@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { articleListReducer } from './articles';
-import { singleArticleReducer } from './singleArticle';
-import { userReducer } from './user';
+import { articlesListState } from './articles';
+import { singleArtileState } from './singleArticle';
+import { userState } from './user';
 
-export const rootReducer = combineReducers({ articleListReducer, userReducer, singleArticleReducer });
+export const rootReducer = combineReducers({ articlesListState, userState, singleArtileState });

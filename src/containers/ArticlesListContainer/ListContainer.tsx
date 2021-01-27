@@ -3,7 +3,7 @@ import { connect, ConnectedProps } from 'react-redux';
 
 import { articlesSelector, articlesCountSelector } from '../../redux/selectors/index';
 import { IState } from '../../types/redux/index.d';
-import { getArticleListThunk } from '../../redux/middlewareThunk/reduxThunk';
+import { getArticleListThunk } from '../../redux/middlewareThunk/articleListThunk';
 import { ArticlesList } from '../../components/Articles/ArticleList/ArticlesList';
 
 type PropsFromRedux = ConnectedProps<typeof connector>;

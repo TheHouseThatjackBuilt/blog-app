@@ -35,12 +35,7 @@ export interface ISingleArticleErrorAction {
 
 // user actions:
 export interface ISetNewUserAction {
-  type: typeof EUserActions.newUser | EUserActions.currentUser;
-  payload: IResponseUser | null;
-}
-
-export interface ICurrentUserAction {
-  type: typeof EUserActions.currentUser;
+  type: typeof EUserActions.newUser;
   payload: IResponseUser | null;
 }
 
@@ -54,6 +49,6 @@ export interface INewUserErrorAction {
   payload: any;
 }
 
-export type INewUserActionsTypes = ISetNewUserAction | ICurrentUserAction | INewUserLoadAction | INewUserErrorAction;
+export type INewUserActionsTypes = ISetNewUserAction | INewUserLoadAction | INewUserErrorAction;
 export type ISingleArticleActionsTypes = IGetSingleArticleAction | ISingleArticleLoadAction | ISingleArticleErrorAction;
 export type IArticleListActionsTypes = IGetArticlesAction | IArticlesErrorAction | IArticlesLoadAction;

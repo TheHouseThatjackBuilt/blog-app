@@ -20,7 +20,7 @@ export interface IUserState {
 }
 
 export interface IState {
-  articlesState: IArticleList;
+  articlesListState: IArticleList;
   singleArtileState: ISingleArticleState;
   userState: IUserState;
 }

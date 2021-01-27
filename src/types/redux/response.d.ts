@@ -48,12 +48,12 @@ export interface IUserError {
 }
 
 export interface IResponseUser {
-  bio: null;
-  createdAt: string;
+  bio: null | string;
+  createdAt?: string;
   email: string;
   id: number;
   image: string | null;
   token: string;
-  updatedAt: string;
+  updatedAt?: string;
   username: string;
 }

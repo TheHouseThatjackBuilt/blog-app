@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom';
 
 import { IState } from '../../types/redux/index.d';
 import { IParams } from '../../types/components/index.d';
-import { getArticleThunk } from '../../redux/middlewareThunk/reduxThunk';
-import { articleSelector } from '../../redux/selectors/index';
+import { getArticleThunk } from '../../redux/middlewareThunk/singleArticleThunk';
+import { articlesSelector } from '../../redux/selectors/index';
 import { SingleArticle } from '../../components/Articles/SingleArticle/SingleArticle';
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
@@ -27,7 +27,7 @@ const ArticleContainer = ({ article, getArticleThunk }: PropsFromRedux) => {
 };
 
 const mapDispatch = { getArticleThunk };
-const mapStateToProps = (state: IState) => ({ article: articleSelector(state) });
+const mapStateToProps = (state: IState) => ({ article: articlesSelector(state) });
 const connector = connect(mapStateToProps, mapDispatch);
 
 export default connector(ArticleContainer);

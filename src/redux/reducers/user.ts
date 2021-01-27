@@ -7,12 +7,12 @@ const initial: IUserState = {
   load: false,
 };
 
-export const userReducer = (state = initial, action: INewUserActionsTypes): IUserState => {
+export const userState = (state = initial, action: INewUserActionsTypes): IUserState => {
   switch (action.type) {
     case EUserActions.newUser:
-      return { ...state, load: false, user: action.payload };
+      return { errors: null, load: false, user: action.payload };
     case EUserActions.userError:
-      return { ...state, load: false, errors: action.payload };
+      return { user: null, load: false, errors: action.payload };
     case EUserActions.userLoad:
       return { ...state, load: action.payload };
     default:
