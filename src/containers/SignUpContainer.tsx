@@ -23,12 +23,12 @@ const SignUpContainer: FC<PropsFromRedux> = ({ load, error, user, authNewUserThu
 
   useEffect(() => {
     if (user) setUserCookie('token', user.token);
-  }, [user]);
+    if (error) error.forEach((key, value) => setError(value, { type: 'server validation error', message: `${value} ${key}` }));
+  }, [user, error]);
 
   const onSubmit = handleSubmit(({ username, email, password }) => {
     authNewUserThunk({ username, email, password });
     if (user) history.push('/');
-    if (error) error.forEach((key, value) => setError(value, { type: 'server validation error', message: `${value} ${key}` }));
   });
 
   return <SignUpProfile inputRef={register} errors={errors} onSubmit={onSubmit} load={load} />;
