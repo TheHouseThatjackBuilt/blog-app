@@ -1,14 +1,17 @@
-/* eslint-disable*/
-import React, { useEffect, MouseEvent } from 'react';
+import React, { useEffect } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { useCookies } from 'react-cookie';
-
-import { verificationUserThunk, authNewUserThunk } from '../redux/middlewareThunk/userDataThunk';
-import { userStateErrorSelector, userStateLoadSelector, userStateUserSelector } from '../redux/selectors/';
+// selectors:
+import { userStateErrorSelector, userStateLoadSelector, userStateUserSelector } from '../redux/selectors/index';
+// actions & thunk actions:
+import { verificationUserThunk } from '../redux/middlewareThunk/userDataThunk';
+import { authUserAction } from '../redux/actions/userActions';
+// types:
 import { IState } from '../types/redux/index.d';
+// components:
 import { Header } from '../components/Header/Header';
 
-const HeaderContainer = ({ load, error, user, verificationUserThunk, authNewUserThunk }: PropsFromRedux) => {
+const HeaderContainer = ({ load, error, user, verificationUserThunk, authUserAction }: PropsFromRedux) => {
   const [userCookie, setUserCookie] = useCookies();
 
   useEffect(() => {
@@ -16,9 +19,9 @@ const HeaderContainer = ({ load, error, user, verificationUserThunk, authNewUser
     if (error) throw new Error('something went wrong in Header-component with user data');
   }, [userCookie.token, user, error]);
 
-  const logOut = (_event: MouseEvent<HTMLButtonElement, MouseEvent>): void => {
+  const logOut = () => {
     setUserCookie('token', '', { maxAge: -1 });
-    authNewUserThunk(null);
+    authUserAction(null);
   };
 
   return <Header user={user} load={load} logOut={logOut} />;
@@ -30,7 +33,7 @@ const mapStateToProps = (state: IState) => ({
   load: userStateLoadSelector(state),
 });
 
-const mapDispatch = { verificationUserThunk, authNewUserThunk };
+const mapDispatch = { verificationUserThunk, authUserAction };
 const connector = connect(mapStateToProps, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 

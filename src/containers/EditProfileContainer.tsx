@@ -4,12 +4,16 @@ import { useForm } from 'react-hook-form';
 import { useCookies } from 'react-cookie';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useHistory } from 'react-router-dom';
-
+// selectors:
 import { userStateLoadSelector, userStateErrorReselector, userStateUserSelector } from '../redux/selectors';
+// thunk:
 import { updateUserThunk } from '../redux/middlewareThunk/userDataThunk';
+// fabric & utils:
 import { handlerEmptyData } from '../tools/dataFabric';
-import { IState, IUpdateUser } from '../types/redux/index.d';
 import { updateProfileSchema } from '../tools/utils';
+// types:
+import { IState, IUpdateUser } from '../types/redux/index.d';
+// component:
 import { EditProfile } from '../components/AuthForms/EditProfile';
 
 type PropsFromRedux = ConnectedProps<typeof connector>;

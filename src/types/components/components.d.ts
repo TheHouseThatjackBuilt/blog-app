@@ -61,7 +61,7 @@ export interface IForm {
 export interface IHeader {
   user: ISetUser | null;
   load: boolean;
-  logOut: Function;
+  logOut: () => void;
 }
 
 export interface IUserHeader {

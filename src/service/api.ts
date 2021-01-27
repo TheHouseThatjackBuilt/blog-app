@@ -39,6 +39,7 @@ export const requestNewUser = async (newUser: IUser): Promise<any> => {
 
 export const requestCurrentUser = async (token: string) => {
   const options = serviceHttpFabric(Methods.get, { headers: { Authorization: `Token ${token}` } });
+  console.log(options);
   const response = await http<any>(USER, options);
   return response;
 };
