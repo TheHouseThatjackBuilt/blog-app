@@ -9,7 +9,7 @@ export const UserHeader: FC<IUserHeader> = ({ user, logOut }) => {
   return (
     <div className="header__userbar">
       <button type="button" className="button button__create-article">
-        <Link to="/sign-in">Create article</Link>
+        <Link to="/new-article">Create article</Link>
       </button>
       <Link className="userbar" to="/profile">
         <h2 className="userbar__name">{username}</h2>

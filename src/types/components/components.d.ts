@@ -1,3 +1,4 @@
+import { ChangeEvent, MouseEvent } from 'react';
 import { Ref, DeepMap, FieldError } from 'react-hook-form';
 import { IArticle } from '../redux/index.d';
 import { IArticleBody, ISetUser } from './index.d';
@@ -67,4 +68,27 @@ export interface IHeader {
 export interface IUserHeader {
   user: ISetUser;
   logOut: any;
+}
+
+interface IEditInputHandlers {
+  editInputValue: string;
+  editInputIndex: number;
+  handleEditInputChange: (evt: ChangeEvent<HTMLInputElement>) => void;
+  handleEditInputConfirm: () => void;
+}
+
+interface IInputHandlers {
+  inputValue: string;
+  handleInputChange: (evt: ChangeEvent<HTMLInputElement>) => void;
+  handleInputConfirm: () => void;
+}
+
+export interface IUserArticleTags {
+  getArgsFromTag: (evt: MouseEvent<HTMLSpanElement>, index: number, tag: string) => void;
+  handleClose: (tag: string) => void;
+  showInput: () => void;
+  editInputHandlers: IEditInputHandlers;
+  inputHandlers: IInputHandlers;
+  tags: string[];
+  inputVisible: boolean;
 }

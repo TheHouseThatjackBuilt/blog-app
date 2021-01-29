@@ -30,33 +30,25 @@ export const requestArticle = (id: string): Promise<IArticle> => {
   return http<IArticle>(`${ARTICLES}/${id}`, options);
 };
 
-export const requestNewUser = async (newUser: IUser): Promise<any> => {
+export const requestNewUser = (newUser: IUser): Promise<any> => {
   const user = serviceUserFabric(newUser);
   const options = serviceHttpFabric(Methods.post, { body: user });
-  const response = await http<any>(USERS, options);
-  return response;
+  return http<any>(USERS, options);
 };
 
-export const requestCurrentUser = async (token: string) => {
+export const requestCurrentUser = (token: string) => {
   const options = serviceHttpFabric(Methods.get, { headers: { Authorization: `Token ${token}` } });
-  console.log(options);
-  const response = await http<any>(USER, options);
-  return response;
+  return http<any>(USER, options);
 };
 
-export const authUser = async (data: Omit<IUser, 'username'>) => {
+export const authUser = (data: Omit<IUser, 'username'>) => {
   const user = serviceUserFabric(data);
   const options = serviceHttpFabric(Methods.post, { body: user });
-  const response = await http<any>(`${USERS}/${LOGIN}`, options);
-  return response;
+  return http<any>(`${USERS}/${LOGIN}`, options);
 };
 
-export const updateUser = async (data: IUpdateUser, token: string) => {
+export const updateUser = (data: IUpdateUser, token: string) => {
   const user = serviceUserFabric(data);
   const options = serviceHttpFabric(Methods.put, { headers: { Authorization: `Token ${token}` }, body: user });
-  const response = await http<any>(USER, options);
-  return response;
+  return http<any>(USER, options);
 };
-// username: warflop2
-// email: warflop2@notYandex.ru
-// pass: 123456789

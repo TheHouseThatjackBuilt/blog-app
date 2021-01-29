@@ -5,6 +5,7 @@ import { Thunk, IResponseUser, IUser, IUserState, INewUserActionsTypes, IUpdateU
 import { authUserAction, userErrorAction, userLoadAction } from '../actions/userActions';
 // service:
 import { requestNewUser, authUser, updateUser, requestCurrentUser } from '../../service/api';
+import { handlerEmptyData } from '../../tools/dataFabric';
 
 type userThunk = Thunk<INewUserActionsTypes, IUserState>;
 
@@ -22,8 +23,9 @@ export const authUserThunk: userThunk = (data: Omit<IUser, 'username'>) => (disp
     .catch((data) => dispatch(userErrorAction(data)));
 };
 
-export const updateUserThunk = (userData: IUpdateUser, token: string) => (dispatch: Dispatch<INewUserActionsTypes>) => {
+export const updateUserThunk = (data: IUpdateUser, token: string) => (dispatch: Dispatch<INewUserActionsTypes>) => {
   userLoadAction(true);
+  const userData = handlerEmptyData<IUpdateUser>(data);
   return updateUser(userData, token)
     .then((response: { user: IResponseUser }) => dispatch(authUserAction(response.user)))
     .catch((data) => dispatch(userErrorAction(data)));

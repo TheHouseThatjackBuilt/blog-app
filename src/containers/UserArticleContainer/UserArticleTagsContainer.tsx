@@ -1,0 +1,49 @@
+/* eslint-disable */
+import React, { FC, useState, ChangeEvent, MouseEvent } from 'react';
+
+import { UserArticleTags } from '../../components/UserArticle/ArticleTags';
+
+export const UserArticleTagsContainer: FC = () => {
+  const [tags, setTags] = useState<string[]>([]);
+  const [inputValue, setInputValue] = useState('');
+  const [inputVisible, setInputVisible] = useState(false);
+  const [editInputIndex, setEditInputIndex] = useState(-1);
+  const [editInputValue, setEditInputValue] = useState('');
+
+  const handleInputChange = (evt: ChangeEvent<HTMLInputElement>) => setInputValue(evt.target.value);
+  const handleClose = (removedTag: string) => setTags(tags.filter((tag) => tag !== removedTag));
+  // edit tags handlers:
+  const handleEditInputChange = (evt: ChangeEvent<HTMLInputElement>) => setEditInputValue(evt.target.value);
+  const handleEditInputConfirm = () => {
+    setTags(tags.map((key, index) => (index === editInputIndex ? (key = editInputValue) : key)));
+    setEditInputIndex(-1);
+    setEditInputValue('');
+  };
+
+  const getArgsFromTag = (evt: MouseEvent<HTMLSpanElement>, editIndex: number, value: string) => {
+    evt.preventDefault();
+    setEditInputIndex(editIndex);
+    setEditInputValue(value);
+  };
+  const showInput = () => {
+    setInputVisible(true);
+  };
+
+  const handleInputConfirm = () => {
+    !tags.includes(inputValue) && setTags([...tags, inputValue]);
+    setInputVisible(false);
+    setInputValue('');
+  };
+
+  return (
+    <UserArticleTags
+      editInputHandlers={{ editInputValue, editInputIndex, handleEditInputChange, handleEditInputConfirm }}
+      inputHandlers={{ handleInputChange, handleInputConfirm, inputValue }}
+      tags={tags}
+      getArgsFromTag={getArgsFromTag}
+      showInput={showInput}
+      handleClose={handleClose}
+      inputVisible={inputVisible}
+    />
+  );
+};

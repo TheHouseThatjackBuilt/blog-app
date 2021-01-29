@@ -1,4 +1,7 @@
+/* eslint-disable*/
 import React from 'react';
+// components:
+import { UserArticleTagsContainer } from '../../containers/UserArticleContainer/UserArticleTagsContainer';
 import { MainContainer } from '../AppElements';
 import {
   FormContainer,
@@ -18,6 +21,7 @@ export const CreateArticle = () => (
         <FormInputTitle />
         <FormInputDescription />
         <FormTextField />
+        <UserArticleTagsContainer />
         <SubmitButton />
       </Form>
     </FormContainer>

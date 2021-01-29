@@ -9,7 +9,6 @@ import { userStateLoadSelector, userStateErrorReselector, userStateUserSelector 
 // thunk:
 import { updateUserThunk } from '../redux/middlewareThunk/userDataThunk';
 // fabric & utils:
-import { handlerEmptyData } from '../tools/dataFabric';
 import { updateProfileSchema } from '../tools/utils';
 // types:
 import { IState, IUpdateUser } from '../types/redux/index.d';
@@ -31,10 +30,7 @@ const EditProfileContainer: FC<PropsFromRedux> = ({ load, error, user, updateUse
     if (error) error.forEach((key, value) => setError(value, { type: 'server validation error', message: `${value} ${key}` }));
   }, [user, error]);
 
-  const onSubmit = handleSubmit((data) => {
-    const userData = handlerEmptyData<IUpdateUser>(data);
-    updateUserThunk(userData, userCookie.token);
-  });
+  const onSubmit = handleSubmit((data) => updateUserThunk(data, userCookie.token));
 
   return <EditProfile inputRef={register} errors={errors} onSubmit={onSubmit} load={load} />;
 };
