@@ -21,11 +21,11 @@
 
 .form {
   display: grid;
-  grid-template: 60px 60px 60px / minmax(500px, 860px);
+  grid-template: 60px 60px 175px / minmax(500px, 860px);
   justify-self: start;
   align-self: start;
   gap: 22px;
-
+  height: 100%;
   font-size: 14px;
   font-weight: 500;
 
@@ -33,9 +33,25 @@
 
   // &__description {}
 
-  // &__text {}
+  &__tags {
+    display: grid;
+    align-items: baseline;
+  }
+  &__text {
+    align-self: baseline;
+  }
 
-  // &__submit {}
+  &__submit {
+    display: block;
+    width: 319px;
+    height: 40px;
+    color: white;
+    background: #1890ff;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 24px;
+    align-self: center;
+  }
 }
 
 .input {
@@ -72,5 +88,19 @@
       text-indent: -500px;
       transition: text-indent 0.5s ease;
     }
+  }
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 10px;
+
+  &__input {
+    width: 70px;
+  }
+
+  &__item {
+    width: fit-content;
   }
 }

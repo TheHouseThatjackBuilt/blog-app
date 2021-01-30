@@ -22,7 +22,7 @@ export const CreateArticle = () => (
         <FormInputDescription />
         <FormTextField />
         <UserArticleTagsContainer />
-        <SubmitButton />
+        <SubmitButton>Create</SubmitButton>
       </Form>
     </FormContainer>
   </MainContainer>

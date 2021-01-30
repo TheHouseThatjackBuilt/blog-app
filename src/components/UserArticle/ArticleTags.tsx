@@ -26,7 +26,7 @@ export const UserArticleTags: FC<IUserArticleTags> = ({
           ref={inputRef2}
           key={`${tag}${index}`}
           size="small"
-          className="tag-input"
+          className="tag-input tags__input"
           value={editInputValue}
           onChange={handleEditInputChange}
           onBlur={handleEditInputConfirm}
@@ -36,7 +36,7 @@ export const UserArticleTags: FC<IUserArticleTags> = ({
     }
     const isLongTag = tag.length > 20;
     const tagElem = (
-      <Tag className="edit-tag" key={`${tag}${index}`} closable onClose={() => handleClose(tag)}>
+      <Tag className="edit-tag tags__item" key={`${tag}${index}`} closable onClose={() => handleClose(tag)}>
         <span onDoubleClick={(evt) => getArgsFromTag(evt, index, tag)}>{isLongTag ? `${tag.slice(0, 20)}...` : tag}</span>
       </Tag>
     );
@@ -50,14 +50,14 @@ export const UserArticleTags: FC<IUserArticleTags> = ({
   });
 
   return (
-    <div style={{ display: 'block', transform: 'translate(10px, 120px)' }}>
+    <div className="tags form__tags">
       {content}
       {inputVisible && (
         <Input
           ref={inputRef}
           type="text"
           size="small"
-          className="tag-input"
+          className="tag-input tags__input"
           value={inputValue}
           onChange={handleInputChange}
           onBlur={handleInputConfirm}
@@ -65,7 +65,7 @@ export const UserArticleTags: FC<IUserArticleTags> = ({
         />
       )}
       {!inputVisible && (
-        <Tag className="site-tag-plus" onClick={showInput}>
+        <Tag className="site-tag-plus tags__item" onClick={showInput}>
           <PlusOutlined /> New Tag
         </Tag>
       )}

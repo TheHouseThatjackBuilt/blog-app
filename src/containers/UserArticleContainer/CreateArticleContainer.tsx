@@ -2,4 +2,6 @@
 import React from 'react';
 import { CreateArticle } from '../../components/UserArticle/CreateArticle';
 
-export const CreateArticleContainer = () => <CreateArticle />;
+export const CreateArticleContainer = () => {
+  return <CreateArticle />;
+};
