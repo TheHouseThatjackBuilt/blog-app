@@ -55,8 +55,8 @@ export interface IFormCheckbox {
 export interface IForm {
   inputRef: typeof Ref;
   errors: DeepMap<Record<string, any>, FieldError>;
-  onSubmit: any;
-  load: boolean;
+  onSubmit: () => void;
+  load?: boolean;
 }
 
 export interface IHeader {

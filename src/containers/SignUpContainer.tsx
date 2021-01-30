@@ -26,8 +26,11 @@ const SignUpContainer: FC<PropsFromRedux> = ({ load, error, user, authNewUserThu
       setUserCookie('token', user.token);
       history.push('/');
     }
+  }, [user]);
+
+  useEffect(() => {
     if (error) error.forEach((key, value) => setError(value, { type: 'server validation error', message: `${value} ${key}` }));
-  }, [user, error]);
+  }, [error]);
 
   const onSubmit = handleSubmit(({ username, email, password }) => authNewUserThunk({ username, email, password }));
 

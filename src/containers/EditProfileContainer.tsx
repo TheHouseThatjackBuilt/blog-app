@@ -25,8 +25,9 @@ const EditProfileContainer: FC<PropsFromRedux> = ({ load, error, user, updateUse
     resolver: yupResolver(updateProfileSchema),
   });
 
+  // разнести по разным useEffect
   useEffect(() => {
-    if (user) history.push('/');
+    if (!user) history.push('/');
     if (error) error.forEach((key, value) => setError(value, { type: 'server validation error', message: `${value} ${key}` }));
   }, [user, error]);
 

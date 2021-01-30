@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
+import React, { forwardRef } from 'react';
 
-export const FormInputTitle: FC = () => (
+export const FormInputTitle = forwardRef<HTMLInputElement & HTMLTextAreaElement>((props, ref) => (
   <label className="form__title input">
     Title
-    <input type="text" autoComplete="off" className="input__text" placeholder="title" name="title" />
+    <input ref={ref} type="text" autoComplete="off" className="input__text" placeholder="title" name="title" {...props} />
   </label>
-);
+));

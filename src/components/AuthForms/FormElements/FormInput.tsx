@@ -15,19 +15,7 @@ const useStyle = makeStyles({
   },
 });
 
-export const Input = forwardRef<
-  HTMLInputElement & HTMLTextAreaElement,
-  IFormInput
->((props, ref) => {
+export const Input = forwardRef<HTMLInputElement & HTMLTextAreaElement, IFormInput>((props, ref) => {
   const styles = useStyle();
-  return (
-    <TextField
-      className={styles.root}
-      variant="outlined"
-      margin="normal"
-      inputRef={ref}
-      fullWidth
-      {...props}
-    />
-  );
+  return <TextField className={styles.root} variant="outlined" margin="normal" inputRef={ref} fullWidth {...props} />;
 });

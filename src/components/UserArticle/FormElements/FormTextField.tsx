@@ -1,8 +1,15 @@
-import React, { FC } from 'react';
+import React, { forwardRef } from 'react';
 
-export const FormTextField: FC = () => (
+export const FormTextField = forwardRef<HTMLInputElement & HTMLTextAreaElement>((props, ref) => (
   <label className="form__text input">
     Text
-    <textarea className="input__text input_textArea" placeholder="print your article here" id="text" name="text" />
+    <textarea
+      ref={ref}
+      className="input__text input_textArea"
+      placeholder="print your article here"
+      id="text"
+      name="text"
+      {...props}
+    />
   </label>
-);
+));
