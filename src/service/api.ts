@@ -1,6 +1,7 @@
 import { IArticleList, IArticle, IUser, IUpdateUser, IUserError } from '../types/redux/index.d';
+import { ICreateNewArticle } from '../types/service/index.d';
 import { ResponseApiError } from './ResponseApiError';
-import { serviceHttpFabric, serviceUserFabric } from '../tools/dataFabric';
+import { serviceHttpFabric, serviceDataWrapper } from '../tools/dataFabric';
 import { Methods } from '../redux/constants';
 
 const BASE_URL = 'https://conduit.productionready.io/api/';
@@ -19,7 +20,7 @@ const http = async <T>(url: string, options: any): Promise<T> => {
   if (!response.ok) throw new Error('some unexpected error');
   return response.json();
 };
-
+// articles block */
 export const requestArticleList = (offsetPage: number): Promise<IArticleList> => {
   const options = serviceHttpFabric(Methods.get);
   return http<IArticleList>(`${ARTICLES}?${LIMIT}=5&${OFFSET}=${offsetPage}`, options);
@@ -30,8 +31,14 @@ export const requestArticle = (id: string): Promise<IArticle> => {
   return http<IArticle>(`${ARTICLES}/${id}`, options);
 };
 
+export const createArticle = (data: ICreateNewArticle) => {
+  const article = serviceDataWrapper(data, 'article');
+  const options = serviceHttpFabric(Methods.post, { body: article });
+  return http<any>(USERS, options);
+};
+// user block */
 export const requestNewUser = (newUser: IUser): Promise<any> => {
-  const user = serviceUserFabric(newUser);
+  const user = serviceDataWrapper(newUser, 'user');
   const options = serviceHttpFabric(Methods.post, { body: user });
   return http<any>(USERS, options);
 };
@@ -42,13 +49,13 @@ export const requestCurrentUser = (token: string) => {
 };
 
 export const authUser = (data: Omit<IUser, 'username'>) => {
-  const user = serviceUserFabric(data);
+  const user = serviceDataWrapper(data, 'user');
   const options = serviceHttpFabric(Methods.post, { body: user });
   return http<any>(`${USERS}/${LOGIN}`, options);
 };
 
 export const updateUser = (data: IUpdateUser, token: string) => {
-  const user = serviceUserFabric(data);
+  const user = serviceDataWrapper(data, 'user');
   const options = serviceHttpFabric(Methods.put, { headers: { Authorization: `Token ${token}` }, body: user });
   return http<any>(USER, options);
 };

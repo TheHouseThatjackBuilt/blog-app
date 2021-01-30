@@ -1,6 +1,6 @@
 export { Thunk } from './thunk.d';
 export { IAutorArticle, IArticleList, IArticle, IUser, IUserError, IResponseUser, IUpdateUser } from './response.d';
-export { IArticlesListState, IUserState, ISingleArticleState, IState } from './store.d';
+export { IArticlesListState, IUserState, ISingleArticleState, IState, IUserArticleState } from './store.d';
 
 export {
   IArticlesErrorAction,
@@ -16,4 +16,8 @@ export {
   INewUserLoadAction,
   ISetNewUserAction,
   INewUserActionsTypes,
+  ICreateNewArticleAction,
+  INewArticleErrorAction,
+  INewArticleLoadAction,
+  IUserArticlesActionsTypes,
 } from './actions.d';

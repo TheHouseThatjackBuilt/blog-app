@@ -10,6 +10,12 @@ export enum ESingleArticle {
   articleLoad = 'SINGLE_ARTICLE_LOAD',
 }
 
+export enum EUserArticles {
+  newArticle = 'CREATE_ARTICLE',
+  dataError = 'USER_ARTICLE_ERROR',
+  dataLoad = 'USER_ARTICLE_LOAD',
+}
+
 export enum EUserActions {
   newUser = 'SET_NEW_USER',
   userError = 'USER__ERROR',

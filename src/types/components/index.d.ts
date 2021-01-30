@@ -2,6 +2,7 @@ export { ValueOrEmpty } from './utils.d';
 export { IUser, IArticleHeader, IArticleBody, IHandleArticleData, ISetUser } from './fabricData.d';
 
 export {
+  IUserArticle,
   IUserArticleTags,
   IArticleList,
   IArticleConstructor,

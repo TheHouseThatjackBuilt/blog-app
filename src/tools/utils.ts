@@ -33,3 +33,21 @@ export const updateProfileSchema = yup.object().shape({
   password: yup.string(),
   image: yup.string().url('enter correct url'),
 });
+
+export const articleShema = yup.object().shape({
+  title: yup
+    .string()
+    .required('article title is required.')
+    .min(3, 'title must be at least 3 charecters.')
+    .max(30, 'title mus be shorter than 20 charecters.'),
+  description: yup
+    .string()
+    .required('article description is required.')
+    .min(3, 'article description must be at least 3 charecters.')
+    .max(30, 'article description mus be shorter than 20 charecters.'),
+  text: yup
+    .string()
+    .required('article text is required.')
+    .min(3, 'article text must be at least 3 charecters.')
+    .max(30, 'article text mus be shorter than 20 charecters.'),
+});

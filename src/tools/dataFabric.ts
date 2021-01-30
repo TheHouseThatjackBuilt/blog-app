@@ -40,7 +40,7 @@ export const serviceHttpFabric = <M extends string>(method: M, options?: IOption
   };
 };
 
-export const serviceUserFabric = <T>(handleUser: T) => ({ user: { ...handleUser } });
+export const serviceDataWrapper = <T>(data: T, wrapper: string) => ({ [wrapper]: { ...data } });
 
 export const errorDataFabric = <T>(data: T): Map<keyof T, string> =>
   Object.entries(data).reduce((acc, [name, value]) => acc.set(name, value.join()), new Map());

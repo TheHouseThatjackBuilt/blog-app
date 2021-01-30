@@ -19,8 +19,15 @@ export interface IUserState {
   errors: any;
 }
 
+export interface IUserArticleState {
+  article: any;
+  load: boolean;
+  errors: any;
+}
+
 export interface IState {
   articlesListState: IArticlesListState;
   singleArtileState: ISingleArticleState;
   userState: IUserState;
+  userArticleState: IUserArticleState;
 }

@@ -92,3 +92,9 @@ export interface IUserArticleTags {
   tags: string[];
   inputVisible: boolean;
 }
+
+export interface IUserArticle {
+  title: string;
+  description: string;
+  text: string;
+}

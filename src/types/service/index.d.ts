@@ -8,3 +8,10 @@ export interface IOptions {
 export interface IApiError<T> {
   item: { errors: T };
 }
+
+export interface ICreateNewArticle {
+  title: string;
+  description: string;
+  body: string;
+  tagList?: string[];
+}
