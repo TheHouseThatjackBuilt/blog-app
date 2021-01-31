@@ -14,14 +14,14 @@ import {
   SubmitButton,
 } from './FormElements/index';
 
-export const CreateArticle: FC<IForm> = ({ onSubmit, inputRef }) => (
+export const CreateArticle: FC<IForm> = ({ onSubmit, inputRef, errors }) => (
   <MainContainer>
     <FormContainer>
       <FormHeader>Create new article</FormHeader>
       <Form onSubmit={onSubmit}>
-        <FormInputTitle ref={inputRef} />
-        <FormInputDescription ref={inputRef} />
-        <FormTextField ref={inputRef} />
+        <FormInputTitle ref={inputRef} errors={errors} />
+        <FormInputDescription ref={inputRef} errors={errors} />
+        <FormTextField ref={inputRef} errors={errors} />
         <UserArticleTagsContainer />
         <SubmitButton>Create</SubmitButton>
       </Form>

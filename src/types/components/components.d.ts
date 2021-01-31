@@ -59,6 +59,13 @@ export interface IForm {
   load?: boolean;
 }
 
+export interface IFormUserArticle {
+  inputRef: typeof Ref;
+  errors: DeepMap<IUserArticle, FieldError>;
+  onSubmit: () => void;
+  load?: boolean;
+}
+
 export interface IHeader {
   user: ISetUser | null;
   load: boolean;
@@ -96,5 +103,5 @@ export interface IUserArticleTags {
 export interface IUserArticle {
   title: string;
   description: string;
-  text: string;
+  body: string;
 }

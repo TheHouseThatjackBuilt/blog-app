@@ -13,6 +13,7 @@ export {
   IArticleBodyContainer,
   IFormInput,
   IForm,
+  IFormUserArticle,
   IFormCheckbox,
   IHeader,
   IUserHeader,

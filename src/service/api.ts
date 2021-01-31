@@ -31,10 +31,10 @@ export const requestArticle = (id: string): Promise<IArticle> => {
   return http<IArticle>(`${ARTICLES}/${id}`, options);
 };
 
-export const createArticle = (data: ICreateNewArticle) => {
+export const createArticle = (data: ICreateNewArticle, token: string) => {
   const article = serviceDataWrapper(data, 'article');
-  const options = serviceHttpFabric(Methods.post, { body: article });
-  return http<any>(USERS, options);
+  const options = serviceHttpFabric(Methods.post, { headers: { Authorization: `Token ${token}` }, body: article });
+  return http<any>(ARTICLES, options);
 };
 // user block */
 export const requestNewUser = (newUser: IUser): Promise<any> => {

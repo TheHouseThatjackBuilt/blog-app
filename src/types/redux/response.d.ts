@@ -47,6 +47,12 @@ export interface IUserError {
   password?: string[];
 }
 
+export interface IUserArticleError {
+  title?: string;
+  description?: string;
+  body?: string;
+}
+
 export interface IResponseUser {
   bio: null | string;
   createdAt?: string;

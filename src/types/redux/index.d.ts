@@ -1,5 +1,15 @@
 export { Thunk } from './thunk.d';
-export { IAutorArticle, IArticleList, IArticle, IUser, IUserError, IResponseUser, IUpdateUser } from './response.d';
+export {
+  IAutorArticle,
+  IArticleList,
+  IArticle,
+  IUser,
+  IUserError,
+  IResponseUser,
+  IUpdateUser,
+  IUserArticleError,
+} from './response.d';
+
 export { IArticlesListState, IUserState, ISingleArticleState, IState, IUserArticleState } from './store.d';
 
 export {
