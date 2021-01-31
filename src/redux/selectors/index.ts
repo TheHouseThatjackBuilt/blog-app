@@ -1,16 +1,17 @@
 export {
+  userStateLoadSelector,
+  userStateUserSelector,
+  userStateErrorSelector,
+  userStateErrorReselector,
+} from './userStateSelectors';
+
+export {
   articlesStateCountSelector,
   articlesStateErrorSelector,
   articlesStateLoadSelector,
   articlesStateSelector,
+  articlesStateReselector,
 } from './articlesStateSelectors';
-
-export {
-  userStateErrorReselector,
-  userStateLoadSelector,
-  userStateUserSelector,
-  userStateErrorSelector,
-} from './userStateSelectors';
 
 export {
   singleArticleStateErrorSelector,

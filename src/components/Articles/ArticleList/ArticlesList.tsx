@@ -1,13 +1,13 @@
 /* eslint-disable */
-import React from 'react';
+import React, { FC } from 'react';
 import { IArticleList } from '../../../types/components/index.d';
 import ArticleConstructor from '../ArticleConstructor/ArticleConstructor';
 import { Spinner, Pagination, MainContainer } from '../../AppElements/index';
 
-export const ArticlesList: React.FC<IArticleList> = ({ articles, pageHandler, totalPages, load, page }) => {
+export const ArticlesList: FC<IArticleList> = ({ articles, pageHandler, totalPages, load, page }) => {
   const content = articles
     ? articles?.map((article) => (
-        <li key={article.slug} className="content__itemContainer">
+        <li key={article.header.slug} className="content__itemContainer">
           <ArticleConstructor article={article} flag={false} />
         </li>
       ))

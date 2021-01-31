@@ -28,8 +28,9 @@ export const articlePreviewDataFabric = (data: IArticle, user: string | null): I
       favoritesCount,
       title,
       owner,
+      description,
     },
-    body: { body, description },
+    body,
   };
 };
 

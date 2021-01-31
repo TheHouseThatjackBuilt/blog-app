@@ -4,7 +4,7 @@ import { IArticle, ISetArticleTagsAction } from '../redux/index.d';
 import { IArticleBody, ISetUser, IHandleArticleData } from './index.d';
 
 export interface IArticleList {
-  articles: IArticle[] | null;
+  articles: IHandleArticleData[] | null;
   load: boolean;
   totalPages: number;
   page: number;
@@ -36,8 +36,7 @@ export interface IArticleConstructor {
 }
 
 export interface IArticleBodyContainer {
-  article: IArticleBody;
-  flag: boolean;
+  articleBody: IArticleBody;
 }
 
 export interface IFormInput {

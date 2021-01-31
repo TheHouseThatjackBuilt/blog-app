@@ -8,7 +8,7 @@ import ArticleBody from '../ArticleBody/ArticleBody';
 const ArticleConstructor: React.FC<IArticleConstructor> = ({ article, flag }) => (
   <article className="article article__preview">
     <ArticleHeader {...article.header} />
-    <ArticleBody article={article.body} flag={flag} />
+    {flag && <ArticleBody articleBody={article.body} />}
   </article>
 );
 export default ArticleConstructor;

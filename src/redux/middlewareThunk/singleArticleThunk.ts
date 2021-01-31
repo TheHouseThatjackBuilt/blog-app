@@ -11,6 +11,9 @@ export const getArticleThunk: Thunk<ISingleArticleActionsTypes, ISingleArticleSt
 ) => {
   dispatch(aticleLoadAction(true));
   return requestArticle(id)
-    .then((response) => dispatch(getArticleAction(response)))
+    .then((response) => {
+      const { article } = response;
+      dispatch(getArticleAction({ ...article }));
+    })
     .catch((error) => dispatch(articleErrorAction(error)));
 };

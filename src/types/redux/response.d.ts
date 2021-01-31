@@ -6,6 +6,7 @@ export interface IAutorArticle {
 }
 
 export interface IArticle {
+  author: IAutorArticle;
   slug: string;
   title: string;
   description: string;
@@ -15,7 +16,6 @@ export interface IArticle {
   updatedAt: string;
   favorited: boolean;
   favoritesCount: number;
-  author: IAutorArticle;
 }
 
 export interface IArticleList {

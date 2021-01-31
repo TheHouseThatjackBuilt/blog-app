@@ -16,14 +16,14 @@ const http = async <T>(url: string, options: any): Promise<T> => {
   return response.json();
 };
 // articles block */
-export const requestArticleList = (offsetPage: number): Promise<IArticleList> => {
+export const requestArticleList = (offsetPage: number) => {
   const options = serviceHttpFabric(Methods.get);
   return http<IArticleList>(`${ARTICLES}?${LIMIT}=5&${OFFSET}=${offsetPage}`, options);
 };
 
-export const requestArticle = (id: string): Promise<IArticle> => {
+export const requestArticle = (id: string) => {
   const options = serviceHttpFabric(Methods.get);
-  return http<IArticle>(`${ARTICLES}/${id}`, options);
+  return http<{ article: IArticle }>(`${ARTICLES}/${id}`, options);
 };
 
 export const createArticle = (data: ICreateNewArticle, token: string) => {
@@ -32,7 +32,7 @@ export const createArticle = (data: ICreateNewArticle, token: string) => {
   return http<{ article: IArticle }>(ARTICLES, options);
 };
 // user block */
-export const requestNewUser = (newUser: IUser): Promise<any> => {
+export const requestNewUser = (newUser: IUser) => {
   const user = serviceDataWrapper(newUser, 'user');
   const options = serviceHttpFabric(Methods.post, { body: user });
   return http<{ user: IResponseUser }>(USERS, options);

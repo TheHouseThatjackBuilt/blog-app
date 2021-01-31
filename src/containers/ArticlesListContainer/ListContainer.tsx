@@ -5,7 +5,7 @@ import {
   articlesStateCountSelector,
   articlesStateErrorSelector,
   articlesStateLoadSelector,
-  articlesStateSelector,
+  articlesStateReselector,
 } from '../../redux/selectors/index';
 // types
 import { IState } from '../../types/redux/index.d';
@@ -29,7 +29,7 @@ const ArticlesListContainer = ({ articles, articlesCount, load, error, getArticl
 };
 
 const mapStateToProps = (state: IState) => ({
-  articles: articlesStateSelector(state),
+  articles: articlesStateReselector(state),
   articlesCount: articlesStateCountSelector(state),
   load: articlesStateLoadSelector(state),
   error: articlesStateErrorSelector(state),
