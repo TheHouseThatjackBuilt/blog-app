@@ -51,7 +51,7 @@ const CreateArticleContainer: FC<PropsFromRedux> = ({
     if (error) error.forEach((key, value) => setError(value, { type: 'server validation error', message: `${value} ${key}` }));
   }, [error]);
 
-  const onSubmit = handleSubmit((data) => getArticleThunk(data, userCookie.token));
+  const onSubmit = handleSubmit((data) => getArticleThunk(data, tags, userCookie.token));
 
   return (
     <CreateArticle

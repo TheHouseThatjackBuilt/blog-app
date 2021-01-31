@@ -8,11 +8,13 @@ import { createNewArticleAction, newArticleErrorAction, newArticleLoadAction } f
 // service:
 import { createArticle } from '../../service/api';
 
-export const getArticleThunk: Thunk<IUserArticlesActionsTypes, IUserArticleState> = (data: ICreateNewArticle, token: string) => (
-  dispatch: Dispatch<IUserArticlesActionsTypes>
-) => {
+export const getArticleThunk: Thunk<IUserArticlesActionsTypes, IUserArticleState> = (
+  data: ICreateNewArticle,
+  tagList: string[],
+  token: string
+) => (dispatch: Dispatch<IUserArticlesActionsTypes>) => {
   dispatch(newArticleLoadAction(true));
-  return createArticle(data, token)
+  return createArticle({ ...data, tagList }, token)
     .then((response) => {
       const { article } = response;
       dispatch(createNewArticleAction({ ...article }));

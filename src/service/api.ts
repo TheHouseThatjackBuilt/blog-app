@@ -1,18 +1,11 @@
-// types & consts:
+// types & constants:
 import { IArticleList, IArticle, IUser, IUpdateUser, IUserError, IResponseUser } from '../types/redux/index.d';
+import { ARTICLES, BASE_URL, LIMIT, LOGIN, OFFSET, USER, USERS } from './constants';
 import { ICreateNewArticle } from '../types/service/index.d';
 import { Methods } from '../redux/constants';
 // fabrics & custom error:
 import { serviceHttpFabric, serviceDataWrapper } from '../tools/dataFabric';
 import { ResponseApiError } from './ResponseApiError';
-
-const BASE_URL = 'https://conduit.productionready.io/api/';
-const ARTICLES = 'articles';
-const LIMIT = 'limit';
-const OFFSET = 'offset';
-const USERS = 'users';
-const USER = 'user';
-const LOGIN = 'login';
 
 const http = async <T>(url: string, options: any): Promise<T> => {
   const link = new URL(url, BASE_URL);

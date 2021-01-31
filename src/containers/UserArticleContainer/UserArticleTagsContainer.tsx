@@ -19,6 +19,7 @@ export const UserArticleTagsContainer: FC<IUserArticleTagsContainer> = ({ tags, 
     setEditInputIndex(editIndex);
     setEditInputValue(value);
   };
+
   const showInput = () => {
     setInputVisible(true);
   };
