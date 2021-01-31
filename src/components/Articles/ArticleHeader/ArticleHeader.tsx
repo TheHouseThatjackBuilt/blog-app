@@ -13,12 +13,10 @@ const ArticleHeader: FC<IArticleHeader> = ({
   slug,
   tagList,
   title,
+  owner,
 }) => {
   const [like, setLike] = useState(false);
-  const tags =
-    tagList.length > 0
-      ? tagList.map((el: string) => <ArticleTags key={el} tag={el} />)
-      : null;
+  const tags = tagList.length > 0 ? tagList.map((el: string) => <ArticleTags key={el} tag={el} />) : null;
 
   const setLikesHandler = () => setLike(!like);
   return (
@@ -36,9 +34,7 @@ const ArticleHeader: FC<IArticleHeader> = ({
                 article__like_active: like,
               })}
             />
-            <div className="article__like-counter">
-              {favoritesCount === 0 ? null : favoritesCount}
-            </div>
+            <div className="article__like-counter">{favoritesCount === 0 ? null : favoritesCount}</div>
           </div>
         </div>
         <div className="article__tag-list">{tags}</div>

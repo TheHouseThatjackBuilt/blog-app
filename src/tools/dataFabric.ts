@@ -5,7 +5,7 @@ import { IArticle, IResponseUser } from '../types/redux/index.d';
 import { IHandleArticleData } from '../types/components/index.d';
 import { IOptions } from '../types/service/index.d';
 
-export const articlePreviewDataFabric = (data: IArticle): IHandleArticleData => {
+export const articlePreviewDataFabric = (data: IArticle, user: string | null): IHandleArticleData => {
   const {
     author: { image, username },
     body,
@@ -17,6 +17,7 @@ export const articlePreviewDataFabric = (data: IArticle): IHandleArticleData => 
     title,
   } = data;
 
+  const owner = user === username;
   const date = formatedDate(new Date(createdAt), 'MMMMd,y');
   return {
     header: {
@@ -26,6 +27,7 @@ export const articlePreviewDataFabric = (data: IArticle): IHandleArticleData => 
       tagList,
       favoritesCount,
       title,
+      owner,
     },
     body: { body, description },
   };

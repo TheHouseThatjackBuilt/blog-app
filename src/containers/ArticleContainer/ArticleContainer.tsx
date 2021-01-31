@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import {
   singleArticleStateErrorSelector,
   singleArticleStateLoadSelector,
-  singleArticleStateSelector,
+  singleArticleStateReselector,
 } from '../../redux/selectors/index';
 // types
 import { IState } from '../../types/redux/index.d';
@@ -22,6 +22,9 @@ const ArticleContainer = ({ article, load, error, getArticleThunk }: PropsFromRe
 
   useEffect(() => {
     getArticleThunk(slug);
+  }, [slug]);
+
+  useEffect(() => {
     if (error) throw new Error('something went wrong in Single Article');
   }, [slug, error]);
 
@@ -29,7 +32,7 @@ const ArticleContainer = ({ article, load, error, getArticleThunk }: PropsFromRe
 };
 
 const mapStateToProps = (state: IState) => ({
-  article: singleArticleStateSelector(state),
+  article: singleArticleStateReselector(state),
   load: singleArticleStateLoadSelector(state),
   error: singleArticleStateErrorSelector(state),
 });

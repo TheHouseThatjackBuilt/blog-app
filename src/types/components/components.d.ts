@@ -1,7 +1,7 @@
 import { ChangeEvent, MouseEvent } from 'react';
 import { Ref, DeepMap, FieldError } from 'react-hook-form';
 import { IArticle, ISetArticleTagsAction } from '../redux/index.d';
-import { IArticleBody, ISetUser } from './index.d';
+import { IArticleBody, ISetUser, IHandleArticleData } from './index.d';
 
 export interface IArticleList {
   articles: IArticle[] | null;
@@ -31,7 +31,7 @@ export interface IParams {
 }
 
 export interface IArticleConstructor {
-  article: IArticle;
+  article: IHandleArticleData;
   flag: boolean;
 }
 

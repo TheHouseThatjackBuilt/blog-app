@@ -16,6 +16,7 @@ export {
   singleArticleStateErrorSelector,
   singleArticleStateLoadSelector,
   singleArticleStateSelector,
+  singleArticleStateReselector,
 } from './singleArticleStateSelectors';
 
 export {

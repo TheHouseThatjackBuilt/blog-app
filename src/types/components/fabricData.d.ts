@@ -7,6 +7,7 @@ export interface IUser {
 
 export interface IArticleHeader {
   author: IUser;
+  owner: boolean;
   date: string;
   slug: string;
   tagList: string[];
