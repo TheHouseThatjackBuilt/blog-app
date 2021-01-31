@@ -54,16 +54,6 @@ export interface ISetArticleTagsAction {
   payload: string[];
 }
 
-export interface IAddArticleTagsAction {
-  type: typeof EUserArticles.pushTag;
-  payload: string;
-}
-
-export interface IDelArticleTagsAction {
-  type: typeof EUserArticles.deleteTag;
-  payload: string;
-}
-
 // user actions:
 export interface ISetNewUserAction {
   type: typeof EUserActions.newUser;
@@ -87,6 +77,4 @@ export type IUserArticlesActionsTypes =
   | ICreateNewArticleAction
   | INewArticleLoadAction
   | INewArticleErrorAction
-  | ISetArticleTagsAction
-  | IAddArticleTagsAction
-  | IDelArticleTagsAction;
+  | ISetArticleTagsAction;

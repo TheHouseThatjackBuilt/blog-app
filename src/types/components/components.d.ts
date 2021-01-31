@@ -1,6 +1,6 @@
 import { ChangeEvent, MouseEvent } from 'react';
 import { Ref, DeepMap, FieldError } from 'react-hook-form';
-import { IArticle } from '../redux/index.d';
+import { IArticle, ISetArticleTagsAction } from '../redux/index.d';
 import { IArticleBody, ISetUser } from './index.d';
 
 export interface IArticleList {
@@ -57,6 +57,16 @@ export interface IForm {
   errors: DeepMap<Record<string, any>, FieldError>;
   onSubmit: () => void;
   load?: boolean;
+}
+
+export interface ICreateArticle extends IForm {
+  tags: string[];
+  setTags: (value: string[]) => ISetArticleTagsAction;
+}
+
+export interface IUserArticleTagsContainer {
+  tags: string[];
+  setTags: (value: string[]) => ISetArticleTagsAction;
 }
 
 export interface IFormUserArticle {

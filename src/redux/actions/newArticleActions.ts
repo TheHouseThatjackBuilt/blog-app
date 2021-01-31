@@ -3,8 +3,6 @@ import {
   ICreateNewArticleAction,
   INewArticleErrorAction,
   INewArticleLoadAction,
-  IAddArticleTagsAction,
-  IDelArticleTagsAction,
   ISetArticleTagsAction,
 } from '../../types/redux/index.d';
 import { EUserArticles } from '../constants';
@@ -25,5 +23,3 @@ export const newArticleErrorAction = (payload: any): INewArticleErrorAction => (
 });
 
 export const articleSetTagsAction = (payload: string[]): ISetArticleTagsAction => ({ type: EUserArticles.setTags, payload });
-export const articleAddTagAction = (payload: string): IAddArticleTagsAction => ({ type: EUserArticles.pushTag, payload });
-export const articleDelTagAction = (payload: string): IDelArticleTagsAction => ({ type: EUserArticles.deleteTag, payload });

@@ -17,4 +17,6 @@ export {
   IFormCheckbox,
   IHeader,
   IUserHeader,
+  ICreateArticle,
+  IUserArticleTagsContainer,
 } from './components.d';

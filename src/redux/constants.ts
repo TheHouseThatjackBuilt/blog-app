@@ -15,8 +15,6 @@ export enum EUserArticles {
   dataError = 'USER_ARTICLE_ERROR',
   dataLoad = 'USER_ARTICLE_LOAD',
   setTags = 'SET_TAGS_ARRAY',
-  pushTag = 'PUSH_NEW_TAG',
-  deleteTag = 'DELETE_TAG',
 }
 
 export enum EUserActions {

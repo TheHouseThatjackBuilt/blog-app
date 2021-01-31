@@ -6,7 +6,7 @@ import { IApiError } from '../../types/service/index.d';
 export const userArticleLoadStateSelector = (state: IState) => state.userArticleState.load;
 export const userArticleErrorStateSelector = (state: IState) => state.userArticleState.errors;
 export const userArticleStateSelector = (state: IState) => state.userArticleState.article;
-
+export const userArticleStateTagsSelector = (state: IState) => state.userArticleState.userTags;
 export const userArticleErrorStateReselector = createSelector(
   userArticleErrorStateSelector,
   (data: null | IApiError<IUserArticleError>) => {
@@ -14,3 +14,8 @@ export const userArticleErrorStateReselector = createSelector(
     return errorDataFabric<IUserArticleError>(data.item.errors);
   }
 );
+
+export const userArticleStateTagsReselector = createSelector(userArticleStateSelector, (article) => {
+  if (article) return article.tagList;
+  return [];
+});

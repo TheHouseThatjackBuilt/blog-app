@@ -19,10 +19,6 @@ export const userArticleState = (state = init, action: IUserArticlesActionsTypes
       return { ...state, load: action.payload };
     case EUserArticles.setTags:
       return { ...state, userTags: action.payload };
-    case EUserArticles.deleteTag:
-      return { ...state, userTags: state.userTags.filter((key) => key !== action.payload) };
-    case EUserArticles.pushTag:
-      return { ...state, userTags: [...state.userTags, action.payload] };
     default:
       return state;
   }

@@ -22,5 +22,7 @@ export {
   userArticleErrorStateSelector,
   userArticleLoadStateSelector,
   userArticleStateSelector,
+  userArticleStateTagsSelector,
   userArticleErrorStateReselector,
+  userArticleStateTagsReselector,
 } from './userArticlesSelectors';
