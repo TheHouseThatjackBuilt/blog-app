@@ -13,6 +13,9 @@ export const getArticleThunk: Thunk<IUserArticlesActionsTypes, IUserArticleState
 ) => {
   dispatch(newArticleLoadAction(true));
   return createArticle(data, token)
-    .then((response) => dispatch(createNewArticleAction(response)))
+    .then((response) => {
+      const { article } = response;
+      dispatch(createNewArticleAction({ ...article }));
+    })
     .catch((error) => dispatch(newArticleErrorAction(error)));
 };

@@ -1,5 +1,4 @@
 import { IArticle, IArticleList, IResponseUser } from './index.d';
-import { ICreateNewArticle } from '../service/index.d';
 import { EArticleActions, EUserActions, ESingleArticle, EUserArticles } from '../../redux/constants';
 
 // articles list actions:
@@ -34,10 +33,10 @@ export interface ISingleArticleErrorAction {
   payload: any;
 }
 
-// new articles:
+// new article:
 export interface ICreateNewArticleAction {
   type: typeof EUserArticles.newArticle;
-  payload: ICreateNewArticle;
+  payload: IArticle;
 }
 
 export interface INewArticleLoadAction {
@@ -48,6 +47,21 @@ export interface INewArticleLoadAction {
 export interface INewArticleErrorAction {
   type: typeof EUserArticles.dataError;
   payload: any;
+}
+
+export interface ISetArticleTagsAction {
+  type: typeof EUserArticles.setTags;
+  payload: string[];
+}
+
+export interface IAddArticleTagsAction {
+  type: typeof EUserArticles.pushTag;
+  payload: string;
+}
+
+export interface IDelArticleTagsAction {
+  type: typeof EUserArticles.deleteTag;
+  payload: string;
 }
 
 // user actions:
@@ -69,4 +83,10 @@ export interface INewUserErrorAction {
 export type INewUserActionsTypes = ISetNewUserAction | INewUserLoadAction | INewUserErrorAction;
 export type ISingleArticleActionsTypes = IGetSingleArticleAction | ISingleArticleLoadAction | ISingleArticleErrorAction;
 export type IArticleListActionsTypes = IGetArticlesAction | IArticlesErrorAction | IArticlesLoadAction;
-export type IUserArticlesActionsTypes = ICreateNewArticleAction | INewArticleLoadAction | INewArticleErrorAction;
+export type IUserArticlesActionsTypes =
+  | ICreateNewArticleAction
+  | INewArticleLoadAction
+  | INewArticleErrorAction
+  | ISetArticleTagsAction
+  | IAddArticleTagsAction
+  | IDelArticleTagsAction;

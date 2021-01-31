@@ -20,9 +20,10 @@ export interface IUserState {
 }
 
 export interface IUserArticleState {
-  article: any;
+  article: IArticle | null;
   load: boolean;
   errors: any;
+  userTags: string[];
 }
 
 export interface IState {

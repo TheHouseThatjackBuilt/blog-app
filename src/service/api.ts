@@ -1,8 +1,10 @@
-import { IArticleList, IArticle, IUser, IUpdateUser, IUserError } from '../types/redux/index.d';
+// types & consts:
+import { IArticleList, IArticle, IUser, IUpdateUser, IUserError, IResponseUser } from '../types/redux/index.d';
 import { ICreateNewArticle } from '../types/service/index.d';
-import { ResponseApiError } from './ResponseApiError';
-import { serviceHttpFabric, serviceDataWrapper } from '../tools/dataFabric';
 import { Methods } from '../redux/constants';
+// fabrics & custom error:
+import { serviceHttpFabric, serviceDataWrapper } from '../tools/dataFabric';
+import { ResponseApiError } from './ResponseApiError';
 
 const BASE_URL = 'https://conduit.productionready.io/api/';
 const ARTICLES = 'articles';
@@ -34,28 +36,28 @@ export const requestArticle = (id: string): Promise<IArticle> => {
 export const createArticle = (data: ICreateNewArticle, token: string) => {
   const article = serviceDataWrapper(data, 'article');
   const options = serviceHttpFabric(Methods.post, { headers: { Authorization: `Token ${token}` }, body: article });
-  return http<any>(ARTICLES, options);
+  return http<{ article: IArticle }>(ARTICLES, options);
 };
 // user block */
 export const requestNewUser = (newUser: IUser): Promise<any> => {
   const user = serviceDataWrapper(newUser, 'user');
   const options = serviceHttpFabric(Methods.post, { body: user });
-  return http<any>(USERS, options);
+  return http<{ user: IResponseUser }>(USERS, options);
 };
 
 export const requestCurrentUser = (token: string) => {
   const options = serviceHttpFabric(Methods.get, { headers: { Authorization: `Token ${token}` } });
-  return http<any>(USER, options);
+  return http<{ user: IResponseUser }>(USER, options);
 };
 
 export const authUser = (data: Omit<IUser, 'username'>) => {
   const user = serviceDataWrapper(data, 'user');
   const options = serviceHttpFabric(Methods.post, { body: user });
-  return http<any>(`${USERS}/${LOGIN}`, options);
+  return http<{ user: IResponseUser }>(`${USERS}/${LOGIN}`, options);
 };
 
 export const updateUser = (data: IUpdateUser, token: string) => {
   const user = serviceDataWrapper(data, 'user');
   const options = serviceHttpFabric(Methods.put, { headers: { Authorization: `Token ${token}` }, body: user });
-  return http<any>(USER, options);
+  return http<{ user: IResponseUser }>(USER, options);
 };
