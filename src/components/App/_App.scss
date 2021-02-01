@@ -121,6 +121,7 @@ strong {
   &__header {
     background-color: $backgroundColorHeader;
   }
+
   &__content {
     display: grid;
     grid-template: 1fr / minmax(500px, 940px);

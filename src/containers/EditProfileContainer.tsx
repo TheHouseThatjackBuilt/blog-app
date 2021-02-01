@@ -28,8 +28,11 @@ const EditProfileContainer: FC<PropsFromRedux> = ({ load, error, user, updateUse
   // разнести по разным useEffect
   useEffect(() => {
     if (!user) history.push('/');
+  }, [user]);
+
+  useEffect(() => {
     if (error) error.forEach((key, value) => setError(value, { type: 'server validation error', message: `${value} ${key}` }));
-  }, [user, error]);
+  }, [error]);
 
   const onSubmit = handleSubmit((data) => updateUserThunk(data, userCookie.token));
 

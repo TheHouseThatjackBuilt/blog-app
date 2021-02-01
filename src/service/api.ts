@@ -18,7 +18,7 @@ const http = async <T>(url: string, options: any): Promise<T> => {
 // articles block */
 export const requestArticleList = (offsetPage: number) => {
   const options = serviceHttpFabric(Methods.get);
-  return http<IArticleList>(`${ARTICLES}?${LIMIT}=5&${OFFSET}=${offsetPage}`, options);
+  return http<IArticleList>(`${ARTICLES}?${LIMIT}=10&${OFFSET}=${offsetPage}`, options);
 };
 
 export const requestArticle = (id: string) => {

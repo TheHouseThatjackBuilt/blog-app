@@ -4,6 +4,10 @@
   justify-content: space-between;
   align-content: center;
   padding: 22px 0 22px 0;
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid #ebeef3;
+  z-index: 2;
 
   &__title {
     justify-self: center;
@@ -67,6 +71,32 @@
     & > a {
       color: $successColor;
     }
+  }
+
+  &__delete-article {
+    border: 1px solid $deleteColor;
+    width: 112px;
+    height: 31px;
+    align-self: center;
+    font-style: normal;
+    font-weight: normal;
+    color: $deleteColor;
+    font-size: 14px;
+    line-height: 22px;
+    border-radius: 5px;
+  }
+
+  &__edit-article {
+    border: 1px solid $successColor;
+    width: 112px;
+    height: 31px;
+    align-self: center;
+    font-style: normal;
+    font-weight: normal;
+    color: $successColor;
+    font-size: 14px;
+    line-height: 22px;
+    border-radius: 5px;
   }
 }
 

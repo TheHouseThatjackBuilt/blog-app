@@ -5,15 +5,13 @@
 
   &__container-preview {
     display: grid;
-    grid-template: repeat(5, 140px) / minmax(500px, 940px);
+    grid-template: 140px / minmax(500px, 940px);
     gap: 25px;
     margin: 25px;
   }
 
-  &__full {
-    display: grid;
-    margin-top: 25px;
-    grid-template: minmax(100px, 1fr) / minmax(500px, 940px);
+  &__itemContainer {
+    height: 140px;
   }
 
   &__pagination {
@@ -25,39 +23,48 @@
     color: rgba(0, 0, 0, 0.75);
   }
 
-  &__itemContainer {
-    display: block;
+  &__article-preview {
+    background-color: $backgroundColorContent;
+    border-radius: 15px;
+    box-shadow: $shadow;
+    height: 100%;
+    padding: 15px;
   }
 }
 
 .article {
-  display: grid;
-  grid-template: 71px 1fr / 1fr;
-  gap: 5px;
-  background-color: $backgroundColorContent;
-  border-radius: 5px;
-  box-shadow: $shadow;
-  height: 100%;
-
   &__header {
     display: grid;
-    grid-template: 1fr / 1fr minmax(100px, 362px);
-    overflow: hidden;
-    margin-top: 15px;
+    grid-template: 1fr 1fr / 1fr;
+  }
+
+  &__header-preview {
+    display: grid;
+    grid-template: 1fr / 1fr 200px;
+  }
+
+  &__header-container {
+    display: grid;
+    grid-template: 1fr / 1fr 200px;
   }
 
   &__title-container {
-    margin-left: 20px;
-    justify-items: start;
     display: grid;
     grid-template: 1fr 1fr / 1fr;
-    row-gap: 4px;
+    gap: 6px;
   }
 
   &__title-wrapper {
     display: grid;
-    grid-template: 1fr / 1fr 1fr;
-    column-gap: 10px;
+    grid-template: 1fr / max-content 30px;
+    column-gap: 5px;
+  }
+
+  &__description {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 22px;
   }
 
   &__title {
@@ -96,57 +103,25 @@
     color: $countColor;
   }
 
-  &__tag-list {
-    display: grid;
-    grid-auto-flow: column;
-    gap: 8px;
-  }
-
   &__tag {
+    width: fit-content;
     padding: 0 10px;
     height: 20px;
+    background-color: white;
     border-radius: 5px;
     align-items: center;
-    background-color: inherit;
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 15px;
-    color: $dateColor;
-    border: 1px solid $dateColor;
-    box-shadow: $shadow;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-
-    &::after {
-      display: block;
-      position: absolute;
-      margin: 0;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      content: '.';
-      color: transparent;
-      width: 1px;
-      height: 1px;
-      border-radius: 50%;
-      background: transparent;
-      transition: all 0.3s;
-    }
-    &:hover::after {
-      animation: circle 0.5s ease-in forwards;
-      color: $mainTextcolor;
-    }
 
     &:hover {
-      color: $dateColor;
+      border-color: #1890ff;
+      color: #1890ff;
     }
   }
 
   &__user-container {
-    margin-right: 15px;
     display: grid;
     grid-template:
       [start] 'username userpic' 25px [row2]
@@ -202,5 +177,10 @@
     & > img {
       border-radius: 50%;
     }
+  }
+}
+
+.buttons {
+  &__delete-article {
   }
 }

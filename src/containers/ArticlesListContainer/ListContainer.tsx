@@ -25,6 +25,7 @@ const ArticlesListContainer = ({ articles, articlesCount, load, error, getArticl
   }, [page]);
 
   const handlePagesSwitch = (evt: number) => setPage(evt);
+
   return <ArticlesList articles={articles} pageHandler={handlePagesSwitch} totalPages={articlesCount} load={load} page={page} />;
 };
 

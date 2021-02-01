@@ -10,7 +10,6 @@ export const articlesStateErrorSelector = (state: IState) => state.articlesListS
 
 export const articlesStateReselector = createSelector(articlesStateSelector, userStateUserSelector, (articles, user) => {
   if (!articles) return null;
-  if (!articles && !user) return null;
   return user
     ? articles.map((article) => articlePreviewDataFabric(article, user.username))
     : articles.map((article) => articlePreviewDataFabric(article, null));
