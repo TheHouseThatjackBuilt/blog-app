@@ -7,15 +7,11 @@ import {
   singleArticleStateLoadSelector,
   singleArticleStateReselector,
 } from '../../redux/selectors/index';
-// types
+
 import { IState } from '../../types/redux/index.d';
 import { IParams } from '../../types/components/index.d';
-// thunk
 import { getArticleThunk } from '../../redux/middlewareThunk/singleArticleThunk';
-// component
 import { SingleArticle } from '../../components/Articles/SingleArticle/SingleArticle';
-
-type PropsFromRedux = ConnectedProps<typeof connector>;
 
 const ArticleContainer = ({ article, load, error, getArticleThunk }: PropsFromRedux) => {
   const { slug } = useParams<IParams>();
@@ -26,7 +22,7 @@ const ArticleContainer = ({ article, load, error, getArticleThunk }: PropsFromRe
 
   useEffect(() => {
     if (error) throw new Error('something went wrong in Single Article');
-  }, [slug, error]);
+  }, [error]);
 
   return <SingleArticle data={article} load={load} />;
 };
@@ -39,4 +35,6 @@ const mapStateToProps = (state: IState) => ({
 
 const mapDispatch = { getArticleThunk };
 const connector = connect(mapStateToProps, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
 export default connector(ArticleContainer);

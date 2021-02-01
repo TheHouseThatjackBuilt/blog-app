@@ -28,3 +28,4 @@ export const CreateArticle: FC<ICreateArticle> = ({ onSubmit, inputRef, errors, 
     </FormContainer>
   </MainContainer>
 );
+// TODO: create transition to /articles/:author

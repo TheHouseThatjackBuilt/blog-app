@@ -12,6 +12,7 @@
 
   &__itemContainer {
     height: 140px;
+    width: 940px;
   }
 
   &__pagination {
@@ -40,7 +41,7 @@
 
   &__header-preview {
     display: grid;
-    grid-template: 1fr / 1fr 200px;
+    grid-template: 1fr / 1fr max-content;
   }
 
   &__header-container {
@@ -160,12 +161,23 @@
     color: rgba(0, 0, 0, 0.75);
 
     & > h2 {
-      font-family: Inter;
+      font-family: 'Inter';
       font-style: normal;
       font-weight: 400;
       font-size: 18px;
       line-height: 28px;
     }
+  }
+
+  &__buttons {
+    display: grid;
+    grid-template: 1fr / 1fr 1fr;
+    gap: 12px;
+  }
+
+  &__full {
+    height: fit-content;
+    margin-top: 30px;
   }
 }
 
@@ -181,6 +193,15 @@
 }
 
 .buttons {
+  border-radius: 15px;
+
   &__delete-article {
+    width: 78px;
+    height: 32px;
+  }
+
+  &__edit-article {
+    border-color: $successColor;
+    color: $successColor;
   }
 }

@@ -1,8 +1,7 @@
-import { SingleArticlePage } from './SingleArticlePage';
-import ArticleListPage from './ArticleListPage';
-import { SignUpPage } from './SignUpPage';
-import { SignInPage } from './SignInPage';
-import { EditProfilePage } from './EditProfilePage';
-import { CreateArticlePage } from './CreateArticlePage';
-
-export { SingleArticlePage, ArticleListPage, SignUpPage, SignInPage, EditProfilePage, CreateArticlePage };
+export { SingleArticlePage } from './SingleArticlePage';
+export { ArticleListPage } from './ArticleListPage';
+export { SignUpPage } from './SignUpPage';
+export { SignInPage } from './SignInPage';
+export { EditProfilePage } from './EditProfilePage';
+export { CreateArticlePage } from './CreateArticlePage';
+export { ArticleByAuthorPage } from './ArticleByAuthorPage';

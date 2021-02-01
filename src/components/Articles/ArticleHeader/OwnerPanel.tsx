@@ -25,12 +25,12 @@ export const OwnerPanel: FC = () => {
 
   return (
     <div className="article__buttons">
-      <button type="button" className="buttons buttons__delete-article" onClick={showDeleteConfirm}>
-        DELETE
-      </button>
-      <button type="button" className="buttons buttons__edit-article" onClick={() => {}}>
+      <Button className="buttons buttons__delete-article" onClick={showDeleteConfirm} danger>
+        Delete
+      </Button>
+      <Button className="buttons buttons__edit-article" onClick={() => {}}>
         Edit
-      </button>
+      </Button>
     </div>
   );
 };

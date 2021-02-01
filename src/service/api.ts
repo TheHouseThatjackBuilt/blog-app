@@ -21,6 +21,11 @@ export const requestArticleList = (offsetPage: number) => {
   return http<IArticleList>(`${ARTICLES}?${LIMIT}=10&${OFFSET}=${offsetPage}`, options);
 };
 
+export const requestUserArticleList = (offsetPage: number, author: string, token: string) => {
+  const options = serviceHttpFabric(Methods.get, { headers: { Authorization: `Token ${token}` } });
+  return http<IArticleList>(`${ARTICLES}?${LIMIT}=10&${OFFSET}=${offsetPage}&author=${author}`, options);
+};
+
 export const requestArticle = (id: string) => {
   const options = serviceHttpFabric(Methods.get);
   return http<{ article: IArticle }>(`${ARTICLES}/${id}`, options);

@@ -18,7 +18,7 @@ export const ArticlesList: FC<IArticleList> = ({ articles, pageHandler, totalPag
   return (
     <MainContainer>
       <div className="content">
-        {(load || !articles) && <Spinner />}
+        {load && <Spinner />}
         {!load && articles && <ul className="content__container-preview">{content}</ul>}
         <Pagination totalPages={totalPages} handler={pageHandler} currentPage={page} />
       </div>

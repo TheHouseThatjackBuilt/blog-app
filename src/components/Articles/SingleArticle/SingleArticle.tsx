@@ -6,9 +6,9 @@ import { ISingleArticle } from '../../../types/components/index.d';
 
 export const SingleArticle: FC<ISingleArticle> = ({ data, load }) => (
   <MainContainer>
-    {(load || !data) && <Spinner />}
-    {data && (
-      <div className="content__full">
+    {load && <Spinner />}
+    {data && !load && (
+      <div className="content__article-preview article__full">
         <ArticleConstructor article={data} flag />
       </div>
     )}

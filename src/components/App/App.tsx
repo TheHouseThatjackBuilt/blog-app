@@ -9,6 +9,7 @@ import {
   SignInPage,
   EditProfilePage,
   CreateArticlePage,
+  ArticleByAuthorPage,
 } from '../../pages/index';
 
 const App: React.FC = () => (
@@ -22,6 +23,7 @@ const App: React.FC = () => (
       <Route path="/sign-up" component={SignUpPage} />
       <Route path="/sign-in" component={SignInPage} />
       <Route path="/profile" component={EditProfilePage} />
+      <Route path="/articles/:author" component={ArticleByAuthorPage} />
     </Switch>
   </div>
 );
