@@ -46,7 +46,7 @@
 
   &__header-container {
     display: grid;
-    grid-template: 1fr / 1fr 200px;
+    grid-template: 1fr / 1fr max-content;
   }
 
   &__title-container {

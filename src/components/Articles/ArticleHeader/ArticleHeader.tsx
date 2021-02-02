@@ -24,6 +24,6 @@ export const ArticleHeader: FC<IArticleHeader> = ({
       date={date}
       image={image}
     />
-    <ArticleHeaderPreview description={description} owner={owner} />
+    <ArticleHeaderPreview description={description} owner={owner} slug={slug} />
   </header>
 );

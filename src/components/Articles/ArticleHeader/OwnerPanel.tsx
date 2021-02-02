@@ -1,10 +1,19 @@
 /* eslint-disable */
 import React, { FC } from 'react';
+import { useHistory } from 'react-router-dom';
+
 import { Modal, Button } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 
-export const OwnerPanel: FC = () => {
+interface IOwnerPanel {
+  deleteArticle: (id: string, token: string) => void;
+  token: string;
+  id: string;
+}
+
+export const OwnerPanel: FC<IOwnerPanel> = ({ deleteArticle, token, id }) => {
   const { confirm } = Modal;
+  const history = useHistory();
 
   const showDeleteConfirm = () => {
     confirm({
@@ -15,10 +24,11 @@ export const OwnerPanel: FC = () => {
       okType: 'danger',
       cancelText: 'No',
       onOk() {
-        console.log('OK');
+        deleteArticle(id, token);
+        history.push('/');
       },
       onCancel() {
-        console.log('Cancel');
+        console.log('ok');
       },
     });
   };

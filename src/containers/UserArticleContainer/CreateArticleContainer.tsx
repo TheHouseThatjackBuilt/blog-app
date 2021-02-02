@@ -44,7 +44,7 @@ const CreateArticleContainer: FC<PropsFromRedux> = ({
   }, [articleTags]);
 
   useEffect(() => {
-    console.log(article);
+    if (article) history.push('/');
   }, [article]);
 
   useEffect(() => {

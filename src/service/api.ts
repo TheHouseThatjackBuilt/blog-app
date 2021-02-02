@@ -36,6 +36,11 @@ export const createArticle = (data: ICreateNewArticle, token: string) => {
   const options = serviceHttpFabric(Methods.post, { headers: { Authorization: `Token ${token}` }, body: article });
   return http<{ article: IArticle }>(ARTICLES, options);
 };
+
+export const deleteArticle = (id: string, token: string) => {
+  const options = serviceHttpFabric(Methods.del, { headers: { Authorization: `Token ${token}` } });
+  return http<any>(`${ARTICLES}/${id}`, options);
+};
 // user block */
 export const requestNewUser = (newUser: IUser) => {
   const user = serviceDataWrapper(newUser, 'user');
