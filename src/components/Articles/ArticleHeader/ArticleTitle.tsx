@@ -1,10 +1,8 @@
 /*eslint-disable*/
 import React, { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Tag, Tooltip, Button } from 'antd';
+import { Tag, Tooltip } from 'antd';
 import cn from 'classnames';
-
-import { ArticleTags } from '../ArticleTags/ArticleTags';
 
 interface IArticleTitle {
   slug: string;
@@ -22,7 +20,7 @@ export const ArticleTitle: FC<IArticleTitle> = ({ slug, title, favoritesCount, u
 
   const tags =
     tagList.length > 0 &&
-    tagList.map((tag: string, index) => {
+    tagList.map((tag: string, index: number) => {
       const isLongTag = tag.length > 20;
       const tagElem = (
         <Tag className="article__tag" key={`${tag}${index}`}>

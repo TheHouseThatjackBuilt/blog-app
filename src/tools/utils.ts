@@ -44,6 +44,6 @@ export const articleShema = yup.object().shape({
     .string()
     .required('article description is required.')
     .min(3, 'article description must be at least 3 charecters.')
-    .max(30, 'article description mus be shorter than 20 charecters.'),
+    .max(70, 'article description mus be shorter than 70 charecters.'),
   body: yup.string().required('article text is required.').min(3, 'article text must be at least 3 charecters.'),
 });

@@ -9,16 +9,15 @@ import {
 } from '../../redux/selectors/index';
 
 import { IState } from '../../types/redux/index.d';
-import { IParams } from '../../types/components/index.d';
 import { getArticleThunk } from '../../redux/middlewareThunk/singleArticleThunk';
 import { SingleArticle } from '../../components/Articles/SingleArticle/SingleArticle';
 
 const ArticleContainer = ({ article, load, error, getArticleThunk }: PropsFromRedux) => {
-  const { slug } = useParams<IParams>();
+  const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
-    getArticleThunk(slug);
-  }, [slug]);
+    getArticleThunk(id);
+  }, [id]);
 
   useEffect(() => {
     if (error) throw new Error('something went wrong in Single Article');

@@ -10,6 +10,7 @@ import {
   EditProfilePage,
   CreateArticlePage,
   ArticleByAuthorPage,
+  EditArticlePage,
 } from '../../pages/index';
 
 const App: React.FC = () => (
@@ -19,7 +20,8 @@ const App: React.FC = () => (
       <Redirect exact from="/" to="/articles?page=1" />
       <Route path="/new-article" component={CreateArticlePage} />
       <Route exact path="/articles" component={ArticleListPage} />
-      <Route path="/articles/:slug" component={SingleArticlePage} />
+      <Route exact path="/articles/:id" component={SingleArticlePage} />
+      <Route path="/articles/:id/edit" component={EditArticlePage} />
       <Route path="/sign-up" component={SignUpPage} />
       <Route path="/sign-in" component={SignInPage} />
       <Route path="/profile" component={EditProfilePage} />

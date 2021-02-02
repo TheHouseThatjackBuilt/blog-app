@@ -38,7 +38,7 @@ export const OwnerPanel: FC<IOwnerPanel> = ({ deleteArticle, token, id }) => {
       <Button className="buttons buttons__delete-article" onClick={showDeleteConfirm} danger>
         Delete
       </Button>
-      <Button className="buttons buttons__edit-article" onClick={() => {}}>
+      <Button className="buttons buttons__edit-article" onClick={() => history.push(`/articles/${id}/edit`)}>
         Edit
       </Button>
     </div>

@@ -26,10 +26,6 @@ export interface IArticleContainer {
   load: boolean;
 }
 
-export interface IParams {
-  slug: string;
-}
-
 export interface IArticleConstructor {
   article: IHandleArticleData;
   flag: boolean;

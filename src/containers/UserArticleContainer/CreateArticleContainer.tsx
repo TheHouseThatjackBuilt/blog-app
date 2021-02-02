@@ -1,57 +1,65 @@
-/* eslint-disable */
 import React, { FC, useEffect } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useCookies } from 'react-cookie';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
-import { articleShema } from '../../tools/utils';
-import { IUserArticle } from '../../types/components/index.d';
 import {
   userArticleLoadStateSelector,
-  userArticleStateSelector,
   userArticleStateTagsSelector,
   userArticleStateTagsReselector,
   userArticleErrorStateReselector,
+  userArticleInitialStateReselector,
 } from '../../redux/selectors';
 
-import { articleSetTagsAction } from '../../redux/actions/newArticleActions';
+import { articleSetTagsAction, createNewArticleAction } from '../../redux/actions/newArticleActions';
+import { createArticleThunk, initUserArticleStateThunk } from '../../redux/middlewareThunk/userArticleThunk';
+
+import { articleShema } from '../../tools/utils';
+import { IUserArticle } from '../../types/components/index.d';
 import { IState } from '../../types/redux/index.d';
-import { getArticleThunk } from '../../redux/middlewareThunk/userArticleThunk';
 import { CreateArticle } from '../../components/UserArticle/CreateArticle';
 
-type PropsFromRedux = ConnectedProps<typeof connector>;
-
 const CreateArticleContainer: FC<PropsFromRedux> = ({
-  article,
   load,
   error,
   tags,
   articleTags,
-  getArticleThunk,
+  initialForm,
+  createArticleThunk,
   articleSetTagsAction,
+  initUserArticleStateThunk,
 }) => {
   const history = useHistory();
   const [userCookie] = useCookies();
-  const { register, handleSubmit, errors, setError } = useForm<IUserArticle>({
+  const { id } = useParams<{ id: string }>();
+  const { register, handleSubmit, errors, setError, setValue } = useForm<IUserArticle>({
     mode: 'onChange',
     resolver: yupResolver(articleShema),
   });
 
   useEffect(() => {
-    if (articleTags) articleSetTagsAction(articleTags);
-  }, [articleTags]);
+    if (!userCookie.token) history.push('/sign-in');
+  }, [userCookie.token]);
 
   useEffect(() => {
-    if (article) history.push('/');
-  }, [article]);
+    if (id) initUserArticleStateThunk(id);
+  }, [id]);
+
+  useEffect(() => {
+    if (articleTags) articleSetTagsAction(articleTags);
+    if (initialForm) initialForm.forEach((key, value) => setValue(value, key));
+  }, [articleTags, initialForm]);
 
   useEffect(() => {
     if (error) error.forEach((key, value) => setError(value, { type: 'server validation error', message: `${value} ${key}` }));
   }, [error]);
 
-  const onSubmit = handleSubmit((data) => getArticleThunk(data, tags, userCookie.token));
+  const onSubmit = handleSubmit((data) => {
+    createArticleThunk(data, tags, userCookie.token);
+    if (!error) history.push('/');
+  });
 
   return (
     <CreateArticle
@@ -66,14 +74,14 @@ const CreateArticleContainer: FC<PropsFromRedux> = ({
 };
 
 const mapStateToProps = (state: IState) => ({
-  article: userArticleStateSelector(state),
   load: userArticleLoadStateSelector(state),
   error: userArticleErrorStateReselector(state),
   articleTags: userArticleStateTagsReselector(state),
   tags: userArticleStateTagsSelector(state),
+  initialForm: userArticleInitialStateReselector(state),
 });
 
-const mapDispatch = { getArticleThunk, articleSetTagsAction };
+const mapDispatch = { createArticleThunk, initUserArticleStateThunk, articleSetTagsAction, createNewArticleAction };
 const connector = connect(mapStateToProps, mapDispatch);
-
+type PropsFromRedux = ConnectedProps<typeof connector>;
 export default connector(CreateArticleContainer);

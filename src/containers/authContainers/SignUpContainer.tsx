@@ -5,11 +5,11 @@ import { useCookies } from 'react-cookie';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useHistory } from 'react-router-dom';
 
-import { userStateErrorReselector, userStateLoadSelector, userStateUserSelector } from '../redux/selectors';
-import { IUser, IState } from '../types/redux/index.d';
-import { authNewUserThunk } from '../redux/middlewareThunk/userDataThunk';
-import { SignUpProfile } from '../components/AuthForms/SignUpProfile';
-import { registerSchema } from '../tools/utils';
+import { userStateErrorReselector, userStateLoadSelector, userStateUserSelector } from '../../redux/selectors';
+import { IUser, IState } from '../../types/redux/index.d';
+import { authNewUserThunk } from '../../redux/middlewareThunk/userDataThunk';
+import { SignUpProfile } from '../../components/AuthForms/SignUpProfile';
+import { registerSchema } from '../../tools/utils';
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
