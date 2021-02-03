@@ -13,13 +13,20 @@ import {
   userArticleInitialStateReselector,
 } from '../../redux/selectors';
 
-import { articleSetTagsAction, createNewArticleAction } from '../../redux/actions/newArticleActions';
-import { createArticleThunk, initUserArticleStateThunk } from '../../redux/middlewareThunk/userArticleThunk';
+import {
+  createArticleThunk,
+  initUserArticleStateThunk,
+  updateUserArticleThunk,
+} from '../../redux/middlewareThunk/userArticleThunk';
+
+import { articleSetTagsAction, createNewArticleAction, emptyTheStateAction } from '../../redux/actions/newArticleActions';
 
 import { articleShema } from '../../tools/utils';
 import { IUserArticle } from '../../types/components/index.d';
 import { IState } from '../../types/redux/index.d';
+
 import { CreateArticle } from '../../components/UserArticle/CreateArticle';
+import { Spinner } from '../../components/AppElements/Spinner/Spinner';
 
 const CreateArticleContainer: FC<PropsFromRedux> = ({
   load,
@@ -30,6 +37,8 @@ const CreateArticleContainer: FC<PropsFromRedux> = ({
   createArticleThunk,
   articleSetTagsAction,
   initUserArticleStateThunk,
+  updateUserArticleThunk,
+  emptyTheStateAction,
 }) => {
   const history = useHistory();
   const [userCookie] = useCookies();
@@ -45,6 +54,10 @@ const CreateArticleContainer: FC<PropsFromRedux> = ({
 
   useEffect(() => {
     if (id) initUserArticleStateThunk(id);
+
+    return () => {
+      emptyTheStateAction();
+    };
   }, [id]);
 
   useEffect(() => {
@@ -57,19 +70,25 @@ const CreateArticleContainer: FC<PropsFromRedux> = ({
   }, [error]);
 
   const onSubmit = handleSubmit((data) => {
-    createArticleThunk(data, tags, userCookie.token);
+    if (!id) createArticleThunk(data, tags, userCookie.token);
+    if (id && userCookie.token) updateUserArticleThunk(data, tags, userCookie.token, id);
     if (!error) history.push('/');
   });
 
   return (
-    <CreateArticle
-      onSubmit={onSubmit}
-      inputRef={register}
-      errors={errors}
-      tags={tags}
-      load={load}
-      setTags={articleSetTagsAction}
-    />
+    <>
+      {load && <Spinner />}
+      {!load && (
+        <CreateArticle
+          onSubmit={onSubmit}
+          inputRef={register}
+          errors={errors}
+          tags={tags}
+          load={load}
+          setTags={articleSetTagsAction}
+        />
+      )}
+    </>
   );
 };
 
@@ -81,7 +100,14 @@ const mapStateToProps = (state: IState) => ({
   initialForm: userArticleInitialStateReselector(state),
 });
 
-const mapDispatch = { createArticleThunk, initUserArticleStateThunk, articleSetTagsAction, createNewArticleAction };
+const mapDispatch = {
+  createArticleThunk,
+  initUserArticleStateThunk,
+  articleSetTagsAction,
+  createNewArticleAction,
+  updateUserArticleThunk,
+  emptyTheStateAction,
+};
 const connector = connect(mapStateToProps, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 export default connector(CreateArticleContainer);

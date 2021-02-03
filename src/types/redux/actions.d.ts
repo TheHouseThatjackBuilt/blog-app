@@ -17,6 +17,10 @@ export interface IArticlesErrorAction {
   payload: any;
 }
 
+export interface IArticlesEmptyAction {
+  type: typeof EArticleActions.emptyListState;
+}
+
 // single article actions:
 export interface IGetSingleArticleAction {
   type: typeof ESingleArticle.getArticle;
@@ -54,6 +58,10 @@ export interface ISetArticleTagsAction {
   payload: string[];
 }
 
+export interface IEmptyTheStateAction {
+  type: typeof EUserArticles.emptyTheState;
+}
+
 // user actions:
 export interface ISetNewUserAction {
   type: typeof EUserActions.newUser;
@@ -71,10 +79,14 @@ export interface INewUserErrorAction {
 }
 
 export type INewUserActionsTypes = ISetNewUserAction | INewUserLoadAction | INewUserErrorAction;
+
 export type ISingleArticleActionsTypes = IGetSingleArticleAction | ISingleArticleLoadAction | ISingleArticleErrorAction;
-export type IArticleListActionsTypes = IGetArticlesAction | IArticlesErrorAction | IArticlesLoadAction;
+
+export type IArticleListActionsTypes = IGetArticlesAction | IArticlesErrorAction | IArticlesLoadAction | IArticlesEmptyAction;
+
 export type IUserArticlesActionsTypes =
   | ICreateNewArticleAction
   | INewArticleLoadAction
   | INewArticleErrorAction
-  | ISetArticleTagsAction;
+  | ISetArticleTagsAction
+  | IEmptyTheStateAction;

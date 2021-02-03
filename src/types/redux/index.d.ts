@@ -30,7 +30,7 @@ export {
   INewArticleErrorAction,
   INewArticleLoadAction,
   IUserArticlesActionsTypes,
-  IAddArticleTagsAction,
-  IDelArticleTagsAction,
   ISetArticleTagsAction,
+  IEmptyTheStateAction,
+  IArticlesEmptyAction,
 } from './actions.d';

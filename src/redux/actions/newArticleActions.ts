@@ -1,6 +1,7 @@
 import {
   IArticle,
   ICreateNewArticleAction,
+  IEmptyTheStateAction,
   INewArticleErrorAction,
   INewArticleLoadAction,
   ISetArticleTagsAction,
@@ -23,3 +24,5 @@ export const newArticleErrorAction = (payload: any): INewArticleErrorAction => (
 });
 
 export const articleSetTagsAction = (payload: string[]): ISetArticleTagsAction => ({ type: EUserArticles.setTags, payload });
+
+export const emptyTheStateAction = (): IEmptyTheStateAction => ({ type: EUserArticles.emptyTheState });

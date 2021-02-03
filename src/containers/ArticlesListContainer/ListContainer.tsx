@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 
-import { IState } from '../../types/redux/index.d';
 import { getArticleListThunk } from '../../redux/middlewareThunk/articleListThunk';
-import { ArticlesList } from '../../components/Articles/ArticleList/ArticlesList';
+import { articlesEmptyListAction } from '../../redux/actions/ArticlesListActions';
 import {
   articlesStateCountSelector,
   articlesStateErrorSelector,
@@ -11,8 +10,26 @@ import {
   articlesStateReselector,
 } from '../../redux/selectors/index';
 
-const ArticlesListContainer = ({ articles, articlesCount, load, error, getArticleListThunk }: PropsFromRedux) => {
+import { ArticlesList } from '../../components/Articles/ArticleList/ArticlesList';
+import { IState } from '../../types/redux/index.d';
+
+const ArticlesListContainer = ({
+  articles,
+  articlesCount,
+  load,
+  error,
+  getArticleListThunk,
+  articlesEmptyListAction,
+}: PropsFromRedux) => {
   const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    getArticleListThunk(page);
+
+    return () => {
+      articlesEmptyListAction();
+    };
+  }, []);
 
   useEffect(() => {
     getArticleListThunk(page);
@@ -34,7 +51,7 @@ const mapStateToProps = (state: IState) => ({
   error: articlesStateErrorSelector(state),
 });
 
-const mapDispatch = { getArticleListThunk };
+const mapDispatch = { getArticleListThunk, articlesEmptyListAction };
 const connector = connect(mapStateToProps, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 export default connector(ArticlesListContainer);

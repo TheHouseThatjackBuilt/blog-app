@@ -2,6 +2,7 @@ export enum EArticleActions {
   getArticlesList = 'REQUEST_ARTICLE_LIST',
   dataError = 'ARTICLES_ERROR',
   articleLoad = 'ARTILES_LIST_LOAD',
+  emptyListState = 'DELETE_ARTICLE_LIST',
 }
 
 export enum ESingleArticle {
@@ -15,6 +16,7 @@ export enum EUserArticles {
   dataError = 'USER_ARTICLE_ERROR',
   dataLoad = 'USER_ARTICLE_LOAD',
   setTags = 'SET_TAGS_ARRAY',
+  emptyTheState = 'DELETE_USER_ARTICLE',
 }
 
 export enum EUserActions {

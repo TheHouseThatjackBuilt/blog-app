@@ -10,6 +10,12 @@ const initial: IArticlesListState = {
 
 export const articlesListState = (state = initial, action: IArticleListActionsTypes): IArticlesListState => {
   switch (action.type) {
+    case EArticleActions.articleLoad:
+      return { ...state, load: action.payload };
+    case EArticleActions.dataError:
+      return { ...state, load: false, errors: action.payload.error };
+    case EArticleActions.emptyListState:
+      return { ...state, articlesList: null, articlesCount: 0 };
     case EArticleActions.getArticlesList:
       return {
         ...state,
@@ -18,10 +24,6 @@ export const articlesListState = (state = initial, action: IArticleListActionsTy
         articlesList: action.payload.articles,
         articlesCount: action.payload.articlesCount,
       };
-    case EArticleActions.articleLoad:
-      return { ...state, load: action.payload };
-    case EArticleActions.dataError:
-      return { ...state, load: false, errors: action.payload.error };
     default:
       return state;
   }

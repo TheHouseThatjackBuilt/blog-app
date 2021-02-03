@@ -1,5 +1,11 @@
 /* eslint-disable*/
-import { IArticleList, IArticlesErrorAction, IArticlesLoadAction, IGetArticlesAction } from '../../types/redux/index.d';
+import {
+  IArticleList,
+  IArticlesEmptyAction,
+  IArticlesErrorAction,
+  IArticlesLoadAction,
+  IGetArticlesAction,
+} from '../../types/redux/index.d';
 import { EArticleActions } from '../constants';
 
 export const articlesListAction = (payload: IArticleList): IGetArticlesAction => ({
@@ -15,4 +21,8 @@ export const articlesLoadAction = (payload: boolean): IArticlesLoadAction => ({
 export const articlesErrorAction = (payload: any): IArticlesErrorAction => ({
   type: EArticleActions.dataError,
   payload,
+});
+
+export const articlesEmptyListAction = (): IArticlesEmptyAction => ({
+  type: EArticleActions.emptyListState,
 });

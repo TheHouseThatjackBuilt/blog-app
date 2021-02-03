@@ -6,7 +6,7 @@ import { ICreateNewArticle } from '../../types/service/index.d';
 // actions:
 import { createNewArticleAction, newArticleErrorAction, newArticleLoadAction } from '../actions/newArticleActions';
 // service:
-import { createArticle, requestArticle, editArticle } from '../../service/api';
+import { createArticle, requestArticle, udpateArticle } from '../../service/api';
 
 type UserThunk = Thunk<IUserArticlesActionsTypes, IUserArticleState>;
 type UserDispatch = Dispatch<IUserArticlesActionsTypes>;
@@ -28,9 +28,12 @@ export const initUserArticleStateThunk: UserThunk = (id: string) => (dispatch: U
     .catch((error) => dispatch(newArticleErrorAction(error)));
 };
 
-export const updateUserArticleThunk: UserThunk = (data: Partial<ICreateNewArticle>, token: string, id: string) => (
-  dispatch: UserDispatch
-) => {
+export const updateUserArticleThunk: UserThunk = (
+  data: Partial<ICreateNewArticle>,
+  tagList: string[],
+  token: string,
+  id: string
+) => (dispatch: UserDispatch) => {
   dispatch(newArticleLoadAction(true));
-  return editArticle(data, token, id).catch((error) => dispatch(newArticleErrorAction(error)));
+  return udpateArticle({ ...data, tagList }, token, id).catch((error) => dispatch(newArticleErrorAction(error)));
 };

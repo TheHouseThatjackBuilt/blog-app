@@ -37,7 +37,7 @@ export const createArticle = (data: ICreateNewArticle, token: string) => {
   return http<{ article: IArticle }>(ARTICLES, options);
 };
 
-export const editArticle = (data: Partial<ICreateNewArticle>, token: string, id: string) => {
+export const udpateArticle = (data: Partial<ICreateNewArticle>, token: string, id: string) => {
   const article = serviceDataWrapper(data, 'article');
   const options = serviceHttpFabric(Methods.put, { headers: { Authorization: `Token ${token}` }, body: article });
   return http<{ article: IArticle }>(`${ARTICLES}/${id}`, options);
