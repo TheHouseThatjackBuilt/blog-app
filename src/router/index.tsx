@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
-
-import HeaderContainer from '../containers/HeaderContainer';
+// pages:
 import {
   SingleArticlePage,
   ArticleListPage,
@@ -12,6 +11,8 @@ import {
   ArticleByAuthorPage,
   EditArticlePage,
 } from '../pages/index';
+// component:
+import HeaderContainer from '../containers/ElementsContainer/HeaderContainer';
 
 const MainRouter: FC = () => (
   <div className="main">
