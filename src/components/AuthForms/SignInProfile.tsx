@@ -8,7 +8,6 @@ import { FormContainer, Form, Input, SubmitButton, FormHeader } from './FormElem
 const useStyle = makeStyles({
   signUp: {
     fontSize: 12,
-    lineHeight: 20,
     textAlign: 'center',
     color: ' #8c8c8c',
     '& > a': {

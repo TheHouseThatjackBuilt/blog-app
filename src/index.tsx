@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Alert } from 'antd';
 
 import { store } from './redux/store/store';
-import App from './components/App/App';
+import MainRouter from './router';
 import './style/index.scss';
 
 const { ErrorBoundary } = Alert;
@@ -15,19 +15,10 @@ render(
     <Provider store={store}>
       <ErrorBoundary>
         <Router>
-          <App />
+          <MainRouter />
         </Router>
       </ErrorBoundary>
     </Provider>
   </React.StrictMode>,
   document.getElementById('wrapper')
 );
-
-// render(
-//   <React.StrictMode>
-//     <Provider store={store}>
-//       <App />
-//     </Provider>
-//   </React.StrictMode>,
-//   document.getElementById('wrapper'),
-// );

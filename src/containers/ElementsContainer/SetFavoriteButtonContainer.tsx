@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { FC, useState, useEffect } from 'react';
+
 import { useCookies } from 'react-cookie';
 
 import { setFavoriteStatusMiddleware } from '../../redux/middlewareThunk/middleware';
@@ -17,15 +18,12 @@ export const SetFavoriteButtonContainer: FC<ISetFavoriteButtonContainer> = ({ fa
   const [userCookie] = useCookies();
 
   useEffect(() => {
-    if (!userCookie.token) return;
-  }, []);
-
-  useEffect(() => {
     setFavorite(favorited);
     setFavCounter(favoritesCount);
   }, [favorited, favoritesCount]);
 
   const favoriteClickHandler = () => {
+    if (!userCookie.token) return;
     setFavorite(!favorite);
     setFavCounter(!favorite ? favCounter + 1 : favCounter - 1);
     setFavoriteStatusMiddleware(!favorite, id, userCookie.token);

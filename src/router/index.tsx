@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 
-import HeaderContainer from '../../containers/HeaderContainer';
+import HeaderContainer from '../containers/HeaderContainer';
 import {
   SingleArticlePage,
   ArticleListPage,
@@ -11,9 +11,9 @@ import {
   CreateArticlePage,
   ArticleByAuthorPage,
   EditArticlePage,
-} from '../../pages/index';
+} from '../pages/index';
 
-const App: React.FC = () => (
+const MainRouter: FC = () => (
   <div className="main">
     <HeaderContainer />
     <Switch>
@@ -29,4 +29,4 @@ const App: React.FC = () => (
     </Switch>
   </div>
 );
-export default App;
+export default MainRouter;
