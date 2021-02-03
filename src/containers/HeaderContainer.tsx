@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { useCookies } from 'react-cookie';
@@ -17,10 +18,6 @@ const HeaderContainer = ({ load, error, user, verificationUserThunk, authUserAct
   useEffect(() => {
     if (userCookie.token && !user) verificationUserThunk(userCookie.token);
   }, [userCookie.token, user]);
-
-  useEffect(() => {
-    if (error) throw new Error('something went wrong in Header-component with user data');
-  }, [error]);
 
   const logOut = () => {
     setUserCookie('token', '', { maxAge: -1 });

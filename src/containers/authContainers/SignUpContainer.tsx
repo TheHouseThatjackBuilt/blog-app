@@ -32,7 +32,9 @@ const SignUpContainer: FC<PropsFromRedux> = ({ load, error, user, authNewUserThu
     if (error) error.forEach((key, value) => setError(value, { type: 'server validation error', message: `${value} ${key}` }));
   }, [error]);
 
-  const onSubmit = handleSubmit(({ username, email, password }) => authNewUserThunk({ username, email, password }));
+  const onSubmit = handleSubmit(({ username, email, password }) => {
+    authNewUserThunk({ username, email, password });
+  });
 
   return <SignUpProfile inputRef={register} errors={errors} onSubmit={onSubmit} load={load} />;
 };
