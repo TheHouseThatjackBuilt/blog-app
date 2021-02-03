@@ -1,8 +1,9 @@
-/* eslint-disable */
+/* eslint-disable */ // and here too
 import React, { FC } from 'react';
-import { IArticleList } from '../../../types/components/index.d';
-import ArticleConstructor from '../ArticleConstructor/ArticleConstructor';
-import { Spinner, Pagination, MainContainer } from '../../AppElements/index';
+
+import { IArticleList } from '../../types/components/index.d';
+import { Spinner, Pagination, MainContainer } from '../AppElements/index';
+import { ArticleConstructor } from './ArticleElements';
 
 export const ArticlesList: FC<IArticleList> = ({ articles, pageHandler, totalPages, load, page }) => {
   const content =

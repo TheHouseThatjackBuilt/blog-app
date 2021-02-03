@@ -1,4 +1,3 @@
-/* eslint-disable*/
 import React, { FC } from 'react';
 // components:
 import { UserArticleTagsContainer } from '../../containers/UserArticleContainer/UserArticleTagsContainer';

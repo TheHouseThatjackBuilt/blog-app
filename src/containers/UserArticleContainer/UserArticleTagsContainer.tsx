@@ -1,4 +1,4 @@
-/* eslint-disable */
+/* eslint-disable */ // conflict with prettier
 import React, { FC, useState, ChangeEvent, MouseEvent } from 'react';
 
 import { IUserArticleTagsContainer } from '../../types/components/index.d';

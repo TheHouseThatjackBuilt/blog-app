@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-import { IUserHeader } from '../../types/components/index.d';
-import defaultPic from './defaultPic.png';
+import { IUserHeader } from '../../../types/components/index.d';
+import defaultPic from '../style/defaultPic.png';
 
 export const UserHeader: FC<IUserHeader> = ({ user, logOut }) => {
   const { image, username } = user;

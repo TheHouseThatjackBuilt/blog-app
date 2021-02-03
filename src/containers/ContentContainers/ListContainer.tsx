@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-
-import { getArticleListThunk } from '../../redux/middlewareThunk/articleListThunk';
-import { articlesEmptyListAction } from '../../redux/actions/ArticlesListActions';
+// selectors:
 import {
   articlesStateCountSelector,
   articlesStateErrorSelector,
   articlesStateLoadSelector,
   articlesStateReselector,
 } from '../../redux/selectors/index';
-
-import { ArticlesList } from '../../components/Articles/ArticleList/ArticlesList';
+// thunk:
+import { getArticleListThunk } from '../../redux/middlewareThunk/articleListThunk';
+// actions:
+import { articlesEmptyListAction } from '../../redux/actions/ArticlesListActions';
+// types:
 import { IState } from '../../types/redux/index.d';
+// component:
+import { ArticlesList } from '../../components/Articles';
 
 const ArticlesListContainer = ({
   articles,

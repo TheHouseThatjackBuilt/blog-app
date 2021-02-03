@@ -8,12 +8,12 @@ import { useHistory } from 'react-router-dom';
 import { userStateLoadSelector, userStateErrorReselector, userStateUserSelector } from '../../redux/selectors';
 // thunk:
 import { updateUserThunk } from '../../redux/middlewareThunk/userDataThunk';
-// fabric & utils:
+// Schema:
 import { updateProfileSchema } from '../../tools/utils';
 // types:
 import { IState, IUpdateUser } from '../../types/redux/index.d';
 // component:
-import { EditProfile } from '../../components/AuthForms/EditProfile';
+import { EditProfile } from '../../components/AuthForms';
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
@@ -34,7 +34,10 @@ const EditProfileContainer: FC<PropsFromRedux> = ({ load, error, user, updateUse
     if (error) error.forEach((key, value) => setError(value, { type: 'server validation error', message: `${value} ${key}` }));
   }, [error]);
 
-  const onSubmit = handleSubmit((data) => updateUserThunk(data, userCookie.token));
+  const onSubmit = handleSubmit(async (data) => {
+    await updateUserThunk(data, userCookie.token);
+    if (!error) history.push('/');
+  });
 
   return <EditProfile inputRef={register} errors={errors} onSubmit={onSubmit} load={load} />;
 };

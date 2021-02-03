@@ -7,10 +7,12 @@ import {
   singleArticleStateLoadSelector,
   singleArticleStateReselector,
 } from '../../redux/selectors/index';
-
-import { IState } from '../../types/redux/index.d';
+// thunk:
 import { getArticleThunk } from '../../redux/middlewareThunk/singleArticleThunk';
-import { SingleArticle } from '../../components/Articles/SingleArticle/SingleArticle';
+// types:
+import { IState } from '../../types/redux/index.d';
+// component:
+import { SingleArticle } from '../../components/Articles';
 
 const ArticleContainer = ({ article, load, error, getArticleThunk }: PropsFromRedux) => {
   const { id } = useParams<{ id: string }>();

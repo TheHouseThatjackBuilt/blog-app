@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { OwnerPanelContainer } from '../../../containers/UserArticleContainer/OwnerPanelContainer';
+import { UserButtonsContainer } from '../../../containers/UserArticleContainer/UserButtonsContainer';
 
 interface IArticleHeaderPreview {
   description: string;
@@ -10,6 +10,6 @@ interface IArticleHeaderPreview {
 export const ArticleHeaderPreview: FC<IArticleHeaderPreview> = ({ description, owner, slug }) => (
   <div className="article__header-preview">
     <div className="article__description">{description}</div>
-    {owner && <OwnerPanelContainer articleID={slug} />}
+    {owner && <UserButtonsContainer articleID={slug} />}
   </div>
 );

@@ -2,10 +2,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { useCookies } from 'react-cookie';
-
-import { IState } from '../../types/redux/index.d';
-import { getArticleListByAuthorThunk } from '../../redux/middlewareThunk/articleListThunk';
-import { ArticlesList } from '../../components/Articles/ArticleList/ArticlesList';
+// selectors:
 import {
   articlesStateCountSelector,
   articlesStateErrorSelector,
@@ -13,6 +10,12 @@ import {
   articlesStateReselector,
   userStateUserSelector,
 } from '../../redux/selectors/index';
+// thunk:
+import { getArticleListByAuthorThunk } from '../../redux/middlewareThunk/articleListThunk';
+// types:
+import { IState } from '../../types/redux/index.d';
+// component:
+import { ArticlesList } from '../../components/Articles';
 
 const UserArticlesListContainer: FC<PropsFromRedux> = ({
   user,
@@ -24,7 +27,7 @@ const UserArticlesListContainer: FC<PropsFromRedux> = ({
 }) => {
   const [page, setPage] = useState(1);
   const [userCookie] = useCookies();
-
+  debugger;
   useEffect(() => {
     if (user) getArticleListByAuthorThunk(page, user.username, userCookie.token);
   }, [page, user]);

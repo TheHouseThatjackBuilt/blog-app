@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -11,7 +10,7 @@ interface IOwnerPanel {
   id: string;
 }
 
-export const OwnerPanel: FC<IOwnerPanel> = ({ deleteArticle, token, id }) => {
+export const UserButtons: FC<IOwnerPanel> = ({ deleteArticle, token, id }) => {
   const { confirm } = Modal;
   const history = useHistory();
 
@@ -26,9 +25,6 @@ export const OwnerPanel: FC<IOwnerPanel> = ({ deleteArticle, token, id }) => {
       async onOk() {
         await deleteArticle(id, token);
         history.push('/');
-      },
-      onCancel() {
-        console.log('ok');
       },
     });
   };

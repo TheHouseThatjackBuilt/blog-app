@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useCookies } from 'react-cookie';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useHistory, useParams } from 'react-router-dom';
-
+// selectors:
 import {
   userArticleLoadStateSelector,
   userArticleStateTagsSelector,
@@ -12,19 +12,20 @@ import {
   userArticleErrorStateReselector,
   userArticleInitialStateReselector,
 } from '../../redux/selectors';
-
+// thunk:
 import {
   createArticleThunk,
   initUserArticleStateThunk,
   updateUserArticleThunk,
 } from '../../redux/middlewareThunk/userArticleThunk';
-
+// actions:
 import { articleSetTagsAction, createNewArticleAction, emptyTheStateAction } from '../../redux/actions/newArticleActions';
-
+// shema:
 import { articleShema } from '../../tools/utils';
+// types:
 import { IUserArticle } from '../../types/components/index.d';
 import { IState } from '../../types/redux/index.d';
-
+// components:
 import { CreateArticle } from '../../components/UserArticle/CreateArticle';
 import { Spinner } from '../../components/AppElements/Spinner/Spinner';
 
@@ -69,9 +70,15 @@ const CreateArticleContainer: FC<PropsFromRedux> = ({
     if (error) error.forEach((key, value) => setError(value, { type: 'server validation error', message: `${value} ${key}` }));
   }, [error]);
 
-  const onSubmit = handleSubmit((data) => {
-    if (!id) createArticleThunk(data, tags, userCookie.token).then(() => history.push('/'));
-    if (id && userCookie.token) updateUserArticleThunk(data, tags, userCookie.token, id).then(() => history.push('/'));
+  const onSubmit = handleSubmit(async (data) => {
+    if (!id) {
+      await createArticleThunk(data, tags, userCookie.token);
+      if (!error) history.push('/');
+    }
+    if (id && userCookie.token) {
+      await updateUserArticleThunk(data, tags, userCookie.token, id);
+      if (!error) history.push('/');
+    }
   });
 
   return (

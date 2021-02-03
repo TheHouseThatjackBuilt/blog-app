@@ -1,4 +1,4 @@
-/* eslint-disable */
+/* eslint-disable react/jsx-one-expression-per-line */
 import React, { FC, useRef } from 'react';
 import { Tag, Input, Tooltip } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
@@ -24,7 +24,7 @@ export const UserArticleTags: FC<IUserArticleTags> = ({
       return (
         <Input
           ref={inputRef2}
-          key={`${tag}${index}`}
+          key={tag}
           size="small"
           className="tag-input tags__input"
           value={editInputValue}
@@ -36,7 +36,7 @@ export const UserArticleTags: FC<IUserArticleTags> = ({
     }
     const isLongTag = tag.length > 20;
     const tagElem = (
-      <Tag className="edit-tag tags__item" key={`${tag}${index}`} closable onClose={() => handleClose(tag)}>
+      <Tag className="edit-tag tags__item" key={tag} closable onClose={() => handleClose(tag)}>
         <span onDoubleClick={(evt) => getArgsFromTag(evt, index, tag)}>{isLongTag ? `${tag.slice(0, 20)}...` : tag}</span>
       </Tag>
     );

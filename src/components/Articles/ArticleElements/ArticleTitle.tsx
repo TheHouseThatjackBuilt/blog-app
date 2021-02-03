@@ -1,4 +1,4 @@
-/*eslint-disable*/
+/* eslint-disable */ // do not turn on that insolent bitch here;
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Tag, Tooltip } from 'antd';
@@ -19,15 +19,15 @@ interface IArticleTitle {
 export const ArticleTitle: FC<IArticleTitle> = ({ slug, title, favorited, favoritesCount, username, tagList, date, image }) => {
   const tags =
     tagList.length > 0 &&
-    tagList.map((tag: string, index: number) => {
+    tagList.map((tag: string) => {
       const isLongTag = tag.length > 20;
       const tagElem = (
-        <Tag className="article__tag" key={`${tag}${index}`}>
+        <Tag className="article__tag" key={tag}>
           <span>{isLongTag ? `${tag.slice(0, 20)}...` : tag}</span>
         </Tag>
       );
       return isLongTag ? (
-        <Tooltip title={tag} key={`${tag}${index}`}>
+        <Tooltip title={tag} key={tag}>
           {tagElem}
         </Tooltip>
       ) : (

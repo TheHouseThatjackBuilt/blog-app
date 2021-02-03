@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-import { DefaultHeader } from './DefaultHeader';
-import { UserHeader } from './UserHeader';
+import { DefaultHeader } from './HeaderElements/DefaultHeader';
+import { UserHeader } from './HeaderElements/UserHeader';
 import { IHeader } from '../../types/components/index.d';
 
 export const Header: FC<IHeader> = ({ user, load, logOut }) => (

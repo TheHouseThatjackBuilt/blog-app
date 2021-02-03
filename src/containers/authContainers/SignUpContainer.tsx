@@ -4,14 +4,16 @@ import { useForm } from 'react-hook-form';
 import { useCookies } from 'react-cookie';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useHistory } from 'react-router-dom';
-
+// selectors:
 import { userStateErrorReselector, userStateLoadSelector, userStateUserSelector } from '../../redux/selectors';
-import { IUser, IState } from '../../types/redux/index.d';
+// thunk:
 import { authNewUserThunk } from '../../redux/middlewareThunk/userDataThunk';
-import { SignUpProfile } from '../../components/AuthForms/SignUpProfile';
+// Schema:
 import { registerSchema } from '../../tools/utils';
-
-type PropsFromRedux = ConnectedProps<typeof connector>;
+// types:
+import { IUser, IState } from '../../types/redux/index.d';
+// component:
+import { SignUpProfile } from '../../components/AuthForms';
 
 const SignUpContainer: FC<PropsFromRedux> = ({ load, error, user, authNewUserThunk }) => {
   const history = useHistory();
@@ -22,18 +24,16 @@ const SignUpContainer: FC<PropsFromRedux> = ({ load, error, user, authNewUserThu
   });
 
   useEffect(() => {
-    if (user) {
-      setUserCookie('token', user.token);
-      history.push('/');
-    }
+    if (user) setUserCookie('token', user.token);
   }, [user]);
 
   useEffect(() => {
     if (error) error.forEach((key, value) => setError(value, { type: 'server validation error', message: `${value} ${key}` }));
   }, [error]);
 
-  const onSubmit = handleSubmit(({ username, email, password }) => {
-    authNewUserThunk({ username, email, password });
+  const onSubmit = handleSubmit(async ({ username, email, password }) => {
+    await authNewUserThunk({ username, email, password });
+    if (!error) history.push('/');
   });
 
   return <SignUpProfile inputRef={register} errors={errors} onSubmit={onSubmit} load={load} />;
@@ -46,5 +46,5 @@ const mapStateToProps = (state: IState) => ({
 });
 const mapDispatch = { authNewUserThunk };
 const connector = connect(mapStateToProps, mapDispatch);
-
+type PropsFromRedux = ConnectedProps<typeof connector>;
 export default connector(SignUpContainer);

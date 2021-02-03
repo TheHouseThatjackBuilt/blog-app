@@ -4,14 +4,16 @@ import { useForm } from 'react-hook-form';
 import { useCookies } from 'react-cookie';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useHistory } from 'react-router-dom';
-
+// selectors:
 import { userStateUserSelector, userStateLoadSelector, userStateErrorSelector } from '../../redux/selectors/userStateSelectors';
+// thunk:
 import { authUserThunk } from '../../redux/middlewareThunk/userDataThunk';
+// types:
 import { IState, IUser } from '../../types/redux/index.d';
-import { SignInProfile } from '../../components/AuthForms/SignInProfile';
+// Schema:
 import { authSchema } from '../../tools/utils';
-
-type PropsFromRedux = ConnectedProps<typeof connector>;
+// component:
+import { SignInProfile } from '../../components/AuthForms';
 
 const SignInContainer: FC<PropsFromRedux> = ({ load, error, user, authUserThunk }) => {
   const history = useHistory();
@@ -24,7 +26,6 @@ const SignInContainer: FC<PropsFromRedux> = ({ load, error, user, authUserThunk 
   useEffect(() => {
     if (user) {
       setUserCookie('token', user.token);
-      history.push('/');
     }
     if (error) {
       setError('email', { type: 'server validation', message: '' });
@@ -32,7 +33,10 @@ const SignInContainer: FC<PropsFromRedux> = ({ load, error, user, authUserThunk 
     }
   }, [user, error]);
 
-  const onSubmit = handleSubmit(({ email, password }) => authUserThunk({ email, password }));
+  const onSubmit = handleSubmit(async ({ email, password }) => {
+    await authUserThunk({ email, password });
+    if (!error) history.push('./');
+  });
 
   return <SignInProfile inputRef={register} errors={errors} onSubmit={onSubmit} load={load} />;
 };
@@ -45,5 +49,5 @@ const mapStateToProps = (state: IState) => ({
 
 const mapDispatch = { authUserThunk };
 const connector = connect(mapStateToProps, mapDispatch);
-
+type PropsFromRedux = ConnectedProps<typeof connector>;
 export default connector(SignInContainer);

@@ -102,7 +102,7 @@
 
 .userbar {
   display: grid;
-  grid-template: 1fr / 1fr 1fr;
+  grid-template: 1fr / max-content 50px;
   justify-items: center;
   align-items: center;
   gap: 10px;

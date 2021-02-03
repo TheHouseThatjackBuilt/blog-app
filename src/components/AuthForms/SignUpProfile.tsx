@@ -1,4 +1,3 @@
-/* eslint-disable*/
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { FormControlLabel, Checkbox } from '@material-ui/core';

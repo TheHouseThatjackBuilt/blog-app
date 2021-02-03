@@ -1,10 +1,9 @@
-/* eslint-disable */
 import React, { FC, useState, useEffect } from 'react';
-
 import { useCookies } from 'react-cookie';
-
+// middleware:
 import { setFavoriteStatusMiddleware } from '../../redux/middlewareThunk/middleware';
-import { SetFavoriteButton } from '../../components/Articles/ArticleHeader/SetFavoriteButton';
+// component:
+import { SetFavoriteButton } from '../../components/Articles/ArticleElements';
 
 interface ISetFavoriteButtonContainer {
   favorited: boolean;
