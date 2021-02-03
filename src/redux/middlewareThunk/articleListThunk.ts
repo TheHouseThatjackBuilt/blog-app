@@ -4,7 +4,7 @@ import { Thunk, IArticleListActionsTypes, IArticlesListState } from '../../types
 // actions:
 import { articlesListAction, articlesLoadAction, articlesErrorAction } from '../actions/ArticlesListActions';
 // service:
-import { requestArticleList, requestUserArticleList } from '../../service/api';
+import { requestArticleList, requestUserArticleList } from '../../service';
 
 type UserThunkType = Thunk<IArticleListActionsTypes, IArticlesListState>;
 type UserDispatch = Dispatch<IArticleListActionsTypes>;

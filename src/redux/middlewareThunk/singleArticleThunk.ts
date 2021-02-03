@@ -4,7 +4,7 @@ import { Thunk, ISingleArticleState, ISingleArticleActionsTypes } from '../../ty
 // actions:
 import { articleErrorAction, getArticleAction, aticleLoadAction } from '../actions/singleArticleActions';
 // service:
-import { requestArticle } from '../../service/api';
+import { requestArticle } from '../../service';
 
 export const getArticleThunk: Thunk<ISingleArticleActionsTypes, ISingleArticleState> = (id: string) => (
   dispatch: Dispatch<ISingleArticleActionsTypes>

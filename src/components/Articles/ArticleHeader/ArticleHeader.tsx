@@ -8,6 +8,7 @@ export const ArticleHeader: FC<IArticleHeader> = ({
   author: { image, username },
   date,
   favoritesCount,
+  favorited,
   slug,
   tagList,
   title,
@@ -16,6 +17,7 @@ export const ArticleHeader: FC<IArticleHeader> = ({
 }) => (
   <header className="article__header">
     <ArticleTitle
+      favorited={favorited}
       slug={slug}
       title={title}
       favoritesCount={favoritesCount}

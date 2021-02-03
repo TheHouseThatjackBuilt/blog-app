@@ -11,6 +11,7 @@ export interface IArticleHeader {
   date: string;
   slug: string;
   tagList: string[];
+  favorited: boolean;
   favoritesCount: number;
   title: string;
   description: string;

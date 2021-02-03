@@ -2,7 +2,7 @@
 import React, { FC } from 'react';
 import { useCookies } from 'react-cookie';
 
-import { deleteArticle } from '../../service/api';
+import { deleteArticle } from '../../service';
 import { OwnerPanel } from '../../components/Articles/ArticleHeader/OwnerPanel';
 
 export const OwnerPanelContainer: FC<{ articleID: string }> = ({ articleID }) => {

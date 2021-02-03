@@ -16,8 +16,11 @@ const HeaderContainer = ({ load, error, user, verificationUserThunk, authUserAct
 
   useEffect(() => {
     if (userCookie.token && !user) verificationUserThunk(userCookie.token);
+  }, [userCookie.token, user]);
+
+  useEffect(() => {
     if (error) throw new Error('something went wrong in Header-component with user data');
-  }, [userCookie.token, user, error]);
+  }, [error]);
 
   const logOut = () => {
     setUserCookie('token', '', { maxAge: -1 });

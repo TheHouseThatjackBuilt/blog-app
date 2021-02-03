@@ -70,9 +70,8 @@ const CreateArticleContainer: FC<PropsFromRedux> = ({
   }, [error]);
 
   const onSubmit = handleSubmit((data) => {
-    if (!id) createArticleThunk(data, tags, userCookie.token);
-    if (id && userCookie.token) updateUserArticleThunk(data, tags, userCookie.token, id);
-    if (!error) history.push('/');
+    if (!id) createArticleThunk(data, tags, userCookie.token).then(() => history.push('/'));
+    if (id && userCookie.token) updateUserArticleThunk(data, tags, userCookie.token, id).then(() => history.push('/'));
   });
 
   return (

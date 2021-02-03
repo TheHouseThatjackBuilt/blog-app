@@ -5,3 +5,4 @@ export const OFFSET = 'offset';
 export const USERS = 'users';
 export const USER = 'user';
 export const LOGIN = 'login';
+export const FAVORITE = 'favorite';

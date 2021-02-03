@@ -23,8 +23,8 @@ export const OwnerPanel: FC<IOwnerPanel> = ({ deleteArticle, token, id }) => {
       okText: 'Yes',
       okType: 'danger',
       cancelText: 'No',
-      onOk() {
-        deleteArticle(id, token);
+      async onOk() {
+        await deleteArticle(id, token);
         history.push('/');
       },
       onCancel() {

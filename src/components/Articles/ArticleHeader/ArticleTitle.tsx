@@ -1,12 +1,14 @@
 /*eslint-disable*/
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Tag, Tooltip } from 'antd';
-import cn from 'classnames';
+
+import { SetFavoriteButtonContainer } from '../../../containers/ElementsContainer/SetFavoriteButtonContainer';
 
 interface IArticleTitle {
   slug: string;
   title: string;
+  favorited: boolean;
   favoritesCount: number;
   date: string;
   image: string;
@@ -14,10 +16,7 @@ interface IArticleTitle {
   tagList: string[];
 }
 
-export const ArticleTitle: FC<IArticleTitle> = ({ slug, title, favoritesCount, username, tagList, date, image }) => {
-  const [like, setLike] = useState(false);
-  const setLikesHandler = () => setLike(!like);
-
+export const ArticleTitle: FC<IArticleTitle> = ({ slug, title, favorited, favoritesCount, username, tagList, date, image }) => {
   const tags =
     tagList.length > 0 &&
     tagList.map((tag: string, index: number) => {
@@ -43,10 +42,7 @@ export const ArticleTitle: FC<IArticleTitle> = ({ slug, title, favoritesCount, u
           <Link to={`/articles/${slug}`}>
             <h2 className="article__title">{title}</h2>
           </Link>
-          <div className="article__like-container">
-            <button onClick={setLikesHandler} type="button" className={cn('article__like', { article__like_active: like })} />
-            <div className="article__like-counter">{favoritesCount === 0 ? null : favoritesCount}</div>
-          </div>
+          <SetFavoriteButtonContainer favorited={favorited} favoritesCount={favoritesCount} id={slug} />
         </div>
         <div className="article__tag-list">{tags}</div>
       </div>

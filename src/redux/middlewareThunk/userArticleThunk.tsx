@@ -6,7 +6,7 @@ import { ICreateNewArticle } from '../../types/service/index.d';
 // actions:
 import { createNewArticleAction, newArticleErrorAction, newArticleLoadAction } from '../actions/newArticleActions';
 // service:
-import { createArticle, requestArticle, udpateArticle } from '../../service/api';
+import { createArticle, requestArticle, udpateArticle } from '../../service';
 
 type UserThunk = Thunk<IUserArticlesActionsTypes, IUserArticleState>;
 type UserDispatch = Dispatch<IUserArticlesActionsTypes>;

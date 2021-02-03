@@ -4,7 +4,7 @@ import { Thunk, IUser, IUserState, INewUserActionsTypes, IUpdateUser } from '../
 // actions:
 import { authUserAction, userErrorAction, userLoadAction } from '../actions/userActions';
 // service:
-import { requestNewUser, authUser, updateUser, requestCurrentUser } from '../../service/api';
+import { requestNewUser, authUser, updateUser, requestCurrentUser } from '../../service';
 import { handlerEmptyData } from '../../tools/dataFabric';
 
 type userThunk = Thunk<INewUserActionsTypes, IUserState>;
