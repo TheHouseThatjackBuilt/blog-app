@@ -25,7 +25,10 @@ const EditProfileContainer: FC<PropsFromRedux> = ({ load, error, user, updateUse
     resolver: yupResolver(updateProfileSchema),
   });
 
-  // разнести по разным useEffect
+  useEffect(() => {
+    if (!userCookie.token) history.push('/sign-in');
+  }, [userCookie]);
+
   useEffect(() => {
     if (!user) history.push('/');
   }, [user]);
@@ -34,9 +37,10 @@ const EditProfileContainer: FC<PropsFromRedux> = ({ load, error, user, updateUse
     if (error) error.forEach((key, value) => setError(value, { type: 'server validation error', message: `${value} ${key}` }));
   }, [error]);
 
-  const onSubmit = handleSubmit(async (data) => {
-    await updateUserThunk(data, userCookie.token);
-    if (!error) history.push('/');
+  const onSubmit = handleSubmit((data) => {
+    updateUserThunk(data, userCookie.token).then(() => {
+      if (!error && user) history.push('/');
+    });
   });
 
   return <EditProfile inputRef={register} errors={errors} onSubmit={onSubmit} load={load} />;

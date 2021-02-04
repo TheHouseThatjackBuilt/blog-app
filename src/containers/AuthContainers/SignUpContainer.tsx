@@ -24,17 +24,17 @@ const SignUpContainer: FC<PropsFromRedux> = ({ load, error, user, authNewUserThu
   });
 
   useEffect(() => {
-    if (user) setUserCookie('token', user.token);
+    if (user) {
+      setUserCookie('token', user.token);
+      history.push('./');
+    }
   }, [user]);
 
   useEffect(() => {
     if (error) error.forEach((key, value) => setError(value, { type: 'server validation error', message: `${value} ${key}` }));
   }, [error]);
 
-  const onSubmit = handleSubmit(async ({ username, email, password }) => {
-    await authNewUserThunk({ username, email, password });
-    if (!error) history.push('/');
-  });
+  const onSubmit = handleSubmit(({ username, email, password }) => authNewUserThunk({ username, email, password }));
 
   return <SignUpProfile inputRef={register} errors={errors} onSubmit={onSubmit} load={load} />;
 };
@@ -44,6 +44,7 @@ const mapStateToProps = (state: IState) => ({
   load: userStateLoadSelector(state),
   error: userStateErrorReselector(state),
 });
+
 const mapDispatch = { authNewUserThunk };
 const connector = connect(mapStateToProps, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
