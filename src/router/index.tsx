@@ -30,4 +30,5 @@ const MainRouter: FC = () => (
     </Switch>
   </div>
 );
+
 export default MainRouter;
