@@ -9,10 +9,10 @@ import { requestArticleList, requestUserArticleList } from '../../service';
 type UserThunkType = Thunk<IArticleListActionsTypes, IArticlesListState>;
 type UserDispatch = Dispatch<IArticleListActionsTypes>;
 
-export const getArticleListThunk: UserThunkType = (data: number) => (dispatch: UserDispatch) => {
+export const getArticleListThunk: UserThunkType = (data: number, token?: string | undefined) => (dispatch: UserDispatch) => {
   dispatch(articlesLoadAction(true));
   const page = (data - 1) * 10;
-  return requestArticleList(page)
+  return requestArticleList(page, token)
     .then((response) => dispatch(articlesListAction(response)))
     .catch((error) => dispatch(articlesErrorAction(error)));
 };

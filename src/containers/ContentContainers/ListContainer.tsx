@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+import { useCookies } from 'react-cookie';
 // selectors:
 import {
   articlesStateCountSelector,
@@ -25,18 +26,15 @@ const ArticlesListContainer = ({
   articlesEmptyListAction,
 }: PropsFromRedux) => {
   const [page, setPage] = useState(1);
+  const [userCookie] = useCookies();
 
   useEffect(() => {
-    getArticleListThunk(page);
+    getArticleListThunk(page, userCookie.token);
 
     return () => {
       articlesEmptyListAction();
     };
-  }, []);
-
-  useEffect(() => {
-    getArticleListThunk(page);
-  }, [page]);
+  }, [page, userCookie.token]);
 
   useEffect(() => {
     if (error) throw new Error('something went wrong in Single Article');

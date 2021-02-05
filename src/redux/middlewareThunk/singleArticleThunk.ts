@@ -6,11 +6,12 @@ import { articleErrorAction, getArticleAction, aticleLoadAction } from '../actio
 // service:
 import { requestArticle } from '../../service';
 
-export const getArticleThunk: Thunk<ISingleArticleActionsTypes, ISingleArticleState> = (id: string) => (
-  dispatch: Dispatch<ISingleArticleActionsTypes>
-) => {
+export const getArticleThunk: Thunk<ISingleArticleActionsTypes, ISingleArticleState> = (
+  id: string,
+  token?: string | undefined
+) => (dispatch: Dispatch<ISingleArticleActionsTypes>) => {
   dispatch(aticleLoadAction(true));
-  return requestArticle(id)
+  return requestArticle(id, token)
     .then((response) => {
       const { article } = response;
       dispatch(getArticleAction({ ...article }));

@@ -8,13 +8,18 @@ import { serviceHttpFabric, serviceDataWrapper } from '../tools/dataFabric';
 import { http } from './api';
 
 // articles block:
-export const requestArticleList = (offsetPage: number) => {
-  const options = serviceHttpFabric(Methods.get);
+export const requestArticleList = (offsetPage: number, token?: string) => {
+  const options = token
+    ? serviceHttpFabric(Methods.get, { headers: { Authorization: `Token ${token}` } })
+    : serviceHttpFabric(Methods.get);
+  console.log(options);
   return http<IArticleList>(`${ARTICLES}?${LIMIT}=10&${OFFSET}=${offsetPage}`, options);
 };
 
-export const requestArticle = (id: string) => {
-  const options = serviceHttpFabric(Methods.get);
+export const requestArticle = (id: string, token?: string) => {
+  const options = token
+    ? serviceHttpFabric(Methods.get, { headers: { Authorization: `Token ${token}` } })
+    : serviceHttpFabric(Methods.get);
   return http<{ article: IArticle }>(`${ARTICLES}/${id}`, options);
 };
 
