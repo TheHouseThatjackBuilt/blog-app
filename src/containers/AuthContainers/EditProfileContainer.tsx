@@ -15,8 +15,6 @@ import { IState, IUpdateUser } from '../../types/redux/index.d';
 // component:
 import { EditProfile } from '../../components/AuthForms';
 
-type PropsFromRedux = ConnectedProps<typeof connector>;
-
 const EditProfileContainer: FC<PropsFromRedux> = ({ load, error, user, updateUserThunk }) => {
   const history = useHistory();
   const [userCookie] = useCookies();
@@ -26,8 +24,8 @@ const EditProfileContainer: FC<PropsFromRedux> = ({ load, error, user, updateUse
   });
 
   useEffect(() => {
-    if (!userCookie.token) history.push('/sign-in');
-  }, [userCookie]);
+    if (userCookie.token === undefined) history.push('/sign-in');
+  });
 
   useEffect(() => {
     if (!user) history.push('/');
@@ -54,5 +52,5 @@ const mapStateToProps = (state: IState) => ({
 
 const mapDispatch = { updateUserThunk };
 const connector = connect(mapStateToProps, mapDispatch);
-
+type PropsFromRedux = ConnectedProps<typeof connector>;
 export default connector(EditProfileContainer);
