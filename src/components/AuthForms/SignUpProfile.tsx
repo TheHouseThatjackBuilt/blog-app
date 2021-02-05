@@ -72,7 +72,7 @@ export const SignUpProfile: FC<IForm> = ({ inputRef, errors, onSubmit, load }) =
       </Form>
       <div className={styles.signIn}>
         <span>Don’t have an account?</span>
-        <Link to="/sign-up"> Sign In.</Link>
+        <Link to="/sign-in"> Sign In.</Link>
       </div>
     </FormContainer>
   );
