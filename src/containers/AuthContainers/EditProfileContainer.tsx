@@ -22,23 +22,18 @@ const EditProfileContainer: FC<PropsFromRedux> = ({ load, error, user, updateUse
     mode: 'onChange',
     resolver: yupResolver(updateProfileSchema),
   });
-
+  // вынести условие в тело функции ??.
   useEffect(() => {
     if (userCookie.token === undefined) history.push('/sign-in');
   });
-
-  useEffect(() => {
-    if (!user) history.push('/');
-  }, [user]);
 
   useEffect(() => {
     if (error) error.forEach((key, value) => setError(value, { type: 'server validation error', message: `${value} ${key}` }));
   }, [error]);
 
   const onSubmit = handleSubmit((data) => {
-    updateUserThunk(data, userCookie.token).then(() => {
-      if (!error && user) history.push('/');
-    });
+    updateUserThunk(data, userCookie.token);
+    if (!error && !load && user) history.push('/');
   });
 
   return <EditProfile inputRef={register} errors={errors} onSubmit={onSubmit} load={load} />;

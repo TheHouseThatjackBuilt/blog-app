@@ -13,7 +13,8 @@ import { getArticleThunk } from '../../redux/middlewareThunk/singleArticleThunk'
 // types:
 import { IState } from '../../types/redux/index.d';
 // component:
-import { SingleArticle } from '../../components/Articles';
+import { MainContainer, Spinner } from '../../components/AppElements';
+import { ArticleConstructor } from '../../components/Articles';
 
 const ArticleContainer = ({ article, load, error, getArticleThunk }: PropsFromRedux) => {
   const { id } = useParams<{ id: string }>();
@@ -27,7 +28,16 @@ const ArticleContainer = ({ article, load, error, getArticleThunk }: PropsFromRe
     if (error) throw new Error('something went wrong in Single Article');
   }, [error]);
 
-  return <SingleArticle data={article} load={load} />;
+  return (
+    <MainContainer>
+      {load && <Spinner />}
+      {article && !load && (
+        <div className="content__article-preview article__full">
+          <ArticleConstructor article={article} flag />
+        </div>
+      )}
+    </MainContainer>
+  );
 };
 
 const mapStateToProps = (state: IState) => ({

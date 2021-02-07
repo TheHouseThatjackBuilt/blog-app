@@ -8,11 +8,10 @@ import { serviceHttpFabric, serviceDataWrapper } from '../tools/dataFabric';
 import { http } from './api';
 
 // articles block:
-export const requestArticleList = (offsetPage: number, token?: string) => {
+export const requestArticleList = (offsetPage: number, token: string | undefined) => {
   const options = token
     ? serviceHttpFabric(Methods.get, { headers: { Authorization: `Token ${token}` } })
     : serviceHttpFabric(Methods.get);
-  console.log(options);
   return http<IArticleList>(`${ARTICLES}?${LIMIT}=10&${OFFSET}=${offsetPage}`, options);
 };
 

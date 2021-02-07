@@ -4,5 +4,4 @@ export { SignUpPage } from './SignUpPage';
 export { SignInPage } from './SignInPage';
 export { EditProfilePage } from './EditProfilePage';
 export { CreateArticlePage } from './CreateArticlePage';
-export { ArticleByAuthorPage } from './ArticleByAuthorPage';
 export { EditArticlePage } from './EditArticlePage';

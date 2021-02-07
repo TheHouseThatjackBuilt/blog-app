@@ -11,7 +11,7 @@ export const Header: FC<IHeader> = ({ user, load, logOut }) => (
       <h1 className="header__title">Realworld Blog</h1>
     </Link>
     {load && null}
-    {!user && !load && <DefaultHeader />}
     {user && <UserHeader user={user} logOut={logOut} />}
+    {!user && !load && <DefaultHeader />}
   </header>
 );

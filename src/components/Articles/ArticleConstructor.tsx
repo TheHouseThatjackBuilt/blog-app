@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { IArticleConstructor } from '../../../types/components/index.d';
-import { ArticleHeader, ArticleBody } from '.';
+import { IArticleConstructor } from '../../types/components/index.d';
+import { ArticleHeader, ArticleBody } from './ArticleElements';
 
 export const ArticleConstructor: React.FC<IArticleConstructor> = ({ article, flag }) => (
   <>

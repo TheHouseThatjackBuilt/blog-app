@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable operator-linebreak */
+import React, { FC, useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { useCookies } from 'react-cookie';
 // selectors:
@@ -14,17 +15,18 @@ import { getArticleListThunk } from '../../redux/middlewareThunk/articleListThun
 import { articlesEmptyListAction } from '../../redux/actions/ArticlesListActions';
 // types:
 import { IState } from '../../types/redux/index.d';
-// component:
-import { ArticlesList } from '../../components/Articles';
+// components:
+import { ArticleConstructor } from '../../components/Articles/ArticleConstructor';
+import { Spinner, Pagination, MainContainer } from '../../components/AppElements/index';
 
-const ArticlesListContainer = ({
+const ArticlesListContainer: FC<PropsFromRedux> = ({
   articles,
   articlesCount,
   load,
   error,
   getArticleListThunk,
   articlesEmptyListAction,
-}: PropsFromRedux) => {
+}) => {
   const [page, setPage] = useState(1);
   const [userCookie] = useCookies();
 
@@ -42,7 +44,27 @@ const ArticlesListContainer = ({
 
   const handlePagesSwitch = (evt: number) => setPage(evt);
 
-  return <ArticlesList articles={articles} pageHandler={handlePagesSwitch} totalPages={articlesCount} load={load} page={page} />;
+  const content =
+    articles &&
+    articles?.map((article) => (
+      <li key={article.header.slug} className="content__itemContainer">
+        <article className="content__article-preview">
+          <ArticleConstructor article={article} flag={false} />
+        </article>
+      </li>
+    ));
+
+  return (
+    <MainContainer>
+      {load && <Spinner />}
+      {!load && articles && (
+        <div className="content">
+          <ul className="content__container-preview">{content}</ul>
+          <Pagination totalPages={articlesCount} handler={handlePagesSwitch} currentPage={page} />
+        </div>
+      )}
+    </MainContainer>
+  );
 };
 
 const mapStateToProps = (state: IState) => ({

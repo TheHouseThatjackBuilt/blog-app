@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import { IArticleBodyContainer } from '../../../types/components/index.d';
-
-export const ArticleBody: React.FC<IArticleBodyContainer> = ({ articleBody }) => (
+export const ArticleBody: FC<{ articleBody: string }> = ({ articleBody }) => (
   <section className="article__body">
     <ReactMarkdown source={articleBody} />
   </section>

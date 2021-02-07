@@ -6,7 +6,9 @@ import { IHandleArticleData } from '../types/components/index.d';
 import { IOptions } from '../types/service/index.d';
 
 export const serviceDataWrapper = <T>(data: T, wrapper: string) => ({ [wrapper]: { ...data } });
+
 export const handlerEmptyData = <T>(data: T) => Object.fromEntries(Object.entries(data).filter(([, value]) => value !== ''));
+
 export const handlerUserData = (user: IResponseUser, exclude: string[]) => omit(user, exclude);
 
 export const errorDataFabric = <T>(data: T): Map<keyof T, string> =>

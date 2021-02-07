@@ -1,15 +1,7 @@
 import { ChangeEvent, MouseEvent } from 'react';
 import { Ref, DeepMap, FieldError } from 'react-hook-form';
-import { IArticle, ISetArticleTagsAction } from '../redux/index.d';
-import { IArticleBody, ISetUser, IHandleArticleData } from './index.d';
-
-export interface IArticleList {
-  articles: IHandleArticleData[] | null;
-  load: boolean;
-  totalPages: number;
-  page: number;
-  pageHandler: Function;
-}
+import { ISetArticleTagsAction } from '../redux/index.d';
+import { ISetUser, IHandleArticleData } from './index.d';
 
 export interface IPaginator {
   totalPages: number;
@@ -17,22 +9,9 @@ export interface IPaginator {
   currentPage: number;
 }
 
-export interface IArticleTags {
-  tag: string;
-}
-
-export interface IArticleContainer {
-  article: IArticle | null;
-  load: boolean;
-}
-
 export interface IArticleConstructor {
   article: IHandleArticleData;
   flag: boolean;
-}
-
-export interface IArticleBodyContainer {
-  articleBody: IArticleBody;
 }
 
 export interface IFormInput {
