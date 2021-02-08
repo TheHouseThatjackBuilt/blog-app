@@ -11,10 +11,10 @@ import { IState } from '../../types/redux/index.d';
 import { Header } from '../../components/Header/Header';
 
 const HeaderContainer: FC<PropsFromRedux> = ({ load, user, authUserAction }) => {
-  const [, setUserCookie] = useCookies();
+  const [, , removeCookie] = useCookies();
 
   const logOut = () => {
-    setUserCookie('token', '', { maxAge: -1 });
+    removeCookie('token', { path: '/' });
     authUserAction(null);
   };
 
