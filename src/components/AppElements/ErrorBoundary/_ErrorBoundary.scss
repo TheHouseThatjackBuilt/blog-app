@@ -1,6 +1,6 @@
 .error {
   display: grid;
-  grid-template: 47px 30px 58px 1fr / 1fr;
+  grid-template: 47px 30px 30px 1fr / 1fr;
 
   &__container {
     margin-top: 30px;
@@ -46,6 +46,7 @@
     width: 628px;
     height: 326px;
     justify-self: center;
+    margin-top: 20px;
 
     & > img {
       border: 1px solid #52c41a;
