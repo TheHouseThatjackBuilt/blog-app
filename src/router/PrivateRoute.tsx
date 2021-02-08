@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { FC } from 'react';
 import { useCookies } from 'react-cookie';
 import { Route, Redirect } from 'react-router-dom';
