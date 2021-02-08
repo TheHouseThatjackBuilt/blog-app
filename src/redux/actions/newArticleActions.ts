@@ -5,6 +5,7 @@ import {
   INewArticleErrorAction,
   INewArticleLoadAction,
   ISetArticleTagsAction,
+  IArticleGuardAction,
 } from '../../types/redux/index.d';
 import { EUserArticles } from '../constants';
 
@@ -26,3 +27,5 @@ export const newArticleErrorAction = (payload: any): INewArticleErrorAction => (
 export const articleSetTagsAction = (payload: string[]): ISetArticleTagsAction => ({ type: EUserArticles.setTags, payload });
 
 export const emptyTheStateAction = (): IEmptyTheStateAction => ({ type: EUserArticles.emptyTheState });
+
+export const articleGuardAction = (): IArticleGuardAction => ({ type: EUserArticles.articleGuard });

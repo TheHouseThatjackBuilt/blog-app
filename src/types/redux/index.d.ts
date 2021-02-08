@@ -33,4 +33,5 @@ export {
   ISetArticleTagsAction,
   IEmptyTheStateAction,
   IArticlesEmptyAction,
+  IArticleGuardAction,
 } from './actions.d';

@@ -26,7 +26,7 @@ const SignInContainer: FC<PropsFromRedux> = ({ load, error, user, authUserThunk 
   useEffect(() => {
     if (user) {
       setUserCookie('token', user.token);
-      history.push('./');
+      history.push('/articles?page=1');
     }
   }, [user]);
 

@@ -9,8 +9,9 @@ import {
   userArticleLoadStateSelector,
   userArticleStateTagsSelector,
   userArticleStateTagsReselector,
-  userArticleErrorStateReselector,
   userArticleInitialStateReselector,
+  userStateUserSelector,
+  userArticleErrorStateSelector,
 } from '../../redux/selectors';
 // thunk:
 import {
@@ -19,7 +20,12 @@ import {
   updateUserArticleThunk,
 } from '../../redux/middlewareThunk/userArticleThunk';
 // actions:
-import { articleSetTagsAction, createNewArticleAction, emptyTheStateAction } from '../../redux/actions/newArticleActions';
+import {
+  articleSetTagsAction,
+  createNewArticleAction,
+  emptyTheStateAction,
+  newArticleLoadAction,
+} from '../../redux/actions/newArticleActions';
 // shema:
 import { articleShema } from '../../tools/utils';
 // types:
@@ -30,9 +36,10 @@ import { CreateArticle } from '../../components/UserArticle/CreateArticle';
 import { Spinner } from '../../components/AppElements/Spinner/Spinner';
 
 const CreateArticleContainer: FC<PropsFromRedux> = ({
-  load,
   error,
+  load,
   tags,
+  user,
   articleTags,
   initialForm,
   createArticleThunk,
@@ -40,51 +47,50 @@ const CreateArticleContainer: FC<PropsFromRedux> = ({
   initUserArticleStateThunk,
   updateUserArticleThunk,
   emptyTheStateAction,
+  newArticleLoadAction,
 }) => {
   const history = useHistory();
   const [userCookie] = useCookies();
   const { id } = useParams<{ id: string }>();
-  const { register, handleSubmit, errors, setError, setValue } = useForm<IUserArticle>({
+  const { register, handleSubmit, errors, setValue } = useForm<IUserArticle>({
     mode: 'onChange',
     resolver: yupResolver(articleShema),
   });
 
   useEffect(() => {
-    if (!userCookie.token) history.push('/sign-in');
-  }, [userCookie.token]);
+    newArticleLoadAction(true);
+  }, []);
 
   useEffect(() => {
-    if (id) initUserArticleStateThunk(id);
+    if (!id) newArticleLoadAction(false);
+  }, [!id]);
 
+  useEffect(() => {
+    if (id && user) initUserArticleStateThunk(id, user.username);
     return () => {
       emptyTheStateAction();
     };
-  }, [id]);
+  }, [id, user]);
+
+  useEffect(() => {
+    if (error) throw new Error(error);
+  }, [error]);
 
   useEffect(() => {
     if (articleTags) articleSetTagsAction(articleTags);
     if (initialForm) initialForm.forEach((key, value) => setValue(value, key));
   }, [articleTags, initialForm]);
 
-  useEffect(() => {
-    if (error) error.forEach((key, value) => setError(value, { type: 'server validation error', message: `${value} ${key}` }));
-  }, [error]);
-
   const onSubmit = handleSubmit(async (data) => {
-    if (!id) {
-      await createArticleThunk(data, tags, userCookie.token);
-      if (!error) history.push('/');
-    }
-    if (id && userCookie.token) {
-      await updateUserArticleThunk(data, tags, userCookie.token, id);
-      if (!error) history.push('/');
-    }
+    if (!id) await createArticleThunk(data, tags, userCookie.token);
+    if (id && userCookie.token) await updateUserArticleThunk(data, tags, userCookie.token, id);
+    history.push('/');
   });
 
   return (
     <>
       {load && <Spinner />}
-      {!load && (
+      {!load && !error && (
         <CreateArticle
           onSubmit={onSubmit}
           inputRef={register}
@@ -99,10 +105,11 @@ const CreateArticleContainer: FC<PropsFromRedux> = ({
 };
 
 const mapStateToProps = (state: IState) => ({
+  error: userArticleErrorStateSelector(state),
   load: userArticleLoadStateSelector(state),
-  error: userArticleErrorStateReselector(state),
   articleTags: userArticleStateTagsReselector(state),
   tags: userArticleStateTagsSelector(state),
+  user: userStateUserSelector(state),
   initialForm: userArticleInitialStateReselector(state),
 });
 
@@ -113,7 +120,9 @@ const mapDispatch = {
   createNewArticleAction,
   updateUserArticleThunk,
   emptyTheStateAction,
+  newArticleLoadAction,
 };
+
 const connector = connect(mapStateToProps, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 export default connector(CreateArticleContainer);

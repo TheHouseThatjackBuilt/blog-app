@@ -12,7 +12,7 @@ import {
 } from '../pages/index';
 // component:
 import HeaderContainer from '../containers/ElementsContainer/HeaderContainer';
-import PrivateRoute from './PrivateRoute';
+import { PrivateRoute } from './PrivateRoute';
 
 const MainRouter: FC = () => (
   <div className="main">
@@ -23,12 +23,15 @@ const MainRouter: FC = () => (
       <Route path="/sign-in" component={SignInPage} />
       <Route exact path="/articles/:id" component={SingleArticlePage} />
       <Route exact path="/articles" component={ArticleListPage} />
+
       <PrivateRoute path="/new-article" exact>
         <CreateArticlePage />
       </PrivateRoute>
+
       <PrivateRoute path="/articles/:id/edit" exact>
         <EditArticlePage />
       </PrivateRoute>
+
       <PrivateRoute path="/profile">
         <EditProfilePage />
       </PrivateRoute>

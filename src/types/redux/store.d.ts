@@ -23,6 +23,7 @@ export interface IUserArticleState {
   article: IArticle | null;
   load: boolean;
   errors: any;
+  owner: boolean;
   userTags: string[];
 }
 

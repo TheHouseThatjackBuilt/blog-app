@@ -17,6 +17,7 @@ export enum EUserArticles {
   dataLoad = 'USER_ARTICLE_LOAD',
   setTags = 'SET_TAGS_ARRAY',
   emptyTheState = 'DELETE_USER_ARTICLE',
+  articleGuard = 'NOT_OWNER',
 }
 
 export enum EUserActions {

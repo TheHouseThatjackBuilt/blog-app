@@ -25,6 +25,7 @@ export {
   userArticleLoadStateSelector,
   userArticleStateSelector,
   userArticleStateTagsSelector,
+  // userGuardArticleSelector,
   userArticleErrorStateReselector,
   userArticleStateTagsReselector,
   userArticleInitialStateReselector,

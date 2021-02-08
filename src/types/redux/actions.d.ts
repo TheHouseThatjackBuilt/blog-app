@@ -62,6 +62,10 @@ export interface IEmptyTheStateAction {
   type: typeof EUserArticles.emptyTheState;
 }
 
+export interface IArticleGuardAction {
+  type: typeof EUserArticles.articleGuard;
+}
+
 // user actions:
 export interface ISetNewUserAction {
   type: typeof EUserActions.newUser;
@@ -89,4 +93,5 @@ export type IUserArticlesActionsTypes =
   | INewArticleLoadAction
   | INewArticleErrorAction
   | ISetArticleTagsAction
-  | IEmptyTheStateAction;
+  | IEmptyTheStateAction
+  | IArticleGuardAction;

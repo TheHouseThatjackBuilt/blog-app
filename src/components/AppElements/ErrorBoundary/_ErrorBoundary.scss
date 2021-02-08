@@ -1,0 +1,55 @@
+.error {
+  display: grid;
+  grid-template: 47px 30px 58px 1fr / 1fr;
+
+  &__container {
+    margin-top: 30px;
+    background-color: $backgroundColorContent;
+    border-radius: 15px;
+    box-shadow: $shadow;
+    height: 500px;
+    padding: 15px;
+  }
+
+  &__title {
+    color: #2f3034;
+    font-family: LeituraDisplay, serif;
+    font-size: 32px;
+    font-weight: normal;
+    line-height: 40px;
+    margin: 0 0 16px;
+    text-align: center;
+  }
+
+  &__message {
+    color: #2f3034;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: center;
+  }
+
+  &__link {
+    border: 1px solid #52c41a;
+    width: 150px;
+    height: 31px;
+    background-color: inherit;
+    align-self: center;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    border-radius: 5px;
+    justify-self: center;
+  }
+
+  &__img {
+    width: 628px;
+    height: 326px;
+    justify-self: center;
+
+    & > img {
+      border: 1px solid #52c41a;
+      border-radius: 15px;
+    }
+  }
+}

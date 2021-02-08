@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+
 import { errorDataFabric as dataFabric } from '../../tools/dataFabric';
 import { IState, IUserArticleError as IData } from '../../types/redux/index.d';
 import { IApiError } from '../../types/service/index.d';
@@ -7,6 +8,7 @@ export const userArticleLoadStateSelector = (state: IState) => state.userArticle
 export const userArticleErrorStateSelector = (state: IState) => state.userArticleState.errors;
 export const userArticleStateSelector = (state: IState) => state.userArticleState.article;
 export const userArticleStateTagsSelector = (state: IState) => state.userArticleState.userTags;
+// export const userGuardArticleSelector = (state: IState) => state.userArticleState.owner;
 
 export const userArticleStateTagsReselector = createSelector(userArticleStateSelector, (article) => {
   if (article) return article.tagList;
