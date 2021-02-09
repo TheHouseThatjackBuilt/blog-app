@@ -2,7 +2,7 @@
 /* eslint-disable no-confusing-arrow  */
 /* eslint-disable function-paren-newline */
 import { ISingleArticleActionsTypes, ISingleArticleState } from '../../types/redux/index.d';
-import { ESingleArticle, EArticleActions } from '../constants';
+import { ESingleArticle, EArticleActions, EUserActions } from '../constants';
 
 const init: ISingleArticleState = {
   article: null,
@@ -18,6 +18,8 @@ export const singleArtileState = (state = init, action: ISingleArticleActionsTyp
       return { ...state, errors: action.payload };
     case ESingleArticle.articleLoad:
       return { ...state, load: action.payload };
+    case EUserActions.deleteArticle:
+      return { ...state, article: state.article?.slug === action.payload ? null : state.article };
     case EArticleActions.setFavorite:
       const { favCount, favorite, id } = action.payload;
       const { article } = state;

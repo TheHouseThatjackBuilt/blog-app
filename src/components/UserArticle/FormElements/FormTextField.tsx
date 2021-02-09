@@ -6,7 +6,7 @@ export const FormTextField = forwardRef<HTMLInputElement & HTMLTextAreaElement, 
     <label className="form__text input">
       Text
       <textarea ref={ref} className="input__text input_textArea" placeholder="print your article here" id="text" name="body" />
-      {errors?.body && <span>{errors.body.message}</span>}
+      {errors?.body && <span className="input_error">{errors.body.message}</span>}
     </label>
   )
 );

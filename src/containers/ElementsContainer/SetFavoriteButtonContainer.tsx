@@ -19,7 +19,10 @@ export const SetFavoriteButtonContainer = ({ favorited, favoritesCount, id, setF
   const history = useHistory();
 
   const favoriteClickHandler = () => {
-    if (!userCookie.token) history.push('/sign-in');
+    if (!userCookie.token) {
+      history.push('/sign-in');
+      return;
+    }
     setFavoriteStatusThunk(id, userCookie.token, !favorited, favoritesCount);
   };
 

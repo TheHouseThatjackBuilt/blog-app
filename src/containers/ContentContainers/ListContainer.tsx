@@ -30,6 +30,16 @@ const ArticlesListContainer: FC<PropsFromRedux> = ({
   const [page, setPage] = useState(1);
   const [userCookie] = useCookies();
 
+  const content =
+    articles &&
+    articles?.map(article => (
+      <li key={article.header.slug} className="content__itemContainer">
+        <article className="content__article-preview">
+          <ArticleConstructor article={article} flag={false} />
+        </article>
+      </li>
+    ));
+
   useEffect(() => {
     getArticleListThunk(page, userCookie.token);
 
@@ -43,16 +53,6 @@ const ArticlesListContainer: FC<PropsFromRedux> = ({
   }, [error]);
 
   const handlePagesSwitch = (evt: number) => setPage(evt);
-
-  const content =
-    articles &&
-    articles?.map((article) => (
-      <li key={article.header.slug} className="content__itemContainer">
-        <article className="content__article-preview">
-          <ArticleConstructor article={article} flag={false} />
-        </article>
-      </li>
-    ));
 
   return (
     <MainContainer>
