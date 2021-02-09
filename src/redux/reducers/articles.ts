@@ -1,5 +1,8 @@
+/* eslint-disable no-case-declarations */
+/* eslint-disable no-confusing-arrow  */
+/* eslint-disable function-paren-newline */
 import { IArticlesListState, IArticleListActionsTypes } from '../../types/redux/index.d';
-import { EArticleActions } from '../constants';
+import { EArticleActions, EUserActions } from '../constants';
 
 const initial: IArticlesListState = {
   articlesList: null,
@@ -16,6 +19,20 @@ export const articlesListState = (state = initial, action: IArticleListActionsTy
       return { ...state, load: false, errors: action.payload.error };
     case EArticleActions.emptyListState:
       return { ...state, articlesList: null, articlesCount: 0 };
+    case EUserActions.deleteArticle:
+      return {
+        ...state,
+        articlesList: state.articlesList?.filter(({ slug }) => slug !== action.payload) || null,
+      };
+    case EArticleActions.setFavorite:
+      const { favCount, favorite, id } = action.payload;
+      return {
+        ...state,
+        articlesList:
+          state.articlesList?.map(item =>
+            item.slug === id ? { ...item, favorited: favorite, favoritesCount: favCount } : item
+          ) || null,
+      };
     case EArticleActions.getArticlesList:
       return {
         ...state,

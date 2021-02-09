@@ -4,12 +4,8 @@ import { Dispatch } from 'redux';
 import { Thunk, IUserArticleState, IUserArticlesActionsTypes } from '../../types/redux/index.d';
 import { ICreateNewArticle } from '../../types/service/index.d';
 // actions:
-import {
-  createNewArticleAction,
-  newArticleErrorAction,
-  newArticleLoadAction,
-  // articleGuardAction,
-} from '../actions/newArticleActions';
+
+import { createNewArticleAction, newArticleErrorAction, newArticleLoadAction } from '../actions/newArticleActions';
 // service:
 import { createArticle, requestArticle, udpateArticle } from '../../service';
 
@@ -20,19 +16,19 @@ export const createArticleThunk: UserThunk = (data: ICreateNewArticle, tagList: 
   dispatch: UserDispatch
 ) => {
   dispatch(newArticleLoadAction(true));
-  return createArticle({ ...data, tagList }, token).catch((error) => dispatch(newArticleErrorAction(error)));
+  return createArticle({ ...data, tagList }, token).catch(error => dispatch(newArticleErrorAction(error)));
 };
 
 export const initUserArticleStateThunk: UserThunk = (id: string, owner: string) => (dispatch: UserDispatch) => {
   dispatch(newArticleLoadAction(true));
 
   return requestArticle(id)
-    .then((response) => {
+    .then(response => {
       const { article } = response;
       if (article.author.username === owner) dispatch(createNewArticleAction({ ...article }));
       else throw new Error('401 error, access denied');
     })
-    .catch((error) => dispatch(newArticleErrorAction(error)));
+    .catch(error => dispatch(newArticleErrorAction(error)));
 };
 
 export const updateUserArticleThunk: UserThunk = (
@@ -42,5 +38,5 @@ export const updateUserArticleThunk: UserThunk = (
   id: string
 ) => (dispatch: UserDispatch) => {
   dispatch(newArticleLoadAction(true));
-  return udpateArticle({ ...data, tagList }, token, id).catch((error) => dispatch(newArticleErrorAction(error)));
+  return udpateArticle({ ...data, tagList }, token, id).catch(error => dispatch(newArticleErrorAction(error)));
 };

@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Tag, Tooltip } from 'antd';
 
-import { SetFavoriteButtonContainer } from '../../../containers/ElementsContainer/SetFavoriteButtonContainer';
+import SetFavoriteButtonContainer from '../../../containers/ElementsContainer/SetFavoriteButtonContainer';
 
 interface IArticleTitle {
   slug: string;
@@ -51,6 +51,7 @@ export const ArticleTitle: FC<IArticleTitle> = ({ slug, title, favorited, favori
         <div className="user__pic article__userpic">
           <img src={image} alt="userpic" />
         </div>
+
         <time className="article__date-create">{date}</time>
       </div>
     </div>

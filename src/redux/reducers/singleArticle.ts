@@ -1,5 +1,8 @@
+/* eslint-disable no-case-declarations */
+/* eslint-disable no-confusing-arrow  */
+/* eslint-disable function-paren-newline */
 import { ISingleArticleActionsTypes, ISingleArticleState } from '../../types/redux/index.d';
-import { ESingleArticle } from '../constants';
+import { ESingleArticle, EArticleActions } from '../constants';
 
 const init: ISingleArticleState = {
   article: null,
@@ -15,6 +18,13 @@ export const singleArtileState = (state = init, action: ISingleArticleActionsTyp
       return { ...state, errors: action.payload };
     case ESingleArticle.articleLoad:
       return { ...state, load: action.payload };
+    case EArticleActions.setFavorite:
+      const { favCount, favorite, id } = action.payload;
+      const { article } = state;
+      return {
+        ...state,
+        article: article?.slug === id ? { ...article, favorited: favorite, favoritesCount: favCount } : article,
+      };
     default:
       return state;
   }

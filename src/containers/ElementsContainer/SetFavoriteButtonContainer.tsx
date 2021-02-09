@@ -1,7 +1,10 @@
-import React, { FC, useState, useEffect } from 'react';
+/* eslint-disable */
+import React, { FC } from 'react';
+import { useHistory } from 'react-router-dom';
+import { connect, ConnectedProps } from 'react-redux';
 import { useCookies } from 'react-cookie';
 // middleware:
-import { setFavoriteStatusMiddleware } from '../../redux/middlewareThunk/middleware';
+import { setFavoriteStatusThunk } from '../../redux/middlewareThunk/articleListThunk';
 // component:
 import { SetFavoriteButton } from '../../components/Articles/ArticleElements';
 
@@ -11,22 +14,20 @@ interface ISetFavoriteButtonContainer {
   id: string;
 }
 
-export const SetFavoriteButtonContainer: FC<ISetFavoriteButtonContainer> = ({ favorited, favoritesCount, id }) => {
-  const [favorite, setFavorite] = useState(favorited);
-  const [favCounter, setFavCounter] = useState(favoritesCount);
+export const SetFavoriteButtonContainer = ({ favorited, favoritesCount, id, setFavoriteStatusThunk }: PropsFromRedux) => {
   const [userCookie] = useCookies();
-
-  useEffect(() => {
-    setFavorite(favorited);
-    setFavCounter(favoritesCount);
-  }, [favorited, favoritesCount]);
+  const history = useHistory();
 
   const favoriteClickHandler = () => {
-    if (!userCookie.token) return;
-    setFavorite(!favorite);
-    setFavCounter(!favorite ? favCounter + 1 : favCounter - 1);
-    setFavoriteStatusMiddleware(!favorite, id, userCookie.token);
+    if (!userCookie.token) history.push('/sign-in');
+    setFavoriteStatusThunk(id, userCookie.token, !favorited, favoritesCount);
   };
 
-  return <SetFavoriteButton clickHandler={favoriteClickHandler} favorite={favorite} counter={favCounter} />;
+  return <SetFavoriteButton clickHandler={favoriteClickHandler} favorite={favorited} counter={favoritesCount} />;
 };
+
+const mapDispatch = { setFavoriteStatusThunk };
+const connector = connect(null, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector> & ISetFavoriteButtonContainer;
+
+export default connector(SetFavoriteButtonContainer);

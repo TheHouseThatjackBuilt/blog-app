@@ -21,6 +21,11 @@ export interface IArticlesEmptyAction {
   type: typeof EArticleActions.emptyListState;
 }
 
+export interface ISetFavoriteAction {
+  type: typeof EArticleActions.setFavorite;
+  payload: { favorite: boolean; favCount: number; id: string };
+}
+
 // single article actions:
 export interface IGetSingleArticleAction {
   type: typeof ESingleArticle.getArticle;
@@ -82,11 +87,27 @@ export interface INewUserErrorAction {
   payload: any;
 }
 
+export interface IDeleteArticleAction {
+  type: typeof EUserActions.deleteArticle;
+  payload: string;
+}
+
 export type INewUserActionsTypes = ISetNewUserAction | INewUserLoadAction | INewUserErrorAction;
 
-export type ISingleArticleActionsTypes = IGetSingleArticleAction | ISingleArticleLoadAction | ISingleArticleErrorAction;
+export type ISingleArticleActionsTypes =
+  | IGetSingleArticleAction
+  | ISingleArticleLoadAction
+  | ISingleArticleErrorAction
+  | ISetFavoriteAction
+  | IDeleteArticleAction;
 
-export type IArticleListActionsTypes = IGetArticlesAction | IArticlesErrorAction | IArticlesLoadAction | IArticlesEmptyAction;
+export type IArticleListActionsTypes =
+  | IGetArticlesAction
+  | IArticlesErrorAction
+  | IArticlesLoadAction
+  | IArticlesEmptyAction
+  | ISetFavoriteAction
+  | IDeleteArticleAction;
 
 export type IUserArticlesActionsTypes =
   | ICreateNewArticleAction

@@ -1,12 +1,14 @@
-/* eslint-disable*/
 import {
   IArticleList,
   IArticlesEmptyAction,
   IArticlesErrorAction,
   IArticlesLoadAction,
   IGetArticlesAction,
+  ISetFavoriteAction,
+  IDeleteArticleAction,
 } from '../../types/redux/index.d';
-import { EArticleActions } from '../constants';
+
+import { EArticleActions, EUserActions } from '../constants';
 
 export const articlesListAction = (payload: IArticleList): IGetArticlesAction => ({
   type: EArticleActions.getArticlesList,
@@ -25,4 +27,14 @@ export const articlesErrorAction = (payload: any): IArticlesErrorAction => ({
 
 export const articlesEmptyListAction = (): IArticlesEmptyAction => ({
   type: EArticleActions.emptyListState,
+});
+
+export const setFavoriteAction = (payload: { favorite: boolean; favCount: number; id: string }): ISetFavoriteAction => ({
+  type: EArticleActions.setFavorite,
+  payload,
+});
+
+export const deleteArticleAction = (payload: string): IDeleteArticleAction => ({
+  type: EUserActions.deleteArticle,
+  payload,
 });

@@ -3,6 +3,7 @@ export enum EArticleActions {
   dataError = 'ARTICLES_ERROR',
   articleLoad = 'ARTILES_LIST_LOAD',
   emptyListState = 'DELETE_ARTICLE_LIST',
+  setFavorite = 'SET_FAVORITE',
 }
 
 export enum ESingleArticle {
@@ -24,6 +25,7 @@ export enum EUserActions {
   newUser = 'SET_NEW_USER',
   userError = 'USER__ERROR',
   userLoad = 'USER_LOAD',
+  deleteArticle = 'DELETE_ARTICLE',
 }
 
 export enum Methods {

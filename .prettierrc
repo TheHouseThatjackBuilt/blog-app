@@ -6,5 +6,5 @@
   "printWidth": 130,
   "quoteProps": "as-needed",
   "jsxBracketSameLine": false,
-  "arrowParens": "always"
+  "arrowParens": "avoid"
 }

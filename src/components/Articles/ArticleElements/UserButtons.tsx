@@ -5,12 +5,11 @@ import { Modal, Button } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 
 interface IOwnerPanel {
-  deleteArticle: (id: string, token: string) => void;
-  token: string;
+  deleteArticle: () => void;
   id: string;
 }
 
-export const UserButtons: FC<IOwnerPanel> = ({ deleteArticle, token, id }) => {
+export const UserButtons: FC<IOwnerPanel> = ({ deleteArticle, id }) => {
   const { confirm } = Modal;
   const history = useHistory();
 
@@ -23,8 +22,7 @@ export const UserButtons: FC<IOwnerPanel> = ({ deleteArticle, token, id }) => {
       okType: 'danger',
       cancelText: 'No',
       async onOk() {
-        await deleteArticle(id, token);
-        history.push('/');
+        deleteArticle();
       },
     });
   };

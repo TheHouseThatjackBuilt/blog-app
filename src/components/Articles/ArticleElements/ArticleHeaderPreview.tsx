@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { UserButtonsContainer } from '../../../containers/UserArticleContainer/UserButtonsContainer';
+import UserButtonsContainer from '../../../containers/UserArticleContainer/UserButtonsContainer';
 
 interface IArticleHeaderPreview {
   description: string;

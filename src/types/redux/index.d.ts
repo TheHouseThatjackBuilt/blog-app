@@ -21,7 +21,6 @@ export {
   ISingleArticleLoadAction,
   ISingleArticleErrorAction,
   ISingleArticleActionsTypes,
-  ICurrentUserAction,
   INewUserErrorAction,
   INewUserLoadAction,
   ISetNewUserAction,
@@ -34,4 +33,6 @@ export {
   IEmptyTheStateAction,
   IArticlesEmptyAction,
   IArticleGuardAction,
+  ISetFavoriteAction,
+  IDeleteArticleAction,
 } from './actions.d';
